@@ -28,6 +28,7 @@
               "src/assets"
             ],
             "styles": [
+              "src/sweetAndKeto-theme.scss",
               "src/styles.scss"
             ],
             "scripts": []
@@ -92,6 +93,7 @@
               "src/assets"
             ],
             "styles": [
+              "./node_modules/@angular/material/prebuilt-themes/indigo-pink.css",
               "src/styles.scss"
             ],
             "scripts": []
@@ -123,6 +125,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "SweetAndKetoApp"
+    }
+  },
+  "defaultProject": "SweetAndKetoApp",
+  "cli": {
+    "analytics": "29ab05a9-fe73-4e79-9f55-e023c0a829c6"
+  }
 }

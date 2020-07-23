@@ -1,0 +1,14 @@
+<div class="listProduct">
+  <div *ngFor="let producto of productos">
+
+    <app-producto-card [producto]="producto" ></app-producto-card>
+
+  </div>
+
+  <h5>
+    Items In Cart {{cartService.ItemsInCart()}}
+  </h5>
+  <h5>
+    Amount {{cartService.AmountInCart()}}
+  </h5>
+</div>
