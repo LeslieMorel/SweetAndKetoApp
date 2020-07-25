@@ -1,35 +1,35 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { OrdenesService } from 'src/app/services/ordenes.service';
 import { OrdenesModel } from 'src/app/models/ordenes.model';
 import { MatTableDataSource } from '@angular/material/table';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
+import { OrdenesService } from 'src/app/services/ordenes.service';
 
 @Component({
-  selector: 'app-ordenes',
-  templateUrl: './ordenes.component.html',
-  styleUrls: ['./ordenes.component.scss']
+  selector: 'app-lista-ordenes',
+  templateUrl: './lista-ordenes.component.html',
+  styleUrls: ['./lista-ordenes.component.scss']
 })
-export class OrdenesComponent implements OnInit {
+export class ListaOrdenesComponent implements OnInit {
 
   ordenes: OrdenesModel[] = [];
-  constructor(private ordenesService: OrdenesService) { }
   ordenesDataSource = new MatTableDataSource(this.ordenes);
   @ViewChild(MatPaginator, { static: true }) paginator: MatPaginator;
   @ViewChild(MatSort, { static: true }) sort: MatSort;
 
   displayedColumns: string[] = [
-    'actions',
     'id',
     'cliente',
     'estado',
+    'metodoEntrega',
     'fechaRequerida',
     'monto'
   ];
+  constructor(private ordenesService: OrdenesService) { }
   ngOnInit(): void {
     console.log('OrdenesComponent');
 
-    // this.GetOrdenes();
+    this.GetOrdenes();
   }
 
   GetOrdenes(){
@@ -47,7 +47,5 @@ export class OrdenesComponent implements OnInit {
     this.ordenesDataSource.paginator = this.paginator;
     this.ordenesDataSource.sort = this.sort;
   }
-
-
 
 }

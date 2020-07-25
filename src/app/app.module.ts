@@ -18,8 +18,17 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatListModule } from '@angular/material/list';
 import { ProductosComponent } from './components/productos/productos.component';
 import { ProductoCardComponent } from './components/producto-card/producto-card.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CarritoService } from './services/carrito.service';
+import { CartComponent } from './components/cart/cart.component';
+import { CartProductComponent } from './components/cart-product/cart-product.component';
+import { OrdenFormComponent } from './components/orden-form/orden-form.component';
+import { CheckoutComponent } from './components/checkout/checkout.component';
+import { EstadoOrdenPipePipe } from './customPipes/estado-orden-pipe.pipe';
+import { ListaOrdenesComponent } from './components/lista-ordenes/lista-ordenes.component';
+import { ProductosService } from './services/productos.service';
+import { EditarOrdenComponent } from './components/editar-orden/editar-orden.component';
+import { ProductosOrdenComponent } from './components/productos-orden/productos-orden.component';
 
 @NgModule({
   declarations: [
@@ -27,7 +36,15 @@ import { CarritoService } from './services/carrito.service';
     OrdenesComponent,
     NavigationComponent,
     ProductosComponent,
-    ProductoCardComponent
+    ProductoCardComponent,
+    CartComponent,
+    CartProductComponent,
+    OrdenFormComponent,
+    CheckoutComponent,
+    EstadoOrdenPipePipe,
+    ListaOrdenesComponent,
+    EditarOrdenComponent,
+    ProductosOrdenComponent
   ],
   imports: [
     BrowserModule,
@@ -36,12 +53,8 @@ import { CarritoService } from './services/carrito.service';
     MaterialModule,
     HttpClientModule,
     LayoutModule,
-    MatToolbarModule,
     FormsModule,
-    MatButtonModule,
-    MatSidenavModule,
-    MatIconModule,
-    MatListModule
+    ReactiveFormsModule
   ],
   providers: [
     {
@@ -50,7 +63,8 @@ import { CarritoService } from './services/carrito.service';
       multi: true
     },
     OrdenesService,
-    CarritoService
+    CarritoService,
+    ProductosService
   ],
   bootstrap: [AppComponent]
 })

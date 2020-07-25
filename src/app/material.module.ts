@@ -24,9 +24,13 @@ import {MatBadgeModule} from '@angular/material/badge';
 import {MatExpansionModule} from '@angular/material/expansion';
 import {MatTreeModule} from '@angular/material/tree';
 import {MatMenuModule} from '@angular/material/menu';
-import { MatSidenav, MatSidenavModule } from '@angular/material/sidenav';
+import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatListModule } from '@angular/material/list';
 import {MatTooltipModule} from '@angular/material/tooltip';
+import {MatRadioModule} from '@angular/material/radio';
+import {MatAutocompleteModule} from '@angular/material/autocomplete';
+
+
 
 
 
@@ -60,7 +64,10 @@ import {MatTooltipModule} from '@angular/material/tooltip';
     MatMenuModule,
     MatSidenavModule,
     MatListModule,
-    MatTooltipModule
+    MatTooltipModule,
+    MatRadioModule,
+    MatAutocompleteModule,
+    MatInputModule
   ],
   exports: [
     MatButtonModule,
@@ -89,7 +96,10 @@ import {MatTooltipModule} from '@angular/material/tooltip';
     MatMenuModule,
     MatSidenavModule,
     MatListModule,
-    MatTooltipModule
+    MatTooltipModule,
+    MatRadioModule,
+    MatAutocompleteModule,
+    MatInputModule
   ],
   providers: []
 })

@@ -1,0 +1,17 @@
+<mat-card class="row">
+  <div class="col">
+    <img [src]="cartProduct.producto.imgUrl">
+  </div>
+  <div class="col">
+    <h4 class="descripcion">{{cartProduct.producto.descripcion}}</h4>
+    <h5 class="cantidad">
+      {{cartProduct.cantidad}}
+       <span *ngIf="cartProduct.cantidad === 1">unidad</span>
+       <span *ngIf="cartProduct.cantidad > 1">unidades</span>
+      </h5>
+    <h4 class="precio">RD$  {{cartProduct.producto.precio}} / und</h4>
+  </div>
+  <div class="col">
+    <h4> RD$ {{cartProduct.monto}}</h4>
+  </div>
+</mat-card>

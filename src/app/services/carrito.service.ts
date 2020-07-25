@@ -15,15 +15,22 @@ export class CarritoService {
 
   Add(producto: ProductoModel){
     const productoInCart = this.productos.filter(p => p.producto.id === producto.id)[0];
-    if (productoInCart){ productoInCart.cantidad++; }
-    else{ this.productos.push({producto, cantidad: 1}); }
+    if (productoInCart)
+      {
+        productoInCart.cantidad++;
+        productoInCart.monto = productoInCart.cantidad * productoInCart.producto.precio;
+      }
+    else{ this.productos.push({producto, cantidad: 1, monto: producto.precio}); }
 
     this.productosChange.next(this.productos);
   }
   Resta(producto: ProductoModel){
     const productoInCart = this.productos.filter(p => p.producto.id === producto.id)[0];
     if (productoInCart ){
-      if (productoInCart.cantidad > 1) {productoInCart.cantidad--; }
+      if (productoInCart.cantidad > 1) {
+        productoInCart.cantidad--;
+        productoInCart.monto = productoInCart.cantidad * productoInCart.producto.precio;
+      }
       else {this.RemoveProduct(this.productos.indexOf(productoInCart)); }
     }
     this.productosChange.next(this.productos);

@@ -1,0 +1,49 @@
+.contenido {
+  display: flex;
+  flex-direction: column;
+  margin: 10px;
+}
+.grupo {
+  border: lightgrey 1px solid;
+  border-radius: 5px;
+  margin: 5px;
+  padding: 5px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: stretch;
+}
+
+.flex-col {
+  display: flex;
+  flex-direction: column;
+}
+
+.row {
+  margin: 5px;
+}
+.campo {
+  width: 80%;
+}
+.control {
+  width: 100%;
+}
+.icon-delivery {
+  margin-right: 2px;
+}
+
+.gridMontos {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 3;
+}
+.gridItem {
+  height: 25px;
+  margin: 2px;
+  padding: 2px;
+  text-justify: distribute;
+
+}
+.number {
+  text-align: center;
+}

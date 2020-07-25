@@ -1,0 +1,25 @@
+<div class="row">
+  <div class="col">
+    <mat-card>
+      <app-orden-form [edit]="true" [ordenId]="ordenId"></app-orden-form>
+    </mat-card>
+
+  </div>
+  <div class="col" >
+    <mat-card>
+      <h3>Productos</h3>
+
+
+        <div *ngFor="let producto of productosOrden">
+          <app-productos-orden [productoOrden]="producto"></app-productos-orden>
+        </div>
+
+      <div >
+
+      </div>
+    </mat-card>
+  </div>
+
+</div>
+
+

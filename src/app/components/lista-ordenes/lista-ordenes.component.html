@@ -1,19 +1,16 @@
-<div class="contenedor">
-  <div class="mat-elevation-z8">
-    <table mat-table [dataSource]="ordenesDataSource" matSort>
 
-       <!-- Actions-->
-       <ng-container matColumnDef="actions" mat-sort-header>
-        <th mat-header-cell *matHeaderCellDef mat-sort-header> No. </th>
-        <td mat-cell *matCellDef="let element">
-          <button mat-button>Editar</button>
+<div class="mat-elevation-z8">
 
-        </td>
-      </ng-container>
+
+    <table mat-table [dataSource]="ordenesDataSource" class="tableOrdenes" matSort >
+
+
       <!-- Orden Id -->
       <ng-container matColumnDef="id">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header> No. </th>
-        <td mat-cell *matCellDef="let element"> {{element.id}} </td>
+        <th mat-header-cell *matHeaderCellDef mat-sort-header > No. </th>
+        <td mat-cell *matCellDef="let element">
+          <button [routerLink]="['editar-orden/',element.id]" mat-icon-button >{{element.id}}</button>
+         </td>
       </ng-container>
 
       <!-- Cliente -->
@@ -25,18 +22,26 @@
       <!-- Estado -->
       <ng-container matColumnDef="estado">
         <th mat-header-cell *matHeaderCellDef mat-sort-header> Estado </th>
-        <td mat-cell *matCellDef="let element"> {{element.estadoOrden}} </td>
+        <td mat-cell *matCellDef="let element"> {{element.estadoOrden | estadoOrdenPipe}} </td>
+      </ng-container>
+      <!-- Metodo Entrega -->
+      <ng-container matColumnDef="metodoEntrega">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Entrega </th>
+        <td mat-cell *matCellDef="let element">
+          <mat-icon *ngIf="element.metodoEntrega === 0" >two_wheeler</mat-icon>
+          <mat-icon *ngIf="element.metodoEntrega === 1" >store</mat-icon>
+          </td>
       </ng-container>
 
       <!-- Fecha Requerida -->
       <ng-container matColumnDef="fechaRequerida">
         <th mat-header-cell *matHeaderCellDef mat-sort-header> Fecha Requerida </th>
-        <td mat-cell *matCellDef="let element"> {{element.fechaRequerida}} </td>
+        <td mat-cell *matCellDef="let element"> {{element.fechaRequerida | date: "dd/MM/yyyy"}} </td>
       </ng-container>
         <!-- Monto -->
         <ng-container matColumnDef="monto">
           <th mat-header-cell *matHeaderCellDef mat-sort-header> Monto </th>
-          <td mat-cell *matCellDef="let element"> {{element.monto}} </td>
+          <td mat-cell *matCellDef="let element"> {{element.monto | currency}} </td>
         </ng-container>
 
       <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
@@ -44,7 +49,7 @@
     </table>
 
     <mat-paginator [pageSizeOptions]="[5, 10, 20]" [pageSize]="10" showFirstLastButtons></mat-paginator>
+
   </div>
 
-</div>
 
