@@ -8,10 +8,9 @@ import { OrdenesService } from 'src/app/services/ordenes.service';
 @Component({
   selector: 'app-lista-ordenes',
   templateUrl: './lista-ordenes.component.html',
-  styleUrls: ['./lista-ordenes.component.scss']
+  styleUrls: ['./lista-ordenes.component.scss'],
 })
 export class ListaOrdenesComponent implements OnInit {
-
   ordenes: OrdenesModel[] = [];
   ordenesDataSource = new MatTableDataSource(this.ordenes);
   @ViewChild(MatPaginator, { static: true }) paginator: MatPaginator;
@@ -22,18 +21,16 @@ export class ListaOrdenesComponent implements OnInit {
     'cliente',
     'estado',
     'metodoEntrega',
-    'fechaRequerida',
-    'monto'
+    'monto',
   ];
-  constructor(private ordenesService: OrdenesService) { }
+  constructor(private ordenesService: OrdenesService) {}
   ngOnInit(): void {
     console.log('OrdenesComponent');
 
     this.GetOrdenes();
   }
 
-  GetOrdenes(){
-
+  GetOrdenes() {
     console.log('Getting Ordeness');
     this.ordenesService.GetOrdenes().subscribe((Response: OrdenesModel[]) => {
       this.ordenes = Response;
@@ -43,9 +40,26 @@ export class ListaOrdenesComponent implements OnInit {
   }
 
   setDataSource(filteredOrdenes: OrdenesModel[]) {
-    this.ordenesDataSource = new MatTableDataSource<OrdenesModel>(filteredOrdenes);
+    this.ordenesDataSource = new MatTableDataSource<OrdenesModel>(
+      filteredOrdenes
+    );
     this.ordenesDataSource.paginator = this.paginator;
     this.ordenesDataSource.sort = this.sort;
   }
 
+  estadoClass(estado: number) {
+    switch (estado) {
+      case 65:
+        return 'pendiente chip';
+      case 66:
+        return 'proceso chip';
+      case 67:
+        return 'listo chip';
+      case 68:
+        return 'entregado chip';
+
+      default:
+        return 'chip';
+    }
+  }
 }

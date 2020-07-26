@@ -1,0 +1,42 @@
+<mat-card class="contenedor">
+  <mat-card-title>Imagenes</mat-card-title>
+  <mat-card-actions>
+
+    <button [disabled]="!this.selectedImg" mat-raised-button color="accent">
+      <mat-icon style="margin-right: 5px;">touch_app</mat-icon>
+      Seleccionar</button>
+    <button [disabled]="!this.selectedImg" mat-raised-button (click)="DeleteImage()">
+      <mat-icon style="margin-right: 5px;">delete</mat-icon> Eliminar Imagen
+    </button>
+
+  <button mat-raised-button (click)="attachFile.click()">
+    <mat-icon style="margin-right: 5px;">cloud_upload</mat-icon> Subir Imagen
+  </button>
+</mat-card-actions>
+  <mat-card-content>
+    <div class="grid">
+      <div *ngFor="let i of images" class="imagen">
+        <img [ngClass]="imgClass(i)" [src]="i.url" (click)="Seleccionar(i)" />
+      </div>
+
+    </div>
+  </mat-card-content>
+
+</mat-card>
+<div style="display: none;">
+  <input
+    #attachFile
+    (change)="PostImagen($event)"
+    class="ng-hide"
+    id="input-file-id"
+    multiple
+    type="file"
+    placeholder="Adjuntar transferencia"
+  />
+  <label
+    for="input-file-id"
+    placeholder="Choose"
+    class="md-button md-raised md-primary"
+    >Choose Files</label
+  >
+</div>

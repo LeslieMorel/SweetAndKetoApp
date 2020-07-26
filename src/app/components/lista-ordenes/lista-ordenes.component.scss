@@ -7,3 +7,27 @@ table {
   width: 100%;
   margin: 10px;
 }
+
+.chip {
+  display: inline-block;
+  padding: 0 20px;
+  height: 35px;
+  font-size: 16px;
+  line-height: 40px;
+  border-radius: 25px;
+  color: white;
+
+}
+.pendiente {
+  background-color: lightcoral;
+}
+.proceso {
+  background-color: orange;
+}
+.listo {
+  background-color: lightsalmon;
+}
+.entregado {
+  background-color: lightgrey;
+}
+

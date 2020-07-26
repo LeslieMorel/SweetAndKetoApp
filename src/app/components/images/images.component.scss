@@ -1,0 +1,27 @@
+.contenedor {
+  margin: 10px;
+}
+img {
+  object-fit: cover;
+  width: 100%;
+  // height: 200px;
+}
+.selected {
+  border: 10px #8fa382 solid;
+}
+
+.gridImg {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  justify-items: baseline;
+  flex-wrap: wrap;
+
+}
+.grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+}
+.imagen {
+  padding: 10px;
+}

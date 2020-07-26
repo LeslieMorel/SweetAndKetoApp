@@ -11,6 +11,14 @@ import { CarritoService } from 'src/app/services/carrito.service';
 import { ProductoOrdenModel } from 'src/app/models/productoOrden.model';
 import { OrdenBundleDTO } from 'src/app/models/ordenBundleDTO.model';
 import { SectoresService } from 'src/app/services/sectores.service';
+import { AttachDocumentsValidator } from 'src/app/models/validFilesType.model';
+import { AttachFilesService } from 'src/app/services/attach-files.service';
+import { AttachFile } from 'src/app/models/attachFile.model';
+import { Router } from '@angular/router';
+import { MatSnackBar } from '@angular/material/snack-bar';
+import { SnackbarComponent, TipoSnackBar } from '../snackbar/snackbar.component';
+import { SnackbarService } from 'src/app/services/snackbar.service';
+import { SnackbarPanelClass } from 'src/app/models/SnackBarPanelClass.model';
 
 @Component({
   selector: 'app-orden-form',
@@ -24,6 +32,8 @@ export class OrdenFormComponent implements OnInit {
   deliveryValidators = [];
   filteredOptions: Observable<SectorModel[]>;
   options: string[] = [];
+  selectedFile: File;
+
   sectores: SectorModel[] = [];
 
   estados: {value: number, text: string}[] = new EstadoOrdenPipePipe().Estados;
@@ -43,14 +53,17 @@ export class OrdenFormComponent implements OnInit {
     metodoEntrega: new FormControl(null, Validators.required),
     autorizada: new FormControl(false),
     usuarioAutorizo: new FormControl(),
-    // productoOrdenNavigation: new FormControl(null),
     precioDelivery: new FormControl(0),
     monto: new FormControl(0),
     montoTotal: new FormControl(0),
+    comprobanteId: new FormControl(null)
   });
   constructor(private ordenService: OrdenesService,
               public cartService: CarritoService,
-              private sectoresService: SectoresService) { }
+              private sectoresService: SectoresService,
+              private attachFilesService: AttachFilesService,
+              private router: Router,
+              private snackBarService: SnackbarService) { }
 
   ngOnInit(): void {
 
@@ -65,14 +78,14 @@ export class OrdenFormComponent implements OnInit {
     );
 
     this.ordenService.ordenChange.subscribe((orden: OrdenesModel) => {
+      console.log(orden);
       this.ordenForm.setValue(orden);
     });
     this.ordenForm.get('metodoEntrega').valueChanges
-    .subscribe(resp => {this.SetDeliveryMethodValidations(resp); console.log(resp); });
+    .subscribe(resp => {this.SetDeliveryMethodValidations(resp); });
 
     this.ordenForm.get('zona').valueChanges
-    .subscribe((resp) => {this.SetPrecioDelivery(); console.log(resp);
-    });
+    .subscribe((resp) => {this.SetPrecioDelivery(); });
   }
 
   private _filter(value: string): SectorModel[] {
@@ -121,7 +134,7 @@ export class OrdenFormComponent implements OnInit {
   SetDeliveryMethodValidations(deliveryMethod: number) {
     // this.ordenForm.get().updateValueAndValidity();
     // this.ordenForm.get('zozonane').updateValueAndValidity();
-    if(this.ordenForm !== null){
+    if (this.ordenForm !== null){
         if (deliveryMethod === 0) {
           this.ordenForm.get('direccion1').setValidators(this.deliveryValidators.concat(Validators.required));
           this.ordenForm.get('direccion2').setValidators(this.deliveryValidators.concat(Validators.required));
@@ -152,7 +165,9 @@ export class OrdenFormComponent implements OnInit {
       this.NuevaOrden();
     }
   }
-
+  // SetOrden(orden: OrdenesModel){
+  //   this.ord
+  // }
   NuevaOrden(){
     const orden = new OrdenesModel();
     orden.monto = this.cartService.AmountInCart();
@@ -165,24 +180,35 @@ export class OrdenFormComponent implements OnInit {
       console.log(orden);
       this.ordenService.PostOrden(orden).subscribe((Response: OrdenesModel) => {
         console.log(Response);
+        // tslint:disable-next-line: quotemark
+        this.cartService.EmptyCart();
+        this.snackBarService.Show('Actualizado', TipoSnackBar.Success, 1000, SnackbarPanelClass.success);
+        this.router.navigate(['orden-confirmacion/', Response.id]);
+
+      }, (e) => {
+        this.snackBarService.Show('Error', TipoSnackBar.Error, 1000, SnackbarPanelClass.error);
       });
     } else {
       console.log(' No hay productos en la orden');
     }
   }
   PutOrden(ordenId: string, orden: OrdenesModel){
-
     this.ordenService.PutOrden(ordenId, orden).subscribe( Response => {
       console.log(Response);
-    });
+      this.snackBarService.Show('Actualizado', TipoSnackBar.Success, 1000, SnackbarPanelClass.success);
+    }, e => {
+      this.snackBarService.Show('Error', TipoSnackBar.Error, 1000, SnackbarPanelClass.error);
+      console.log(e);
+    }
+     );
   }
 
   SetPrecioDelivery(){
-    console.log('Setting Delivery Price');
+    // console.log('Setting Delivery Price');
 
     if (this.ordenForm.controls.metodoEntrega.value === MetodoEntrega.Delivery){
       const sectorIdSelected = this.ordenForm.controls.zona.value;
-      console.log(sectorIdSelected);
+      // console.log(sectorIdSelected);
 
       const sector = this.sectores.filter(s => s.id === sectorIdSelected)[0];
       if (sector) {
@@ -212,6 +238,48 @@ export class OrdenFormComponent implements OnInit {
 
     });
   }
+  SetComprobante(event: any) {
+    console.log(event);
+    this.selectedFile = event.target.files[0];
+    console.log(this.selectedFile);
+
+    if (AttachDocumentsValidator.validCompronte.includes(this.selectedFile.type)){
+      console.log('Valid type');
+      this.PostFile(this.selectedFile);
+    } else {
+      this.selectedFile = null;
+      console.log('Formato de documento Invalido');
+    }
+  }
+
+  PostFile(file: File){
+    this.attachFilesService.PostFile('Comprobante', file).subscribe((Response: AttachFile) => {
+      console.log(Response);
+      this.ordenForm.controls.comprobanteId.setValue(Response.id);
+      this.snackBarService.Show('Actualizado', TipoSnackBar.Success, 1000, SnackbarPanelClass.success);
+
+
+    }, (e) =>
+     {
+      this.snackBarService.Show('Error', TipoSnackBar.Error, 1000, SnackbarPanelClass.error);
+      console.log(e);
+      }
+    );
+  }
+  DownladComprobante(){
+    const attachFile = this.ordenForm.controls.comprobanteId.value;
+    console.log(attachFile);
+    this.DownLoadFile(attachFile);
+  }
+  DownLoadFile(file: number) {
+    console.log(file);
+    this.attachFilesService.GetFile(file).subscribe(Response => {
+      const contentType = Response.headers.get('Content-Type');
+      const fileName = Response.headers.get('Name');
+      this.attachFilesService.DownLoadFile(Response.body, contentType, fileName);
+    });
+  }
+
 
 }
 

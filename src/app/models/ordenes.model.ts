@@ -18,11 +18,13 @@ export class OrdenesModel {
   precioDelivery: number;
   monto: number;
   montoTotal: number;
+  comprobanteId?: number;
 
   productoOrdenNavigation?: ProductoOrdenModel[];
 
   constructor(){
     this.id = 0;
+    this.comprobanteId = null;
     this.nombreCliente = null;
     this.email = null;
     this.telefono = null;

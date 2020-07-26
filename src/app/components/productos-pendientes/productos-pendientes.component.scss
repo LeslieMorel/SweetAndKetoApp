@@ -1,0 +1,25 @@
+img {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+}
+.row {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+}
+.descripcion {
+  font-size: large;
+  margin: 0;
+  padding: 0;
+}
+.cantidad {
+  font-size: large;
+  margin: 0;
+  padding: 0;
+}
+
+.precio {
+  font-size: small;
+  margin: 0;
+  padding: 0;
+}

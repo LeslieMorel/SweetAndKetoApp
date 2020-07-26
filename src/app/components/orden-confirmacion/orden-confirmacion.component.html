@@ -1,0 +1,31 @@
+<mat-card>
+  <mat-card-title>Orden: {{ordenId}}</mat-card-title>
+  <mat-card-subtitle>Orden Generada Correctamente</mat-card-subtitle>
+  <mat-card-content>
+    <p>Su orden ha sido generada correctamente. En breve nos comunicaremos con
+    usted para confirmarle todo este en orden</p>
+
+    <p>En caso no reciba respuesta de nosotros, puede ponerse en contacto con nosotros en los siguiente medios</p>
+
+    <mat-list>
+      <mat-list-item>
+        Correo: sweetandketo.rd@gmail.com
+      </mat-list-item>
+      <mat-list-item>
+        Telefono: +1 (829)-263-1005
+      </mat-list-item>
+      <mat-list-item>
+        Instagran: @sweetandketo.rd
+      </mat-list-item>
+    </mat-list>
+  </mat-card-content>
+
+  <mat-card-actions>
+    <button mat-stroked-button routerLink ="/tienda" >
+      <mat-icon> store </mat-icon>
+      Ir a tienda</button>
+      <button mat-stroked-button routerLink ="/tienda" >
+        <mat-icon> get_app </mat-icon>
+        Descargar Comprobante</button>
+  </mat-card-actions>
+</mat-card>

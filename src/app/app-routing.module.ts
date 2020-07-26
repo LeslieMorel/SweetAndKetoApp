@@ -6,6 +6,10 @@ import { CartComponent } from './components/cart/cart.component';
 import { CheckoutComponent } from './components/checkout/checkout.component';
 import { ListaOrdenesComponent } from './components/lista-ordenes/lista-ordenes.component';
 import { EditarOrdenComponent } from './components/editar-orden/editar-orden.component';
+import { OrdenConfirmacionComponent } from './components/orden-confirmacion/orden-confirmacion.component';
+import { ProductosPendientesComponent } from './components/productos-pendientes/productos-pendientes.component';
+import { ListaProductosPendientesComponent } from './components/lista-productos-pendientes/lista-productos-pendientes.component';
+import { ImagesComponent } from './components/images/images.component';
 
 
 const routes: Routes = [
@@ -14,6 +18,9 @@ const routes: Routes = [
   {path: 'carrito' , component: CartComponent},
   {path: 'checkout' , component: CheckoutComponent},
   {path: 'editar-orden/:orden' , component: EditarOrdenComponent},
+  {path: 'orden-confirmacion/:orden' , component: OrdenConfirmacionComponent},
+  {path: 'productos-pendientes' , component: ListaProductosPendientesComponent},
+  {path: 'images' , component: ImagesComponent},
 
 
 ];

@@ -25,6 +25,18 @@
         </mat-error>
       </mat-form-field>
     </div>
+    <!-- Comprobante -->
+    <div class="campo">
+      <mat-form-field class="control">
+        <mat-label>Comprobante</mat-label>
+        <input
+        matInput
+        type="number"
+        [formControl]="ordenForm.controls.comprobanteId"
+        >
+      </mat-form-field>
+    </div>
+
 
       <!-- Usuario Autorizada -->
       <div class="campo">
@@ -302,17 +314,35 @@
       <div style="font-size: 30px; display: block; justify-content: center; display: flex; margin: 10px;">
         <mat-icon  style="font-size: 30px;" >account_balance</mat-icon>
       </div>
-      <h3>Método de Pago
-      <small>( Solo aceptamos transferencias )</small>
+      <!-- Selector Comprobante -->
+      <div *ngIf="ordenForm.controls.comprobanteId.value === null">
+        <h3>Método de Pago <small>( Solo aceptamos transferencias )</small></h3>
+        <p>Banco Popular Cuenta No. 84816262626</p>
+        <button
 
-      </h3>
-      <p>Banco Popular Cuenta No. 84816262626</p>
-      <button class="control" mat-stroked-button type="button"> <mat-icon>attach_file</mat-icon> Adjuntar Comprobante</button>
+        (click)="attachFile.click()"
+        class="control"
+        mat-stroked-button
+        type="button"> <mat-icon>attach_file</mat-icon> Adjuntar Comprobante</button>
+        <div style="display: none;">
+          <input #attachFile (change)="SetComprobante($event)" class="ng-hide" id="input-file-id" multiple type="file" placeholder="Adjuntar transferencia" />
+          <label for="input-file-id" placeholder="Choose" class="md-button md-raised md-primary">Choose Files</label>
+        </div>
 
-      <div style="display: none;">
-        <input class="ng-hide" id="input-file-id" multiple type="file" placeholder="Adjuntar transferencia" />
-        <label for="input-file-id" placeholder="Choose" class="md-button md-raised md-primary">Choose Files</label>
       </div>
+      <!-- Comprobante Cargado -->
+      <button
+        *ngIf="ordenForm.controls.comprobanteId.value > 0"
+        mat-stroked-button
+        class="control"
+        type="button"
+        (click)="DownladComprobante()"
+        >
+
+        <mat-icon>get_app</mat-icon>
+
+        Descargar Comprobante</button>
+
     </div>
   </div>
   <mat-card >

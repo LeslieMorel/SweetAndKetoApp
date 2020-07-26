@@ -1,0 +1,9 @@
+<mat-card class="contenedor">
+  <mat-card-title>Productos Pendientes</mat-card-title>
+  <mat-card-subtitle>Articulos de las ordenes con Estado: Pendiente o Proceso</mat-card-subtitle>
+  <mat-card-content>
+    <div *ngFor="let producto of productos">
+      <app-productos-pendientes [productoOrdenPendientes]="producto" ></app-productos-pendientes>
+    </div>
+  </mat-card-content>
+</mat-card>

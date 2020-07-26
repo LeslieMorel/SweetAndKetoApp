@@ -29,6 +29,15 @@ import { ListaOrdenesComponent } from './components/lista-ordenes/lista-ordenes.
 import { ProductosService } from './services/productos.service';
 import { EditarOrdenComponent } from './components/editar-orden/editar-orden.component';
 import { ProductosOrdenComponent } from './components/productos-orden/productos-orden.component';
+import { AttachFilesService } from './services/attach-files.service';
+import { OrdenConfirmacionComponent } from './components/orden-confirmacion/orden-confirmacion.component';
+import { SnackbarComponent } from './components/snackbar/snackbar.component';
+import { SnackbarService } from './services/snackbar.service';
+import { ProductosPendientesComponent } from './components/productos-pendientes/productos-pendientes.component';
+import { ListaProductosPendientesComponent } from './components/lista-productos-pendientes/lista-productos-pendientes.component';
+import { ProductoOrdenService } from './services/producto-orden.service';
+import { ImagesComponent } from './components/images/images.component';
+import { LocalStorageService } from './services/local-storage.service';
 
 @NgModule({
   declarations: [
@@ -44,7 +53,12 @@ import { ProductosOrdenComponent } from './components/productos-orden/productos-
     EstadoOrdenPipePipe,
     ListaOrdenesComponent,
     EditarOrdenComponent,
-    ProductosOrdenComponent
+    ProductosOrdenComponent,
+    OrdenConfirmacionComponent,
+    SnackbarComponent,
+    ProductosPendientesComponent,
+    ListaProductosPendientesComponent,
+    ImagesComponent
   ],
   imports: [
     BrowserModule,
@@ -64,7 +78,14 @@ import { ProductosOrdenComponent } from './components/productos-orden/productos-
     },
     OrdenesService,
     CarritoService,
-    ProductosService
+    ProductosService,
+    AttachFilesService,
+    SnackbarService,
+    ProductoOrdenService,
+    LocalStorageService
+  ],
+  entryComponents: [
+    SnackbarComponent
   ],
   bootstrap: [AppComponent]
 })

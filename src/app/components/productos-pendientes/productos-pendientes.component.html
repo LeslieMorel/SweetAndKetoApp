@@ -1,0 +1,17 @@
+<div class="row">
+  <div class="col">
+    <img [src]="productoOrdenPendientes.imgUrl">
+  </div>
+  <div class="col">
+    <h4 class="descripcion">{{productoOrdenPendientes.descripcion}}</h4>
+
+  </div>
+  <div class="col">
+    <h4 class="cantidad">
+      {{productoOrdenPendientes.cantidad}}
+       <span *ngIf="productoOrdenPendientes.cantidad === 1">unidad</span>
+       <span *ngIf="productoOrdenPendientes.cantidad > 1">unidades</span>
+    </h4>
+  </div>
+
+</div>
