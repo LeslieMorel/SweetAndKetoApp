@@ -4,6 +4,7 @@ import { MatTableDataSource } from '@angular/material/table';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { OrdenesService } from 'src/app/services/ordenes.service';
+import { OrdenDtoModel } from 'src/app/models/ordenDto.model';
 
 @Component({
   selector: 'app-lista-ordenes',
@@ -11,7 +12,7 @@ import { OrdenesService } from 'src/app/services/ordenes.service';
   styleUrls: ['./lista-ordenes.component.scss'],
 })
 export class ListaOrdenesComponent implements OnInit {
-  ordenes: OrdenesModel[] = [];
+  ordenes: OrdenDtoModel[] = [];
   ordenesDataSource = new MatTableDataSource(this.ordenes);
   @ViewChild(MatPaginator, { static: true }) paginator: MatPaginator;
   @ViewChild(MatSort, { static: true }) sort: MatSort;
@@ -27,25 +28,38 @@ export class ListaOrdenesComponent implements OnInit {
   ngOnInit(): void {
     console.log('OrdenesComponent');
 
-    this.GetOrdenes();
+    this.GetOrdeneDto();
   }
 
-  GetOrdenes() {
+  // GetOrdenes() {
+  //   console.log('Getting Ordeness');
+  //   this.ordenesService.GetOrdenes().subscribe((Response: OrdenesModel[]) => {
+  //     this.ordenes = Response;
+  //     console.log(Response);
+  //     this.setDataSource(Response);
+  //   });
+  // }
+  GetOrdeneDto() {
     console.log('Getting Ordeness');
-    this.ordenesService.GetOrdenes().subscribe((Response: OrdenesModel[]) => {
+    this.ordenesService.GetOrdenesDto().subscribe((Response: OrdenDtoModel[]) => {
       this.ordenes = Response;
       console.log(Response);
       this.setDataSource(Response);
     });
   }
 
-  setDataSource(filteredOrdenes: OrdenesModel[]) {
-    this.ordenesDataSource = new MatTableDataSource<OrdenesModel>(
-      filteredOrdenes
-    );
+  setDataSource(filteredOrdenes: OrdenDtoModel[]) {
+    this.ordenesDataSource = new MatTableDataSource<OrdenDtoModel>(filteredOrdenes);
     this.ordenesDataSource.paginator = this.paginator;
     this.ordenesDataSource.sort = this.sort;
   }
+  // setDataSource(filteredOrdenes: OrdenesModel[]) {
+  //   this.ordenesDataSource = new MatTableDataSource<OrdenesModel>(
+  //     filteredOrdenes
+  //   );
+  //   this.ordenesDataSource.paginator = this.paginator;
+  //   this.ordenesDataSource.sort = this.sort;
+  // }
 
   estadoClass(estado: number) {
     switch (estado) {

@@ -1,64 +1,70 @@
 
-<div class="mat-elevation-z8">
+<mat-card class="container">
+  <mat-card-title color="primary">Ordenes</mat-card-title>
+  <mat-card-content>
+    <div class="mat-elevation-z8">
 
 
-    <table mat-table [dataSource]="ordenesDataSource" class="tableOrdenes" matSort >
+        <table mat-table [dataSource]="ordenesDataSource" class="tableOrdenes" matSort >
 
 
-      <!-- Orden Id -->
-      <ng-container matColumnDef="id">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header > No. </th>
-        <td mat-cell *matCellDef="let element">
-          <button   [routerLink]="['editar-orden/',element.id]" mat-icon-button >{{element.id}}</button>
-         </td>
-      </ng-container>
+          <!-- Orden Id -->
+          <ng-container matColumnDef="id">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header > No. </th>
+            <td mat-cell *matCellDef="let element">
+              <button   [routerLink]="['editar-orden/',element.id]" mat-icon-button >{{element.id}}</button>
+             </td>
+          </ng-container>
 
-      <!-- Cliente -->
-      <ng-container matColumnDef="cliente">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header> Cliente </th>
-        <td mat-cell *matCellDef="let element"> {{element.nombreCliente}} </td>
-      </ng-container>
+          <!-- Cliente -->
+          <ng-container matColumnDef="cliente">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> Cliente </th>
+            <td mat-cell *matCellDef="let element"> {{element.nombreCliente}} </td>
+          </ng-container>
 
-      <!-- Estado -->
-      <!-- <ng-container matColumnDef="estado">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header> Estado </th>
-        <td mat-cell *matCellDef="let element"> {{element.estadoOrden | estadoOrdenPipe}} </td>
-      </ng-container> -->
-      <!-- Estado -->
-      <ng-container matColumnDef="estado" >
-        <th mat-header-cell *matHeaderCellDef mat-sort-header> Estado </th>
-        <td mat-cell *matCellDef="let element">
-          <div [ngClass]="estadoClass(element.estadoOrden)">
-            0
-          </div>
-          </td>
-      </ng-container>
-      <!-- Metodo Entrega -->
-      <ng-container matColumnDef="metodoEntrega">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header> Entrega </th>
-        <td mat-cell *matCellDef="let element">
-          <mat-icon *ngIf="element.metodoEntrega === 0" >two_wheeler</mat-icon>
-          <mat-icon *ngIf="element.metodoEntrega === 1" >store</mat-icon>
-          </td>
-      </ng-container>
+          <!-- Estado -->
+          <!-- <ng-container matColumnDef="estado">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> Estado </th>
+            <td mat-cell *matCellDef="let element"> {{element.estadoOrden | estadoOrdenPipe}} </td>
+          </ng-container> -->
+          <!-- Estado -->
+          <ng-container matColumnDef="estado" >
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> Estado </th>
+            <td mat-cell *matCellDef="let element">
+              <div [ngClass]="estadoClass(element.estadoOrden)">
+                {{element.diasParaEntrega | number: '1.0-0'}}
+              </div>
+              </td>
+          </ng-container>
+          <!-- Metodo Entrega -->
+          <ng-container matColumnDef="metodoEntrega">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> Entrega </th>
+            <td mat-cell *matCellDef="let element">
+              <mat-icon *ngIf="element.metodoEntrega === 0" >two_wheeler</mat-icon>
+              <mat-icon *ngIf="element.metodoEntrega === 1" >store</mat-icon>
+              </td>
+          </ng-container>
 
-      <!-- Fecha Requerida -->
-      <ng-container matColumnDef="fechaRequerida">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header> Fecha Requerida </th>
-        <td mat-cell *matCellDef="let element"> {{element.fechaRequerida | date: "dd/MM/yyyy"}} </td>
-      </ng-container>
-        <!-- Monto -->
-        <ng-container matColumnDef="monto">
-          <th mat-header-cell *matHeaderCellDef mat-sort-header> Monto </th>
-          <td mat-cell *matCellDef="let element"> {{element.monto | currency}} </td>
-        </ng-container>
+          <!-- Fecha Requerida -->
+          <ng-container matColumnDef="fechaRequerida">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> Fecha Requerida </th>
+            <td mat-cell *matCellDef="let element"> {{element.fechaRequerida | date: "dd/MM/yyyy"}} </td>
+          </ng-container>
+            <!-- Monto -->
+            <ng-container matColumnDef="monto">
+              <th mat-header-cell *matHeaderCellDef mat-sort-header> Monto </th>
+              <td mat-cell *matCellDef="let element"> {{element.monto | currency}} </td>
+            </ng-container>
 
-      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-    </table>
+          <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+          <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+        </table>
 
-    <mat-paginator [pageSizeOptions]="[5, 10, 20]" [pageSize]="10" showFirstLastButtons></mat-paginator>
+        <mat-paginator [pageSizeOptions]="[5, 10, 20]" [pageSize]="10" showFirstLastButtons></mat-paginator>
 
-  </div>
+    </div>
+
+  </mat-card-content>
+</mat-card>
 
 

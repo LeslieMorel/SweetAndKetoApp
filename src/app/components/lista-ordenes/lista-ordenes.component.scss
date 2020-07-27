@@ -1,3 +1,9 @@
+.container {
+  height: 100vh;
+}
+.tableContainer {
+  width: 100%;
+}
 table {
   width: 100%;
   margin: 10px;
@@ -19,13 +25,14 @@ table {
 
 }
 .pendiente {
-  background-color: lightcoral;
+  background-color: salmon;
+
 }
 .proceso {
-  background-color: orange;
+  background-color: orange
 }
 .listo {
-  background-color: lightsalmon;
+  background-color: #8fa382;
 }
 .entregado {
   background-color: lightgrey;

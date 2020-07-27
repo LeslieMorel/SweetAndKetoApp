@@ -1,14 +1,23 @@
-<div class="listProduct">
-  <div *ngFor="let producto of productos" class="producto">
+<mat-card class="container">
+  <mat-card-title>
+    Tienda
+  </mat-card-title>
+  <mat-card-content>
+    <div class="listProduct">
+      <div *ngFor="let producto of productos" class="producto">
 
-    <app-producto-card [producto]="producto" ></app-producto-card>
+        <app-producto-card [producto]="producto" ></app-producto-card>
 
-  </div>
+      </div>
 
-  <!-- <h5>
-    Items In Cart {{cartService.ItemsInCart()}}
-  </h5>
-  <h5>
-    Amount {{cartService.AmountInCart()}}
-  </h5> -->
-</div>
+      <!-- <h5>
+        Items In Cart {{cartService.ItemsInCart()}}
+      </h5>
+      <h5>
+        Amount {{cartService.AmountInCart()}}
+      </h5> -->
+    </div>
+  </mat-card-content>
+</mat-card>
+
+

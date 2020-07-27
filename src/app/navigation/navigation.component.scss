@@ -2,13 +2,18 @@
   height: 100%;
 
 }
-
+.logo {
+  height: 50px;
+}
 .sidenav {
   width: 200px;
   // background-color: #8fa382;
 
 }
-
+.brand {
+  font-style: italic;
+  font-family: fantasy;
+}
 .sidenav .mat-toolbar {
   background: inherit;
   // background-color: #8fa382;

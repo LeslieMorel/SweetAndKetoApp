@@ -10,10 +10,16 @@ import { OrdenConfirmacionComponent } from './components/orden-confirmacion/orde
 import { ProductosPendientesComponent } from './components/productos-pendientes/productos-pendientes.component';
 import { ListaProductosPendientesComponent } from './components/lista-productos-pendientes/lista-productos-pendientes.component';
 import { ImagesComponent } from './components/images/images.component';
+import { OrdenesAuthService } from './services/ordenes-auth.service';
 
 
 const routes: Routes = [
-  {path: '' , component: ListaOrdenesComponent},
+  {
+    path: '' ,
+    component: ListaOrdenesComponent,
+    data: {roles: ['admin', 'ordenesEdit', 'ordenesRead']},
+    canActivate: [OrdenesAuthService]
+  },
   {path: 'tienda' , component: ProductosComponent},
   {path: 'carrito' , component: CartComponent},
   {path: 'checkout' , component: CheckoutComponent},

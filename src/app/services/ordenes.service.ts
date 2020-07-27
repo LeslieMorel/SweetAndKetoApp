@@ -27,6 +27,9 @@ export class OrdenesService {
   GetOrdenes(){
     return this.http.get('Ordenes');
   }
+  GetOrdenesDto(){
+    return this.http.get('Ordenes/Dto');
+  }
   GetOrden(ordenId: string){
     return this.http.get(`Ordenes/${ordenId}`);
   }

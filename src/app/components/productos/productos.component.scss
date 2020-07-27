@@ -1,9 +1,34 @@
-.listProduct {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
+$breakpoint-tablet: 768px;
+$breakpoint-mobile: 600px;
+.container {
+  height: 100vh;
 }
-.producto {
-  width: 45%;
-  margin: 5px;
+
+@media (min-width: $breakpoint-tablet) {
+  .listProduct {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+  .producto {
+    width: 30%;
+    margin: 5px;
+  }
+
 }
+
+@media (max-width: $breakpoint-tablet) {
+  .listProduct {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+  .producto {
+    width: 45%;
+    margin: 5px;
+  }
+
+}
+
+
+
