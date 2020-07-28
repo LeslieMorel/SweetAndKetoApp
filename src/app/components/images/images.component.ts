@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Inject } from '@angular/core';
 import { AttachFilesService } from 'src/app/services/attach-files.service';
 import { AzureStorageService } from 'src/app/services/azure-storage.service';
 import { AttachDocumentsValidator } from 'src/app/models/validFilesType.model';
@@ -6,6 +6,7 @@ import { AzureFile } from 'src/app/models/azureFile.model';
 import { SnackbarService } from 'src/app/services/snackbar.service';
 import { TipoSnackBar } from '../snackbar/snackbar.component';
 import { SnackbarPanelClass } from 'src/app/models/SnackBarPanelClass.model';
+import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-images',
@@ -17,7 +18,9 @@ export class ImagesComponent implements OnInit {
   selectedImg: AzureFile;
   constructor(
     private azureService: AzureStorageService,
-    private snackBarService: SnackbarService
+    private snackBarService: SnackbarService,
+    @Inject(MAT_DIALOG_DATA) public data: any,
+    public dialogRef: MatDialogRef<ImagesComponent>
   ) {}
 
   ngOnInit(): void {
@@ -105,4 +108,9 @@ export class ImagesComponent implements OnInit {
       );
     }
   }
+  closeDialog() {
+    this.dialogRef.close(this.selectedImg.url);
+  }
+
+
 }

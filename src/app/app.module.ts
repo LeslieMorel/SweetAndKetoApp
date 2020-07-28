@@ -38,6 +38,7 @@ import { ListaProductosPendientesComponent } from './components/lista-productos-
 import { ProductoOrdenService } from './services/producto-orden.service';
 import { ImagesComponent } from './components/images/images.component';
 import { LocalStorageService } from './services/local-storage.service';
+import { ProductoModule } from './ProductoModule/producto.module';
 
 @NgModule({
   declarations: [
@@ -68,7 +69,8 @@ import { LocalStorageService } from './services/local-storage.service';
     HttpClientModule,
     LayoutModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    ProductoModule
   ],
   providers: [
     {
@@ -85,7 +87,8 @@ import { LocalStorageService } from './services/local-storage.service';
     LocalStorageService
   ],
   entryComponents: [
-    SnackbarComponent
+    SnackbarComponent,
+    ImagesComponent
   ],
   bootstrap: [AppComponent]
 })

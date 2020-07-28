@@ -1,0 +1,126 @@
+<div class="contenedor">
+  <div   >
+
+    <div class="foto">
+      <img  alt="Foto del Producto" [src]="productoForm.controls.imgUrl.value"/>
+    </div>
+    <div>
+      <button mat-fab (click)="openImgDialog()">
+      <mat-icon>search</mat-icon>
+    </button>
+
+    </div>
+
+
+</div>
+<form class="form" [formGroup]="productoForm" (ngSubmit)="Submit()">
+
+  <!-- ID -->
+  <div style="display: none;" class="control">
+    <mat-form-field>
+      <input
+        matInput
+        type="number"
+        [formControl]="productoForm.controls.id"
+        placeholder="Id"
+      />
+    </mat-form-field>
+  </div>
+  <!-- Imagen -->
+  <div style="display: none;" class="control">
+    <mat-form-field>
+      <input
+        matInput
+        type="text"
+        [formControl]="productoForm.controls.imgUrl"
+        placeholder="Imagen URL"
+      />
+      <button matSuffix type="button" (click)="openImgDialog()">
+        <mat-icon >search</mat-icon>
+      </button>
+
+    </mat-form-field>
+  </div>
+  <!-- Descripcion -->
+  <div class="control">
+    <mat-form-field>
+      <input
+        matInput
+        type="text"
+        [formControl]="productoForm.controls.descripcion"
+        placeholder="Descripcion"
+      />
+    </mat-form-field>
+  </div>
+  <!-- Precio -->
+  <div class="control">
+    <mat-form-field>
+      <input
+        matInput
+        type="number"
+        [formControl]="productoForm.controls.precio"
+        placeholder="Precio"
+      />
+    </mat-form-field>
+  </div>
+  <!-- Costo -->
+  <div class="control">
+    <mat-form-field>
+      <input
+        matInput
+        type="number"
+        [formControl]="productoForm.controls.costo"
+        placeholder="Costo"
+      />
+    </mat-form-field>
+  </div>
+   <!-- Calorias -->
+   <div class="control">
+    <mat-form-field>
+      <input
+        matInput
+        type="number"
+        [formControl]="productoForm.controls.calorias"
+        placeholder="Calorias"
+      />
+    </mat-form-field>
+  </div>
+   <!-- Carbs -->
+   <div class="control">
+    <mat-form-field>
+      <input
+        matInput
+        type="number"
+        [formControl]="productoForm.controls.carbs"
+        placeholder="Carbs"
+      />
+    </mat-form-field>
+  </div>
+   <!-- Proteins -->
+   <div class="control">
+    <mat-form-field>
+      <input
+        matInput
+        type="number"
+        [formControl]="productoForm.controls.proteins"
+        placeholder="Proteins"
+      />
+    </mat-form-field>
+  </div>
+   <!-- Fat -->
+   <div class="control">
+    <mat-form-field>
+      <input
+        matInput
+        type="number"
+        [formControl]="productoForm.controls.fat"
+        placeholder="Fat"
+      />
+    </mat-form-field>
+  </div>
+  <button color="accent" mat-raised-button type="submit" >
+    <mat-icon>save</mat-icon> Crear</button>
+</form>
+</div>
+
+
