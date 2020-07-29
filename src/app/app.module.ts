@@ -39,6 +39,9 @@ import { ProductoOrdenService } from './services/producto-orden.service';
 import { ImagesComponent } from './components/images/images.component';
 import { LocalStorageService } from './services/local-storage.service';
 import { ProductoModule } from './ProductoModule/producto.module';
+import { LoginComponent } from './components/auth/login/login.component';
+import { RegisterComponent } from './components/auth/register/register.component';
+import { AuthService } from './services/auth.service';
 
 @NgModule({
   declarations: [
@@ -59,7 +62,9 @@ import { ProductoModule } from './ProductoModule/producto.module';
     SnackbarComponent,
     ProductosPendientesComponent,
     ListaProductosPendientesComponent,
-    ImagesComponent
+    ImagesComponent,
+    LoginComponent,
+    RegisterComponent
   ],
   imports: [
     BrowserModule,
@@ -84,7 +89,8 @@ import { ProductoModule } from './ProductoModule/producto.module';
     AttachFilesService,
     SnackbarService,
     ProductoOrdenService,
-    LocalStorageService
+    LocalStorageService,
+    AuthService
   ],
   entryComponents: [
     SnackbarComponent,

@@ -22,7 +22,7 @@ export class SnackbarComponent implements OnInit {
   SetTipoSnackbar(): void{
     switch (this.data.tipo) {
       case TipoSnackBar.Success:
-        this.icono = 'save';
+        this.icono = 'check_circle_outline';
         break;
       case TipoSnackBar.Error:
         this.icono = 'clear';

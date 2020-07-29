@@ -19,7 +19,6 @@ export class ImagesComponent implements OnInit {
   constructor(
     private azureService: AzureStorageService,
     private snackBarService: SnackbarService,
-    @Inject(MAT_DIALOG_DATA) public data: any,
     public dialogRef: MatDialogRef<ImagesComponent>
   ) {}
 

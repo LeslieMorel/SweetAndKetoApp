@@ -11,6 +11,8 @@ import { ProductosPendientesComponent } from './components/productos-pendientes/
 import { ListaProductosPendientesComponent } from './components/lista-productos-pendientes/lista-productos-pendientes.component';
 import { ImagesComponent } from './components/images/images.component';
 import { OrdenesAuthService } from './services/ordenes-auth.service';
+import { LoginComponent } from './components/auth/login/login.component';
+import { RegisterComponent } from './components/auth/register/register.component';
 
 
 const routes: Routes = [
@@ -20,6 +22,8 @@ const routes: Routes = [
     data: {roles: ['admin', 'ordenesEdit', 'ordenesRead']},
     canActivate: [OrdenesAuthService]
   },
+  {path: 'login' , component: LoginComponent},
+  {path: 'register' , component: RegisterComponent},
   {path: 'tienda' , component: ProductosComponent},
   {path: 'carrito' , component: CartComponent},
   {path: 'checkout' , component: CheckoutComponent},

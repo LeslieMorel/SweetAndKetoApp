@@ -1,141 +1,157 @@
 <div class="contenido">
   <form [formGroup] ="ordenForm"  (ngSubmit)="Submit()">
+    <div [hidden]="!this.edit" class="admin-panel">
+        <mat-accordion color="accent"  >
+          <mat-expansion-panel>
+            <mat-expansion-panel-header>
+              <mat-panel-title>
+              Admin Panel
+              </mat-panel-title>
+              <mat-panel-description>
+                Este panel no lo ve el cliente
+              </mat-panel-description>
 
-  <div class="grupo">
-    <h3>Admin Panel</h3>
-    <small>*Este panel no lo ve el cliente</small>
 
-      <!-- Autorizada -->
-      <mat-checkbox
-      class="mr-2"
-      [formControl]="ordenForm.controls.autorizada"
-    > Autorizada
-    </mat-checkbox>
-     <!-- Id -->
-     <div class="campo">
-      <mat-form-field class="control">
-        <mat-label>Orden Id</mat-label>
-        <input
-        matInput
-        type="number"
-        [formControl]="ordenForm.controls.id"
-        >
-        <mat-error *ngIf="ordenForm.controls.id.errors">
-          <span>Campo obligatorio</span>
-        </mat-error>
-      </mat-form-field>
+            </mat-expansion-panel-header>
+            <div class="panel-content">
+              <div class="grupo">
+
+                  <!-- Autorizada -->
+                  <mat-checkbox
+                  class="mr-2"
+                  [formControl]="ordenForm.controls.autorizada"
+                > Autorizada
+                </mat-checkbox>
+                <!-- Id -->
+                <div class="campo">
+                  <mat-form-field class="control">
+                    <mat-label>Orden Id</mat-label>
+                    <input
+                    matInput
+                    type="number"
+                    [formControl]="ordenForm.controls.id"
+                    >
+                    <mat-error *ngIf="ordenForm.controls.id.errors">
+                      <span>Campo obligatorio</span>
+                    </mat-error>
+                  </mat-form-field>
+                </div>
+                <!-- Comprobante -->
+                <div class="campo">
+                  <mat-form-field class="control">
+                    <mat-label>Comprobante</mat-label>
+                    <input
+                    matInput
+                    type="number"
+                    [formControl]="ordenForm.controls.comprobanteId"
+                    >
+                  </mat-form-field>
+                </div>
+
+
+                  <!-- Usuario Autorizada -->
+                  <div class="campo">
+                    <mat-form-field class="control">
+                      <mat-label>Usuario Autorizada</mat-label>
+                      <input
+                      matInput
+                      type="text"
+                      [formControl]="ordenForm.controls.usuarioAutorizo"
+                      >
+
+                    </mat-form-field>
+                  </div>
+
+                  <!-- Estado -->
+                  <mat-form-field appearance="standard" style="width: 80%;">
+                    <mat-label>Estado</mat-label>
+                    <mat-select [formControl]="ordenForm.controls.estadoOrden">
+                      <mat-option *ngFor="let estado of estados" [value]="estado.value">
+                        {{estado.text}}
+                      </mat-option>
+                    </mat-select>
+                    <mat-error *ngIf="ordenForm.controls.estadoOrden.invalid">
+                      <span>Campo obligatorio</span>
+                    </mat-error>
+                  </mat-form-field>
+                  <!-- FechaCreacion -->
+                <div class="campo" style="width: 80%;">
+                  <mat-form-field  class="control" appearance="standard">
+                    <mat-label>Fecha Creacion</mat-label>
+                    <input
+                      autocomplete="off"
+                      matInput
+                      [matDatepicker]="fcre"
+                      placeholder="Fecha Creacion"
+                      [formControl]="ordenForm.controls.fechaCreacion"
+                    />
+                    <mat-datepicker-toggle
+                      matSuffix
+                      [for]="fcre"
+                    ></mat-datepicker-toggle>
+                    <mat-datepicker #fcre></mat-datepicker>
+                  </mat-form-field>
+                </div>
+
+
+
+
+              </div>
+              <div class="grupo"  style="display: none;" >
+                <h3>Resumen Orden</h3>
+                <!-- Monto -->
+                <div class="campo">
+                  <mat-form-field class="control" appearance="outline">
+                    <mat-label>Subtotal</mat-label>
+                    <input
+                    readonly
+                    matInput
+                    type="number"
+                    [formControl]="ordenForm.controls.monto"
+                    >
+                    <mat-error *ngIf="ordenForm.controls.monto.errors">
+                      <span>Campo obligatorio</span>
+                    </mat-error>
+                  </mat-form-field>
+                </div>
+                  <!-- Precio Delivery -->
+                  <div class="campo">
+                  <mat-form-field class="control" readonly appearance="outline">
+                    <mat-label>Precio Delivery</mat-label>
+                    <input
+                    readonly
+                    matInput
+                    type="number"
+                    [formControl]="ordenForm.controls.precioDelivery"
+                    >
+                    <mat-error *ngIf="ordenForm.controls.precioDelivery.errors">
+                      <span>Campo obligatorio</span>
+                    </mat-error>
+                  </mat-form-field>
+                </div>
+                  <!-- Monto Total -->
+                  <div class="campo">
+                    <mat-form-field class="control" appearance="outline">
+                      <mat-label>Total</mat-label>
+                      <input
+                      readonly
+                      matInput
+                      type="number"
+                      [formControl]="ordenForm.controls.montoTotal"
+                      >
+                      <mat-error *ngIf="ordenForm.controls.montoTotal.errors">
+                        <span>Campo obligatorio</span>
+                      </mat-error>
+                    </mat-form-field>
+                  </div>
+
+              </div>
+            </div>
+          </mat-expansion-panel>
+        </mat-accordion>
     </div>
-    <!-- Comprobante -->
-    <div class="campo">
-      <mat-form-field class="control">
-        <mat-label>Comprobante</mat-label>
-        <input
-        matInput
-        type="number"
-        [formControl]="ordenForm.controls.comprobanteId"
-        >
-      </mat-form-field>
-    </div>
 
 
-      <!-- Usuario Autorizada -->
-      <div class="campo">
-        <mat-form-field class="control">
-          <mat-label>Usuario Autorizada</mat-label>
-          <input
-          matInput
-          type="text"
-          [formControl]="ordenForm.controls.usuarioAutorizo"
-          >
-
-        </mat-form-field>
-      </div>
-
-       <!-- Estado -->
-       <mat-form-field appearance="standard" style="width: 80%;">
-        <mat-label>Estado</mat-label>
-        <mat-select [formControl]="ordenForm.controls.estadoOrden">
-          <mat-option *ngFor="let estado of estados" [value]="estado.value">
-            {{estado.text}}
-          </mat-option>
-        </mat-select>
-        <mat-error *ngIf="ordenForm.controls.estadoOrden.invalid">
-          <span>Campo obligatorio</span>
-        </mat-error>
-      </mat-form-field>
-       <!-- FechaCreacion -->
-     <div class="campo" style="width: 80%;">
-      <mat-form-field  class="control" appearance="standard">
-        <mat-label>Fecha Creacion</mat-label>
-        <input
-          autocomplete="off"
-          matInput
-          [matDatepicker]="fcre"
-          placeholder="Fecha Creacion"
-          [formControl]="ordenForm.controls.fechaCreacion"
-        />
-        <mat-datepicker-toggle
-          matSuffix
-          [for]="fcre"
-        ></mat-datepicker-toggle>
-        <mat-datepicker #fcre></mat-datepicker>
-      </mat-form-field>
-    </div>
-
-
-
-
-  </div>
-
-  <div class="grupo"  >
-    <h3>Resumen Orden</h3>
-    <!-- Monto -->
-    <div class="campo">
-      <mat-form-field class="control" appearance="outline">
-        <mat-label>Subtotal</mat-label>
-        <input
-        readonly
-        matInput
-        type="number"
-        [formControl]="ordenForm.controls.monto"
-        >
-        <mat-error *ngIf="ordenForm.controls.monto.errors">
-          <span>Campo obligatorio</span>
-        </mat-error>
-      </mat-form-field>
-    </div>
-      <!-- Precio Delivery -->
-      <div class="campo">
-      <mat-form-field class="control" readonly appearance="outline">
-        <mat-label>Precio Delivery</mat-label>
-        <input
-        readonly
-        matInput
-        type="number"
-        [formControl]="ordenForm.controls.precioDelivery"
-        >
-        <mat-error *ngIf="ordenForm.controls.precioDelivery.errors">
-          <span>Campo obligatorio</span>
-        </mat-error>
-      </mat-form-field>
-    </div>
-      <!-- Monto Total -->
-      <div class="campo">
-        <mat-form-field class="control" appearance="outline">
-          <mat-label>Total</mat-label>
-          <input
-          readonly
-          matInput
-          type="number"
-          [formControl]="ordenForm.controls.montoTotal"
-          >
-          <mat-error *ngIf="ordenForm.controls.montoTotal.errors">
-            <span>Campo obligatorio</span>
-          </mat-error>
-        </mat-form-field>
-      </div>
-
-  </div>
   <div class="grupo">
     <h3>Información Contacto</h3>
 

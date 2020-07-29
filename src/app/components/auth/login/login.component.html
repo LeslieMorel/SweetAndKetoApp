@@ -1,0 +1,37 @@
+<div class="container">
+  <mat-card class="loginForm">
+    <div class="img">
+      <img src="https://sweetandketo.blob.core.windows.net/productos/sweetKeto_logo.jpeg"/>
+    </div>
+    <mat-card-title color="primary">Login</mat-card-title>
+    <form [formGroup]="userInfoForm" (ngSubmit)="Login()">
+      <!-- Email -->
+        <mat-form-field appearance="outline">
+          <mat-label>Email</mat-label>
+
+          <input
+          matInput
+          type="email"
+          [formControl]="userInfoForm.controls.email"
+          />
+        </mat-form-field>
+
+        <!-- Password -->
+        <mat-form-field appearance="outline">
+          <mat-label>Password</mat-label>
+          <input
+          matInput
+          type="password"
+          [formControl]="userInfoForm.controls.password"
+          />
+        </mat-form-field>
+        <mat-card-actions>
+          <button mat-raised-button color="accent">Login</button>
+          <button mat-raised-button type="button" routerLink="/register">Register</button>
+        </mat-card-actions>
+    </form>
+  </mat-card>
+
+</div>
+
+

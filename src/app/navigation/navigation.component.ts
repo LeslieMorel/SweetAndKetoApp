@@ -3,6 +3,7 @@ import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 import { Observable } from 'rxjs';
 import { map, shareReplay } from 'rxjs/operators';
 import { CarritoService } from '../services/carrito.service';
+import { AuthService } from '../services/auth.service';
 
 @Component({
   selector: 'app-navigation',
@@ -17,6 +18,8 @@ export class NavigationComponent {
       shareReplay()
     );
 
-  constructor(private breakpointObserver: BreakpointObserver, public cartService: CarritoService) {}
+  constructor(private breakpointObserver: BreakpointObserver,
+              public authService: AuthService,
+              public cartService: CarritoService) {}
 
 }

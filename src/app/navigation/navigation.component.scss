@@ -1,9 +1,14 @@
+@import '../../variables';
+
 .sidenav-container {
   height: 100%;
 
 }
 .logo {
   height: 50px;
+  @media (max-width:$breakpoint-mobile){
+    height: 35px;
+  }
 }
 .sidenav {
   width: 200px;
@@ -25,6 +30,36 @@
   z-index: 1;
 }
 
+.toolbar-item {
+  display: flex;
+  justify-content: baseline;
+
+}
+
 mat-icon{
   margin-right: 10px;
+}
+.userIcon {
+  display: flex;
+  flex-direction: column;
+  align-items: center ;
+}
+.icon {
+font-size: xx-large;
+}
+.icon-text {
+  font-size: 1.5rem;
+  margin-top: 10px;
+}
+.logout {
+  text-decoration: underline;
+
+  &:hover{
+    color: pink;
+    cursor: pointer;
+
+  }
+  @media (max-width:$breakpoint-mobile){
+    display: none;
+  }
 }
