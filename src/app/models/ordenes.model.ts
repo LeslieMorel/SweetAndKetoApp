@@ -4,7 +4,7 @@ export class OrdenesModel {
   id: number;
   nombreCliente: string;
   email: string;
-  telefono: number;
+  phoneNumber: number;
   fechaCreacion: Date;
   fechaRequerida: Date;
   estadoOrden: number;
@@ -20,7 +20,6 @@ export class OrdenesModel {
   montoTotal: number;
   comprobanteId?: number;
   horarioEntregaId?: number;
-
   productoOrdenNavigation?: ProductoOrdenModel[];
 
   constructor(){
@@ -28,7 +27,7 @@ export class OrdenesModel {
     this.comprobanteId = null;
     this.nombreCliente = null;
     this.email = null;
-    this.telefono = null;
+    this.phoneNumber = null;
     this.fechaCreacion = new Date();
     this.fechaRequerida = new Date();
     this.estadoOrden = 65;

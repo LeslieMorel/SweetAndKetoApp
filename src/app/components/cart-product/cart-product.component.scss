@@ -1,3 +1,6 @@
+@import '../../../variables';
+@import '../../../layouts';
+
 img {
   width: 100px;
   height: 100px;
@@ -22,4 +25,13 @@ img {
   font-size: small;
   margin: 0;
   padding: 0;
+}
+
+.buttonQ {
+  border: 1px solid $color-primary;
+  height: 35px;
+}
+
+.cantidad {
+  width: 75px;
 }

@@ -1,7 +1,7 @@
 <div class="row">
   <div class="col">
-    <mat-card>
-      <app-orden-form [edit]="true" [ordenId]="ordenId"></app-orden-form>
+    <mat-card *ngIf="orden">
+      <app-orden-form [edit]="true" [ordenId]="ordenId" [orden]="orden" (validSumit)="PutOrden($event)"></app-orden-form>
     </mat-card>
 
   </div>

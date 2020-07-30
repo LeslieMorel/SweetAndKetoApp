@@ -1,4 +1,6 @@
-<div class="contenido">
+<div class="contenido" >
+  <h1>Orden: {{orden.id}}</h1>
+
   <form [formGroup] ="ordenForm"  (ngSubmit)="Submit()">
     <div [hidden]="!this.edit" class="admin-panel">
         <mat-accordion color="accent"  >
@@ -154,20 +156,26 @@
   <div class="grupo">
     <h3>Método de Entrega <p *ngIf="ordenForm.controls.metodoEntrega.invalid" style="color: red; display: inline;">*</p></h3>
 
-    <mat-radio-group class="metodos-flex" [formControl]="ordenForm.controls.metodoEntrega" class="delivery_section">
-      <div class="metodos-flex">
-        <div class="metodo">
-          <mat-radio-button  [value]="1" >
-            <mat-icon class="icon-delivery">store</mat-icon> Pick Up
-          </mat-radio-button>
+
+      <mat-radio-group class="metodos-flex" [formControl]="ordenForm.controls.metodoEntrega" class="delivery_section">
+        <div class="metodos-flex">
+          <div class="metodo">
+            <mat-radio-button  [value]="1" >
+              <mat-icon class="icon-delivery">store</mat-icon> Pick Up
+            </mat-radio-button>
+          </div>
+          <div class="metodo">
+            <mat-radio-button  [value]="0">
+              <mat-icon class="icon-delivery">two_wheeler</mat-icon> Delivery
+            </mat-radio-button>
+          </div>
         </div>
-        <div class="metodo">
-          <mat-radio-button  [value]="0">
-            <mat-icon class="icon-delivery">two_wheeler</mat-icon> Delivery
-          </mat-radio-button>
-        </div>
-      </div>
-    </mat-radio-group>
+      </mat-radio-group >
+          <mat-error  *ngIf="ordenForm.controls.metodoEntrega.invalid && ordenForm.dirty ">
+            <span>Seleccionar opción</span>
+          </mat-error>
+
+
 
   </div>
 
@@ -186,14 +194,7 @@
   <div class="grupo" *ngIf="ordenForm.controls.metodoEntrega.value === 0" >
     <h3>Informacion dirección</h3>
 
-    <div class="campo">
-      <mat-form-field appearance="outline" class="control">
-        <mat-label>Horario Entrega</mat-label>
-        <mat-select [formControl]="ordenForm.controls.horarioEntregaId">
-          <mat-option *ngFor="let horario of horariosEntrega" [value]="horario.id">{{horario.descripcion}}</mat-option>
-        </mat-select>
-      </mat-form-field>
-    </div>
+
       <!-- Ciudad -->
       <mat-form-field disabled appearance="standard" style="width: 80%; display: none;">
         <mat-label> Ciudad</mat-label>
@@ -267,7 +268,7 @@
   <!-- Grupo Fecha -->
   <div class="grupo">
     <h3>Fechas</h3>
-    <small>Para cuando quisieras tu orden?</small>
+    <small>Cuando quieres tu orden?</small>
 
     <!-- Fecha Requerida -->
     <div class="campo">
@@ -285,6 +286,15 @@
           [for]="freq"
         ></mat-datepicker-toggle>
         <mat-datepicker #freq></mat-datepicker>
+      </mat-form-field>
+    </div>
+    <!-- Horario de Entrega -->
+    <div class="campo">
+      <mat-form-field appearance="outline" class="control">
+        <mat-label>Horario Entrega</mat-label>
+        <mat-select [formControl]="ordenForm.controls.horarioEntregaId">
+          <mat-option *ngFor="let horario of horariosEntrega" [value]="horario.id">{{horario.descripcion}}</mat-option>
+        </mat-select>
       </mat-form-field>
     </div>
 
@@ -314,11 +324,13 @@
         <input
         required
         matInput
-        type="number"
-        [formControl]="ordenForm.controls.telefono"
+        type="tel"
+        [formControl]="ordenForm.controls.phoneNumber"
         >
-        <mat-error *ngIf="ordenForm.controls.telefono.errors">
-          <span>Campo obligatorio</span>
+        <mat-error *ngIf="ordenForm.controls.phoneNumber.errors">
+          <span *ngIf="ordenForm.controls.phoneNumber.errors.required">Inserte un número de télefono</span>
+          <span *ngIf="ordenForm.controls.phoneNumber.errors.minlength">Insertar un número de télefono válido</span>
+          <span *ngIf="ordenForm.controls.phoneNumber.errors.pattern">Solo inserte números ( Ej. 8295550000)</span>
         </mat-error>
       </mat-form-field>
     </div>

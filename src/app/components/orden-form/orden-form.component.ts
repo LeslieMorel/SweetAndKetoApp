@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { OrdenesModel } from 'src/app/models/ordenes.model';
 import { startWith, map } from 'rxjs/operators';
@@ -29,7 +29,8 @@ import { HorarioEntregaModel } from 'src/app/models/horarioEntrega.model';
 })
 export class OrdenFormComponent implements OnInit {
 
-
+ @Output() validSumit = new EventEmitter<OrdenesModel>();
+ @Input() orden: OrdenesModel;
   @Input() edit: boolean;
   @Input() ordenId: string;
   deliveryValidators = [];
@@ -41,12 +42,11 @@ export class OrdenFormComponent implements OnInit {
   sectores: SectorModel[] = [];
 
   estados: {value: number, text: string}[] = new EstadoOrdenPipePipe().Estados;
-  orden: OrdenesModel;
   ordenForm = new FormGroup({
     id: new FormControl(),
     nombreCliente: new FormControl(null, Validators.required),
     email: new FormControl(null, Validators.email),
-    telefono: new FormControl(null, [Validators.required, Validators.minLength(9)]),
+    phoneNumber: new FormControl(null, [Validators.required, Validators.minLength(9), Validators.pattern('^[0-9]*$')]),
     fechaCreacion: new FormControl(),
     fechaRequerida: new FormControl(),
     estadoOrden: new FormControl(null, Validators.required),
@@ -63,11 +63,11 @@ export class OrdenFormComponent implements OnInit {
     comprobanteId: new FormControl(null),
     horarioEntregaId: new FormControl(null),
   });
-  constructor(private ordenService: OrdenesService,
+  constructor(
               public cartService: CarritoService,
               private sectoresService: SectoresService,
               private attachFilesService: AttachFilesService,
-              private router: Router,
+              private ordenService: OrdenesService,
               private snackBarService: SnackbarService,
               private horarioEntregaServ: HorarioEntregaService ) { }
 
@@ -75,19 +75,19 @@ export class OrdenFormComponent implements OnInit {
 
     this.GetHorariosEntrega();
     this.GetSectores();
-    this.IniOrden();
+    this.ordenForm.setValue(this.orden);
 
-    // this.options = Sectores.Get().map(s => s.descripcion);
-    // this.sectores = Sectores.Get();
+    // this.ordenService.ordenChange.subscribe((orden: OrdenesModel) => {
+    //   this.ordenForm.setValue(orden);
+    // });
+
+
     this.filteredOptions = this.ordenForm.controls.zona.valueChanges.pipe(
       startWith(''),
       map(value => this._filter(value))
     );
 
-    this.ordenService.ordenChange.subscribe((orden: OrdenesModel) => {
-      console.log(orden);
-      this.ordenForm.setValue(orden);
-    });
+
     this.ordenForm.get('metodoEntrega').valueChanges
     .subscribe(resp => {this.SetDeliveryMethodValidations(resp); });
 
@@ -105,39 +105,19 @@ export class OrdenFormComponent implements OnInit {
 
   }
 
+
+
   Submit() {
     console.log(this.ordenForm);
     if (this.ordenForm.valid){
-      const orden: OrdenesModel = this.ordenForm.value;
-      if (this.edit) { this.PutOrden(this.ordenId, orden ); }
-      else { this.PostOrden(orden); }
-
+      this.validSumit.emit(this.ordenForm.value);
     } else {
       console.log('Datos Invalidos en el formulario');
     }
 
   }
 
-  AddProductos(orden: OrdenesModel): boolean{
-    if (this.cartService.productos.length > 0){
-      const productosOrden: ProductoOrdenModel[] = [];
-      this.cartService.productos.forEach(producto => {
-        const productoOrden: ProductoOrdenModel = {
-          id: 0,
-          ordenId: 0,
-          productoId: producto.producto.id,
-          cantidad: producto.cantidad,
-          precio: producto.producto.precio,
-          subtotal: producto.producto.precio * producto.cantidad
-        };
-        productosOrden.push(productoOrden);
-      });
-      orden.productoOrdenNavigation = productosOrden;
-      return true;
-    } else {
-       return false;
-    }
-  }
+
   SetDeliveryMethodValidations(deliveryMethod: number) {
     // this.ordenForm.get().updateValueAndValidity();
     // this.ordenForm.get('zozonane').updateValueAndValidity();
@@ -161,54 +141,6 @@ export class OrdenFormComponent implements OnInit {
       }
 
     }
-
-  IniOrden(){
-    if (this.edit){
-      console.log('Edit OrderForm');
-      console.log(this.ordenService.orden);
-      // this.ordenForm.setValue(new OrdenesModel());
-
-    } else {
-      this.NuevaOrden();
-    }
-  }
-  // SetOrden(orden: OrdenesModel){
-  //   this.ord
-  // }
-  NuevaOrden(){
-    const orden = new OrdenesModel();
-    orden.monto = this.cartService.AmountInCart();
-    this.ordenForm.setValue(orden);
-
-  }
-
-  PostOrden(orden: OrdenesModel){
-    if (this.AddProductos(orden)){
-      console.log(orden);
-      this.ordenService.PostOrden(orden).subscribe((Response: OrdenesModel) => {
-        console.log(Response);
-        // tslint:disable-next-line: quotemark
-        this.cartService.EmptyCart();
-        this.snackBarService.Show('Actualizado', TipoSnackBar.Success, 1000, SnackbarPanelClass.success);
-        this.router.navigate(['orden-confirmacion/', Response.id]);
-
-      }, (e) => {
-        this.snackBarService.Show('Error', TipoSnackBar.Error, 1000, SnackbarPanelClass.error);
-      });
-    } else {
-      console.log(' No hay productos en la orden');
-    }
-  }
-  PutOrden(ordenId: string, orden: OrdenesModel){
-    this.ordenService.PutOrden(ordenId, orden).subscribe( Response => {
-      console.log(Response);
-      this.snackBarService.Show('Actualizado', TipoSnackBar.Success, 1000, SnackbarPanelClass.success);
-    }, e => {
-      this.snackBarService.Show('Error', TipoSnackBar.Error, 1000, SnackbarPanelClass.error);
-      console.log(e);
-    }
-     );
-  }
 
   SetPrecioDelivery(){
     // console.log('Setting Delivery Price');
@@ -241,7 +173,7 @@ export class OrdenFormComponent implements OnInit {
   GetSectores(){
     this.sectoresService.GetSectores().subscribe((Response: SectorModel[]) => {
       this.sectores = Response;
-      console.log(this.sectores);
+      // console.log(this.sectores);
 
     });
   }
@@ -249,7 +181,7 @@ export class OrdenFormComponent implements OnInit {
   GetHorariosEntrega(){
     this.horarioEntregaServ.Get().subscribe((Response: HorarioEntregaModel[]) => {
       this.horariosEntrega = Response;
-      console.log(Response);
+      // console.log(Response);
     });
   }
   SetComprobante(event: any) {

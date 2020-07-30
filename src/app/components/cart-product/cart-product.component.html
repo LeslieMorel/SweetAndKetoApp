@@ -2,16 +2,37 @@
   <div class="col">
     <img [src]="cartProduct.producto.imgUrl">
   </div>
+
   <div class="col">
     <h4 class="descripcion">{{cartProduct.producto.descripcion}}</h4>
-    <h5 class="cantidad">
+    <!-- <h5 class="cantidad">
       {{cartProduct.cantidad}}
        <span *ngIf="cartProduct.cantidad === 1">unidad</span>
        <span *ngIf="cartProduct.cantidad > 1">unidades</span>
-      </h5>
+      </h5> -->
     <h4 class="precio">RD$  {{cartProduct.producto.precio}} / und</h4>
   </div>
-  <div class="col">
-    <h4> RD$ {{cartProduct.monto}}</h4>
+  <div class="col flex-col center" >
+
+    <div class="col">
+      <h4> RD$ {{cartProduct.monto * cartProduct.cantidad}}</h4>
+    </div>
+    <div >
+      <mat-form-field appearance="outline" class="cantidad" >
+        <input
+        (ngModelChange)="numberChange($event)"
+        matInput
+        [(ngModel)]="cartProduct.cantidad"
+        type="number"
+        >
+
+          <mat-icon  matSuffix (click)="deleteProducto()">delete_outline</mat-icon>
+
+
+      </mat-form-field>
+    </div>
+
+
   </div>
+
 </mat-card>

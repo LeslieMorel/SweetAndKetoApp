@@ -1,2 +1,4 @@
 
-<app-orden-form [ordenId]="0" [edit]="false"></app-orden-form>
+<div *ngIf="orden">
+  <app-orden-form [ordenId]="0" [orden]="orden"  [edit]="false"  (validSumit)="PostOrden($event)"></app-orden-form>
+</div>

@@ -32,7 +32,7 @@ export class AuthInterceptorService implements HttpInterceptor {
         setHeaders: {Authorization: 'Bearer ' + token },
         url: this.baseURL + req.url
       });
-      console.log(modifiedReq);
+      // console.log(modifiedReq);
       return next.handle(modifiedReq);
     }
 

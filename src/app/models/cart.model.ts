@@ -4,4 +4,15 @@ export class ProductoCartModel {
   producto: ProductoModel;
   cantidad: number;
   monto: number;
+
+
+
+
+
+
+
+
+
+
+
 }

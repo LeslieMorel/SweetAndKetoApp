@@ -122,13 +122,13 @@ export class AuthService {
     if (datosUsuario !== undefined && datosUsuario !== null) {
 
       this.userData = JSON.parse(datosUsuario);
-      console.log(this.userData);
+      // console.log(this.userData);
       const actualDate = Date.now().toString();
       const actualDateUTC =  actualDate.substring(0, actualDate.length - 3);
       const dateUtcNow = parseInt(actualDateUTC, 10);
 
-      console.log('Actual Date' + actualDateUTC);
-      console.log('Token ExpDate' + this.userData.tokenExpNumber);
+      // console.log('Actual Date' + actualDateUTC);
+      // console.log('Token ExpDate' + this.userData.tokenExpNumber);
 
       // this.tokenVigente(this.userData.tokenExpNumber).subscribe((Response: any) => {
       //   if (Response === true) {
@@ -140,11 +140,11 @@ export class AuthService {
 
 
       if (this.userData.tokenExpNumber < dateUtcNow) {
-        console.log('Token Vencido');
+        // console.log('Token Vencido');
         this.logOut();
 
       } else {
-        console.log('Token vigente');
+        // console.log('Token vigente');
       }
     }
     // console.log('UserData:');
