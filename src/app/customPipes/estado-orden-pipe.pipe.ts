@@ -19,6 +19,7 @@ export class EstadoOrdenPipePipe implements PipeTransform {
     { value: 66, text: 'Proceso' },
     { value: 67, text: 'Listo' },
     { value: 68, text: 'Entregado' },
+    { value: 69, text: 'Descartada' },
 
   ];
 

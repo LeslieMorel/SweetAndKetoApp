@@ -1,6 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -11,11 +10,7 @@ import { AuthInterceptorService } from './services/auth-interceptor.service';
 import { OrdenesComponent } from './components/ordenes/ordenes.component';
 import { NavigationComponent } from './navigation/navigation.component';
 import { LayoutModule } from '@angular/cdk/layout';
-import { MatToolbarModule } from '@angular/material/toolbar';
-import { MatButtonModule } from '@angular/material/button';
-import { MatSidenavModule } from '@angular/material/sidenav';
-import { MatIconModule } from '@angular/material/icon';
-import { MatListModule } from '@angular/material/list';
+
 import { ProductosComponent } from './components/productos/productos.component';
 import { ProductoCardComponent } from './components/producto-card/producto-card.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -42,6 +37,7 @@ import { ProductoModule } from './ProductoModule/producto.module';
 import { LoginComponent } from './components/auth/login/login.component';
 import { RegisterComponent } from './components/auth/register/register.component';
 import { AuthService } from './services/auth.service';
+import { DialogImagenesComponent } from './components/dialog-imagenes/dialog-imagenes.component';
 
 @NgModule({
   declarations: [
@@ -64,15 +60,16 @@ import { AuthService } from './services/auth.service';
     ListaProductosPendientesComponent,
     ImagesComponent,
     LoginComponent,
-    RegisterComponent
+    RegisterComponent,
+    DialogImagenesComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
+    LayoutModule,
     MaterialModule,
     HttpClientModule,
-    LayoutModule,
     FormsModule,
     ReactiveFormsModule,
     ProductoModule
@@ -94,7 +91,7 @@ import { AuthService } from './services/auth.service';
   ],
   entryComponents: [
     SnackbarComponent,
-    ImagesComponent
+    DialogImagenesComponent
   ],
   bootstrap: [AppComponent]
 })

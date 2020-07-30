@@ -50,7 +50,7 @@ export class OrdenFormComponent implements OnInit {
     ciudad: new FormControl('DN', this.deliveryValidators),
     zona: new FormControl(null, this.deliveryValidators),
     direccion1: new FormControl(null, this.deliveryValidators),
-    direccion2: new FormControl(null, this.deliveryValidators),
+    direccion2: new FormControl(),
     metodoEntrega: new FormControl(null, Validators.required),
     autorizada: new FormControl(false),
     usuarioAutorizo: new FormControl(),
@@ -138,19 +138,19 @@ export class OrdenFormComponent implements OnInit {
     if (this.ordenForm !== null){
         if (deliveryMethod === 0) {
           this.ordenForm.get('direccion1').setValidators(this.deliveryValidators.concat(Validators.required));
-          this.ordenForm.get('direccion2').setValidators(this.deliveryValidators.concat(Validators.required));
+          // this.ordenForm.get('direccion2').setValidators(this.deliveryValidators.concat(Validators.required));
           this.ordenForm.get('zona').setValidators(this.deliveryValidators.concat(Validators.required));
           this.ordenForm.get('ciudad').setValidators(this.deliveryValidators.concat(Validators.required));
         } else {
           this.ordenForm.get('direccion1').setValidators(this.deliveryValidators);
-          this.ordenForm.get('direccion2').setValidators(this.deliveryValidators);
+          // this.ordenForm.get('direccion2').setValidators(this.deliveryValidators);
           this.ordenForm.get('zona').setValidators(this.deliveryValidators);
           this.ordenForm.get('ciudad').setValidators(this.deliveryValidators);
         }
         this.ordenForm.get('ciudad').updateValueAndValidity();
         this.ordenForm.get('zona').updateValueAndValidity();
         this.ordenForm.get('direccion1').updateValueAndValidity();
-        this.ordenForm.get('direccion2').updateValueAndValidity();
+        // this.ordenForm.get('direccion2').updateValueAndValidity();
         console.log(this.deliveryValidators.toString());
       }
 

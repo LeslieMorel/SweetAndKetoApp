@@ -38,4 +38,14 @@ export class ProductoCardComponent implements OnInit {
 
   }
 
+  SelectChange($event, producto: number){
+    console.log($event);
+    console.log(producto);
+
+  }
+
+  Clear(){
+    this.cantidad = 0;
+  }
+
 }

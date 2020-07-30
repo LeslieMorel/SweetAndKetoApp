@@ -13,23 +13,35 @@ import { ImagesComponent } from './components/images/images.component';
 import { OrdenesAuthService } from './services/ordenes-auth.service';
 import { LoginComponent } from './components/auth/login/login.component';
 import { RegisterComponent } from './components/auth/register/register.component';
+import { AuthGuardService } from './services/auth-guard.service';
+import { UserRolesModel } from './models/auth/userRoles.model';
 
 
 const routes: Routes = [
+  {path: '' , component: ProductosComponent},
   {
-    path: '' ,
+    path: 'ordenes' ,
     component: ListaOrdenesComponent,
-    data: {roles: ['admin', 'ordenesEdit', 'ordenesRead']},
-    canActivate: [OrdenesAuthService]
+    data: {roles: [ UserRolesModel.OrdenesEdicion, UserRolesModel.OrdenesConsulta]},
+    canActivate: [AuthGuardService]
   },
   {path: 'login' , component: LoginComponent},
   {path: 'register' , component: RegisterComponent},
-  {path: 'tienda' , component: ProductosComponent},
   {path: 'carrito' , component: CartComponent},
   {path: 'checkout' , component: CheckoutComponent},
-  {path: 'editar-orden/:orden' , component: EditarOrdenComponent},
+  {
+    path: 'editar-orden/:orden' , component: EditarOrdenComponent,
+    data: {roles: [ UserRolesModel.OrdenesEdicion, UserRolesModel.OrdenesConsulta]},
+    canActivate: [AuthGuardService]
+  },
   {path: 'orden-confirmacion/:orden' , component: OrdenConfirmacionComponent},
-  {path: 'productos-pendientes' , component: ListaProductosPendientesComponent},
+  {
+    path: 'productos-pendientes' ,
+    component: ListaProductosPendientesComponent,
+    data: {roles: [ UserRolesModel.OrdenesEdicion, UserRolesModel.OrdenesConsulta]},
+    canActivate: [AuthGuardService]
+  },
+
   {path: 'images' , component: ImagesComponent},
 
 

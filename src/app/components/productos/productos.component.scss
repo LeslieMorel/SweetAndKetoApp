@@ -3,7 +3,7 @@ $breakpoint-mobile: 600px;
 .container {
   height: 100vh;
 }
-
+// Web
 @media (min-width: $breakpoint-tablet) {
   .listProduct {
     display: flex;
@@ -16,7 +16,7 @@ $breakpoint-mobile: 600px;
   }
 
 }
-
+// Tablet
 @media (max-width: $breakpoint-tablet) {
   .listProduct {
     display: flex;
@@ -24,8 +24,22 @@ $breakpoint-mobile: 600px;
     flex-wrap: wrap;
   }
   .producto {
-    width: 45%;
+    width: 50%;
     margin: 5px;
+  }
+
+}
+// Mobile
+@media (max-width: $breakpoint-mobile) {
+  .listProduct {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+  .producto {
+    width: 100%;
+    margin: 10px;
+
   }
 
 }

@@ -12,8 +12,13 @@
           <ng-container matColumnDef="id">
             <th mat-header-cell *matHeaderCellDef mat-sort-header > No. </th>
             <td mat-cell *matCellDef="let element">
-              <button   [routerLink]="['editar-orden/',element.id]" mat-icon-button >{{element.id}}</button>
-             </td>
+              <div class="flex-row">
+                <div class="flex-row v-center" *ngIf="authServ.AdminUser()"(click)="deleteOrden(element.id)">
+                  <mat-icon  class="delete-btn ">delete_outline</mat-icon>
+                </div>
+                <button   [routerLink]="['/editar-orden/',element.id]" mat-icon-button >{{element.id}}</button>
+              </div>
+            </td>
           </ng-container>
 
           <!-- Cliente -->

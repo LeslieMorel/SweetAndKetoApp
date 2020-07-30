@@ -34,6 +34,10 @@ export class EditarOrdenComponent implements OnInit {
     this.ordenesService.GetProductosOfOrden(ordenId).subscribe((resp: ProductoOrdenModel[]) => {
       this.ordenesService.productosOrden = resp;
       this.productosOrden = resp;
+      console.log('Productos Orden');
+
+      console.log(resp);
+
     });
   }
 

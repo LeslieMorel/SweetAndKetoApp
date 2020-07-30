@@ -4,6 +4,8 @@ import { ListaProductosComponent } from './components/lista-productos/lista-prod
 import { ProductoVistaComponent } from './components/producto-vista/producto-vista.component';
 import { ProductoCrearComponent } from './components/producto-crear/producto-crear.component';
 import { ProductoEditarComponent } from './components/producto-editar/producto-editar.component';
+import { UserRolesModel } from '../models/auth/userRoles.model';
+import { AuthGuardService } from '../services/auth-guard.service';
 
 
 const routes: Routes = [
@@ -11,7 +13,10 @@ const routes: Routes = [
     {path: '', component: ListaProductosComponent},
     {path: 'crear', component: ProductoCrearComponent},
     {path: 'editar/:id', component: ProductoEditarComponent}
-  ] },
+  ] ,
+    data: {roles: [ UserRolesModel.Admin]},
+    canActivate: [AuthGuardService]
+},
 
 ];
 

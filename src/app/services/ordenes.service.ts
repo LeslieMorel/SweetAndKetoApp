@@ -45,4 +45,7 @@ export class OrdenesService {
   PutOrden(ordenId: string , orden: OrdenesModel){
     return this.http.put(`Ordenes/${ordenId}`, orden);
   }
+  DeleteOrden(ordenId: string){
+    return this.http.delete(`Ordenes/${ordenId}`);
+  }
 }

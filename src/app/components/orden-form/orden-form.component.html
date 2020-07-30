@@ -150,72 +150,29 @@
           </mat-expansion-panel>
         </mat-accordion>
     </div>
-
-
-  <div class="grupo">
-    <h3>Información Contacto</h3>
-
-    <!-- Nombre -->
-    <div class="campo">
-      <mat-form-field class="control" appearance="outline">
-        <mat-label>Nombre</mat-label>
-        <input
-        matInput
-        type="text"
-        [formControl]="ordenForm.controls.nombreCliente"
-        >
-        <mat-error *ngIf="ordenForm.controls.nombreCliente.errors">
-          <span>Campo obligatorio</span>
-        </mat-error>
-      </mat-form-field>
-    </div>
-    <!-- Telefono -->
-    <div class="campo" >
-      <mat-form-field class="control" appearance="outline">
-        <mat-label>Teléfono</mat-label>
-        <input
-        matInput
-        type="number"
-        [formControl]="ordenForm.controls.telefono"
-        >
-        <mat-error *ngIf="ordenForm.controls.telefono.errors">
-          <span>Campo obligatorio</span>
-        </mat-error>
-      </mat-form-field>
-    </div>
-    <!-- Email -->
-    <div class="campo">
-      <mat-form-field class="control" appearance="outline">
-        <mat-label>Email</mat-label>
-        <input
-        matInput
-        type="email"
-        [formControl]="ordenForm.controls.email"
-        >
-        <mat-error *ngIf="ordenForm.controls.email.errors">
-          <span>Inserte un email válido</span>
-        </mat-error>
-      </mat-form-field>
-    </div>
-  </div>
-  <!-- Metodo Entrega -->
+    <!-- Metodo Entrega -->
   <div class="grupo">
     <h3>Método de Entrega <p *ngIf="ordenForm.controls.metodoEntrega.invalid" style="color: red; display: inline;">*</p></h3>
 
-    <mat-radio-group class="flex-col" [formControl]="ordenForm.controls.metodoEntrega" class="delivery_section">
-      <div class="row">
-        <mat-radio-button class="example-margin" [value]="1" >
-          <mat-icon class="icon-delivery">store</mat-icon> Pick Up
-        </mat-radio-button>
-      </div>
-      <div class="row">
-        <mat-radio-button  [value]="0">
-          <mat-icon class="icon-delivery">two_wheeler</mat-icon> Delivery
-        </mat-radio-button>
+    <mat-radio-group class="metodos-flex" [formControl]="ordenForm.controls.metodoEntrega" class="delivery_section">
+      <div class="metodos-flex">
+        <div class="metodo">
+          <mat-radio-button  [value]="1" >
+            <mat-icon class="icon-delivery">store</mat-icon> Pick Up
+          </mat-radio-button>
+        </div>
+        <div class="metodo">
+          <mat-radio-button  [value]="0">
+            <mat-icon class="icon-delivery">two_wheeler</mat-icon> Delivery
+          </mat-radio-button>
+        </div>
       </div>
     </mat-radio-group>
 
   </div>
+
+
+
   <!-- Lugar Recogida -->
   <div class="grupo" *ngIf="ordenForm.controls.metodoEntrega.value === 1">
     <mat-icon>room</mat-icon>
@@ -324,6 +281,55 @@
     </div>
 
   </div>
+  <div class="grupo">
+    <h3>Información Contacto</h3>
+
+    <!-- Nombre -->
+    <div class="campo">
+      <mat-form-field class="control" appearance="outline">
+        <mat-label>Nombre</mat-label>
+        <input
+        required
+        matInput
+        type="text"
+        [formControl]="ordenForm.controls.nombreCliente"
+        >
+        <mat-error *ngIf="ordenForm.controls.nombreCliente.errors">
+          <span>Campo obligatorio</span>
+        </mat-error>
+      </mat-form-field>
+    </div>
+    <!-- Telefono -->
+    <div class="campo" >
+      <mat-form-field class="control" appearance="outline">
+        <mat-label>Teléfono</mat-label>
+        <input
+        required
+        matInput
+        type="number"
+        [formControl]="ordenForm.controls.telefono"
+        >
+        <mat-error *ngIf="ordenForm.controls.telefono.errors">
+          <span>Campo obligatorio</span>
+        </mat-error>
+      </mat-form-field>
+    </div>
+    <!-- Email -->
+    <div class="campo">
+      <mat-form-field class="control" appearance="outline">
+        <mat-label>Email</mat-label>
+        <input
+        matInput
+        type="email"
+        [formControl]="ordenForm.controls.email"
+        >
+        <mat-error *ngIf="ordenForm.controls.email.errors">
+          <span>Inserte un email válido</span>
+        </mat-error>
+      </mat-form-field>
+    </div>
+  </div>
+
   <!-- Metodo de Pago -->
   <div class="grupo">
     <div class="campo">

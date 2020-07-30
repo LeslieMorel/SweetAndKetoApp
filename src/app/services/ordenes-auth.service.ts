@@ -16,9 +16,9 @@ export class OrdenesAuthService implements CanActivate {
       const roles: string[] = route.data.roles;
       const isInRole = this.authService.user.roles.some( r => roles.includes(r));
       console.log(route.data);
-      console.log('userRoles: '+ this.authService.user.roles.toString());
-      console.log('reqRoles: '+ roles);
-      console.log('isInRole: '+ isInRole);
+      console.log('userRoles: ' + this.authService.userData.roles.toString());
+      console.log('reqRoles: ' + roles);
+      console.log('isInRole: ' + isInRole);
 
 
       if (isInRole){

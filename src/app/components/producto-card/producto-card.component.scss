@@ -1,19 +1,19 @@
 @import '../../../variables';
 .card {
-  border-radius: 1%;
-  // background-color: pink;
-
+  width: 100%;
+  height: 400px;
+  padding: 0;
+  margin: 10px;
+  border-radius: 3px;
 }
 
 .contenido {
   padding: 5px;
   // background-color: $color-primary;
   display: grid;
-  grid-template-rows: 2fr 1fr 1fr;
+  // grid-template-rows: 1fr 1fr 1fr;
 }
-img {
-  border-radius: 1%;
-}
+
 .titulo {
   margin: 5px;
 }
@@ -21,75 +21,93 @@ img {
   margin: 5px;
 }
 
+img {
+  object-fit: cover;
+  background-color: lightgrey;
+  border-top-left-radius: 3px;
+  border-top-right-radius: 3px;
 
 
-$breakpoint-tablet: 768px;
-
-// Mobile
-@media (max-width: $breakpoint-tablet) {
-  img {
-    object-fit: cover;
-    width: 100%;
-    height: 150px;
-    background-color: lightgrey;
-    object-fit: cover;
+  // Mobile
+  @media (max-width: $breakpoint-mobile) {
+      width: 100%;
+      height: 150px;
   }
 
-  .card {
-    width: 100%;
-    height: 300px;
-    padding: 0;
-    margin: 10px;
+    // Web
+    @media (min-width: $breakpoint-desktop) {
+        width: 100%;
+        height: 250px;
+    }
+
+
   }
 
+
+
+
+
+
+
+
+
+
+
+
+
+.btn{
+  display: flex;
+  justify-content: center;
+  padding-bottom: 15px;
 }
-// Web
-@media (min-width: $breakpoint-tablet) {
-  img {
-    object-fit: cover;
-    width: 100%;
-    height: 250px;
-    background-color: lightgrey;
-    object-fit: cover;
-  }
-
-  .card {
-    width: 300px;
-    height: 400px;
-    padding: 0;
-    margin: 10px;
-  }
-
-}
-
-
-
-
-
-
-
-.pick-btn {
-  height: 100%;
-  display: inline-block;
-  width: 30%;
-  padding: 0;
-  margin: 0;
-
-}
-
 
 .btn-pick {
-  display: inline-flex;
+  display: flex;
   flex-direction: row;
-  justify-content: space-between;
+  justify-content: space-around;
+  justify-items: center;
   align-items: center;
   width: 80%;
+  height: 35px;
   border-radius: 20PX;
   // border: #8fa382 solid 1px;
-  border: lightgrey solid 1px;
+  border: $color-primary solid 1px;
+  // background-color: pink;
 
 }
 
+.btn {
+
+  &:hover {
+    cursor: pointer;
+  }
+}
+// .act {
+//   display: flex;
+//   justify-content: center;
+//   text-align: center;
+//   align-items: center;
+//   color: $color-primary;
+//   width: 33%;
+//   height: 100%;
+//   font-size: 1.1rem;
+// }
+.btn {
+  width: 100%;
+}
+.select {
+  // background-color: $color-primary;
+
+
+
+}
+.icon-select {
+  width: 30%;
+  margin-bottom: 10px;
+  @media (max-width: $breakpoint-mobile) {
+    display: none;
+  }
+}
 // .descripcion {
 //   font-size: 3rem;
 // }

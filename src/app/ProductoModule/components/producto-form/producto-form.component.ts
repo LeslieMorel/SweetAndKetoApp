@@ -3,6 +3,7 @@ import { ProductoModel } from 'src/app/models/producto.model';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 import { ImagesComponent } from 'src/app/components/images/images.component';
+import { DialogImagenesComponent } from 'src/app/components/dialog-imagenes/dialog-imagenes.component';
 
 @Component({
   selector: 'app-producto-form',
@@ -44,7 +45,7 @@ export class ProductoFormComponent implements OnInit {
 
   openImgDialog(){
     console.log('open Dialog');
-    const dialogRef = this.dialog.open(ImagesComponent);
+    const dialogRef = this.dialog.open(DialogImagenesComponent);
 
     dialogRef.afterClosed().subscribe(result => {
       console.log(`Dialog result: ${result}`);

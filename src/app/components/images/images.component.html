@@ -1,10 +1,10 @@
 <mat-card class="contenedor">
   <mat-card-title>Imagenes</mat-card-title>
   <mat-card-actions>
-
-    <button [disabled]="!this.selectedImg" (click)="closeDialog()" mat-raised-button color="accent">
+    <button [disabled]="!this.selectedImg" (click)="Seleccionar()" mat-raised-button color="accent">
       <mat-icon style="margin-right: 5px;">touch_app</mat-icon>
       Seleccionar</button>
+
     <button [disabled]="!this.selectedImg" mat-raised-button (click)="DeleteImage()">
       <mat-icon style="margin-right: 5px;">delete</mat-icon> Eliminar Imagen
     </button>
@@ -16,7 +16,7 @@
   <mat-card-content>
     <div class="grid">
       <div *ngFor="let i of images" class="imagen">
-        <img [ngClass]="imgClass(i)" [src]="i.url" (click)="Seleccionar(i)" />
+        <img [ngClass]="imgClass(i)" [src]="i.url" (click)="SetImagenSeleccionada(i)" />
       </div>
 
     </div>
