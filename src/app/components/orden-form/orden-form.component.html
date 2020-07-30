@@ -186,6 +186,14 @@
   <div class="grupo" *ngIf="ordenForm.controls.metodoEntrega.value === 0" >
     <h3>Informacion dirección</h3>
 
+    <div class="campo">
+      <mat-form-field appearance="outline" class="control">
+        <mat-label>Horario Entrega</mat-label>
+        <mat-select [formControl]="ordenForm.controls.horarioEntregaId">
+          <mat-option *ngFor="let horario of horariosEntrega" [value]="horario.id">{{horario.descripcion}}</mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
       <!-- Ciudad -->
       <mat-form-field disabled appearance="standard" style="width: 80%; display: none;">
         <mat-label> Ciudad</mat-label>

@@ -18,3 +18,24 @@
   }
 
 }
+
+.flex-col {
+  display: flex;
+  flex-direction: column;
+  &.start {
+    justify-content: start;
+  }
+  &.center {
+    justify-content: center;
+  }
+  &.right {
+    justify-content: right;
+  }
+  &.v-bottom {
+    align-items: flex-end;
+  }
+  &.v-center {
+    align-items: center;
+  }
+
+}

@@ -19,6 +19,7 @@ export class OrdenesModel {
   monto: number;
   montoTotal: number;
   comprobanteId?: number;
+  horarioEntregaId?: number;
 
   productoOrdenNavigation?: ProductoOrdenModel[];
 
@@ -41,6 +42,7 @@ export class OrdenesModel {
     this.monto = 0;
     this.montoTotal = 0;
     this.precioDelivery = 0;
+    this.horarioEntregaId = null;
 
   }
 }

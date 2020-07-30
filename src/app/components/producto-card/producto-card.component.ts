@@ -9,7 +9,7 @@ import { CarritoService } from 'src/app/services/carrito.service';
 })
 export class ProductoCardComponent implements OnInit {
 
-  cantidad = 0;
+  cantidad = 5;
   @Input() producto: ProductoModel;
   constructor( protected cartService: CarritoService) { }
 

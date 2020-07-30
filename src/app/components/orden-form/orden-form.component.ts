@@ -19,6 +19,8 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { SnackbarComponent, TipoSnackBar } from '../snackbar/snackbar.component';
 import { SnackbarService } from 'src/app/services/snackbar.service';
 import { SnackbarPanelClass } from 'src/app/models/SnackBarPanelClass.model';
+import { HorarioEntregaService } from 'src/app/services/horario-entrega.service';
+import { HorarioEntregaModel } from 'src/app/models/horarioEntrega.model';
 
 @Component({
   selector: 'app-orden-form',
@@ -35,6 +37,7 @@ export class OrdenFormComponent implements OnInit {
   options: string[] = [];
   selectedFile: File;
 
+  horariosEntrega: HorarioEntregaModel[] = [];
   sectores: SectorModel[] = [];
 
   estados: {value: number, text: string}[] = new EstadoOrdenPipePipe().Estados;
@@ -57,17 +60,20 @@ export class OrdenFormComponent implements OnInit {
     precioDelivery: new FormControl(0),
     monto: new FormControl(0),
     montoTotal: new FormControl(0),
-    comprobanteId: new FormControl(null)
+    comprobanteId: new FormControl(null),
+    horarioEntregaId: new FormControl(null),
   });
   constructor(private ordenService: OrdenesService,
               public cartService: CarritoService,
               private sectoresService: SectoresService,
               private attachFilesService: AttachFilesService,
               private router: Router,
-              private snackBarService: SnackbarService) { }
+              private snackBarService: SnackbarService,
+              private horarioEntregaServ: HorarioEntregaService ) { }
 
   ngOnInit(): void {
 
+    this.GetHorariosEntrega();
     this.GetSectores();
     this.IniOrden();
 
@@ -237,6 +243,13 @@ export class OrdenFormComponent implements OnInit {
       this.sectores = Response;
       console.log(this.sectores);
 
+    });
+  }
+
+  GetHorariosEntrega(){
+    this.horarioEntregaServ.Get().subscribe((Response: HorarioEntregaModel[]) => {
+      this.horariosEntrega = Response;
+      console.log(Response);
     });
   }
   SetComprobante(event: any) {

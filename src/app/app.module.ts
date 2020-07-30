@@ -38,6 +38,9 @@ import { LoginComponent } from './components/auth/login/login.component';
 import { RegisterComponent } from './components/auth/register/register.component';
 import { AuthService } from './services/auth.service';
 import { DialogImagenesComponent } from './components/dialog-imagenes/dialog-imagenes.component';
+import { HorarioEntregaPipePipe } from './customPipes/horario-entrega-pipe.pipe';
+import { HorarioEntregaService } from './services/horario-entrega.service';
+
 
 @NgModule({
   declarations: [
@@ -61,7 +64,8 @@ import { DialogImagenesComponent } from './components/dialog-imagenes/dialog-ima
     ImagesComponent,
     LoginComponent,
     RegisterComponent,
-    DialogImagenesComponent
+    DialogImagenesComponent,
+    HorarioEntregaPipePipe
   ],
   imports: [
     BrowserModule,
@@ -87,7 +91,8 @@ import { DialogImagenesComponent } from './components/dialog-imagenes/dialog-ima
     SnackbarService,
     ProductoOrdenService,
     LocalStorageService,
-    AuthService
+    AuthService,
+    HorarioEntregaService
   ],
   entryComponents: [
     SnackbarComponent,

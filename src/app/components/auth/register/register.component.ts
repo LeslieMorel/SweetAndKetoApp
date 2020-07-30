@@ -32,7 +32,7 @@ export class RegisterComponent implements OnInit {
         console.log(Response);
         this.snackServ.Show('Cuenta creada exitosamente!', TipoSnackBar.Success, 2000, SnackbarPanelClass.success);
         this.authServ.setUserData(Response);
-        this.router.navigate(['/tienda']);
+        this.router.navigate(['/']);
       }, e => {
         console.log(e);
         this.snackServ.Show('Password o usuario incorrectos', TipoSnackBar.Error, 2000, SnackbarPanelClass.error);
