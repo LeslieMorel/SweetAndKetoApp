@@ -14,6 +14,7 @@ export class OrdenesModel {
   zona: string;
   metodoEntrega: number;
   autorizada: boolean;
+  esRegalo: boolean;
   usuarioAutorizo: string;
   precioDelivery: number;
   monto: number;
@@ -37,6 +38,7 @@ export class OrdenesModel {
     this.ciudad = 'DN';
     this.metodoEntrega = null;
     this.autorizada = false;
+    this.esRegalo = false;
     this.usuarioAutorizo = null;
     this.monto = 0;
     this.montoTotal = 0;

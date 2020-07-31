@@ -1,6 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { ProductoModel } from 'src/app/models/producto.model';
 import { CarritoService } from 'src/app/services/carrito.service';
+import { SnackbarService } from 'src/app/services/snackbar.service';
 
 @Component({
   selector: 'app-producto-card',
@@ -11,7 +12,8 @@ export class ProductoCardComponent implements OnInit {
 
   cantidad = 5;
   @Input() producto: ProductoModel;
-  constructor( protected cartService: CarritoService) { }
+  constructor( protected cartService: CarritoService,
+               private snackBarServ: SnackbarService) { }
 
   ngOnInit(): void {
   }
@@ -26,6 +28,7 @@ export class ProductoCardComponent implements OnInit {
   }
   AddProducto(){
     this.cartService.Add(this.producto);
+    this.snackBarServ.GoToCartSnack();
   }
   RestaProducto(){
     this.cartService.Resta(this.producto);
@@ -47,5 +50,6 @@ export class ProductoCardComponent implements OnInit {
   Clear(){
     this.cantidad = 0;
   }
+
 
 }

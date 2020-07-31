@@ -23,5 +23,6 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
   background-color: yellow;
 }
 .info-snackbar {
-  background-color: lightgrey;
+  background-color: white;
+  color: $color-primary;
 }

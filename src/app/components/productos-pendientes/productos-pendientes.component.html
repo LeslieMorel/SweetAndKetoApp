@@ -1,17 +1,36 @@
-<div class="row">
-  <div class="col">
-    <img [src]="productoOrdenPendientes.imgUrl">
-  </div>
-  <div class="col">
-    <h4 class="descripcion">{{productoOrdenPendientes.descripcion}}</h4>
 
-  </div>
-  <div class="col">
-    <h4 class="cantidad">
-      {{productoOrdenPendientes.cantidad}}
-       <span *ngIf="productoOrdenPendientes.cantidad === 1">unidad</span>
-       <span *ngIf="productoOrdenPendientes.cantidad > 1">unidades</span>
-    </h4>
-  </div>
+<div class="row contenedor">
+
+
+
+    <div class="col-4">
+        <img [src]="productoOrdenPendientes.imgUrl">
+        <p class="kpi row">{{productoOrdenPendientes.descripcion}} </p>
+        <p class="kpi row">Total: <strong>{{productoOrdenPendientes.cantidad}}</strong> </p>
+        <p class="kpi warning" *ngIf="productoOrdenPendientes.vencida > 0">Expired: {{productoOrdenPendientes.vencida}}</p>
+
+    </div>
+    <div class="col-8 data">
+
+        <div class="col-12">
+
+              <p class="kpi row">Today: <strong>{{productoOrdenPendientes.hoy}}</strong></p>
+              <p class="kpi row"> Tomorrow: <strong>{{productoOrdenPendientes.manana}}</strong></p>
+              <p class="kpi row">{{Day(2) | date: 'EEEE'}}: <strong>{{productoOrdenPendientes.pasadoManana}}</strong> </p>
+
+
+        </div>
+        <div class="col-12">
+
+          <p class="kpi row">{{Day(3) | date: 'EEEE'}}:     <strong>{{productoOrdenPendientes.tresDias}}</strong> </p>
+          <p class="kpi row">{{Day(4) | date: 'EEEE'}}:  <strong>{{productoOrdenPendientes.cuatroDias}}</strong> </p>
+          <p class="kpi row">{{Day(5) | date: 'EEEE'}}+:  <strong>{{productoOrdenPendientes.cincoOMasDias}}</strong> </p>
+        </div>
+
+
+
+
+    </div>
+
 
 </div>

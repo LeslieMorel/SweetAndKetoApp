@@ -1,5 +1,5 @@
 <div class="contenido" >
-  <h1>Orden: {{orden.id}}</h1>
+  <!-- <h1>Orden: {{orden.id}}</h1> -->
 
   <form [formGroup] ="ordenForm"  (ngSubmit)="Submit()">
     <div [hidden]="!this.edit" class="admin-panel">
@@ -151,6 +151,15 @@
             </div>
           </mat-expansion-panel>
         </mat-accordion>
+    </div>
+
+    <!-- Es un Regalo -->
+    <div class="grupo">
+      <mat-checkbox [formControl]="ordenForm.controls.esRegalo">
+        <mat-label>
+          <mat-icon>card_giftcard</mat-icon>
+          Este pedido es un regalo?</mat-label>
+      </mat-checkbox>
     </div>
     <!-- Metodo Entrega -->
   <div class="grupo">

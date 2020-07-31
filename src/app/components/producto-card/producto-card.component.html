@@ -24,13 +24,19 @@
           <div mat-button class="btn act" (click)="AddProducto()">+</div>
         </div>
       </div> -->
-    <div class="btn flex-row center v-center">
-      <div class="item">
-        <button mat-raised-button (click)="AddProducto()">
+    <!-- <div class="col-12">
+
+        <button mat-raised-button (click)="AddProducto()" style="width: 100%;">
           <mat-icon color="accent">shopping_cart</mat-icon>
           Agregar al carrito
         </button>
-      </div>
-    </div>
+
+    </div> -->
+    <button class="m-1" mat-stroked-button (click)="AddProducto()">
+      <span *ngIf="CantidadInCart() > 0">({{CantidadInCart()}})</span>
+      Agregar
+      <mat-icon>delete_outline</mat-icon>
+        </button>
+    <button  class="m-1" mat-stroked-button routerLink="/carrito">Comprar ahora</button>
   </div>
 </mat-card>

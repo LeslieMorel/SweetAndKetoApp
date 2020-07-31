@@ -1,10 +1,11 @@
 <mat-card class="container">
   <mat-card-title>Carrito</mat-card-title>
+
     <mat-card *ngIf="this.cartService.ItemsInCart() > 0">
       <p>Subtotal ({{cartService.ItemsInCart()}} productos): <strong>RD$ {{cartService.AmountInCart()}}</strong> </p>
       <button mat-raised-button color="accent" [routerLink]="['/checkout']"> Proceder al pago</button>
     </mat-card>
-    <div *ngFor="let product of cartProducts">
+    <div *ngFor="let product of cartProducts" class="m-1">
       <app-cart-product [cartProduct]="product"></app-cart-product>
     </div>
 </mat-card>

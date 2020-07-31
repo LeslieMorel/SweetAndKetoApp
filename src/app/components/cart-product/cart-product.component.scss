@@ -1,6 +1,10 @@
 @import '../../../variables';
 @import '../../../layouts';
 
+.container {
+  border-top: lightgrey 1px solid;
+  padding: 10px 0px;
+}
 img {
   width: 100px;
   height: 100px;

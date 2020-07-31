@@ -56,6 +56,7 @@ export class OrdenFormComponent implements OnInit {
     direccion2: new FormControl(),
     metodoEntrega: new FormControl(null, Validators.required),
     autorizada: new FormControl(false),
+    esRegalo: new FormControl(false),
     usuarioAutorizo: new FormControl(),
     precioDelivery: new FormControl(0),
     monto: new FormControl(0),

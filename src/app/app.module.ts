@@ -40,6 +40,7 @@ import { AuthService } from './services/auth.service';
 import { DialogImagenesComponent } from './components/dialog-imagenes/dialog-imagenes.component';
 import { HorarioEntregaPipePipe } from './customPipes/horario-entrega-pipe.pipe';
 import { HorarioEntregaService } from './services/horario-entrega.service';
+import { GotoCartSnackBarComponent } from './components/goto-cart-snack-bar/goto-cart-snack-bar.component';
 
 
 @NgModule({
@@ -65,7 +66,8 @@ import { HorarioEntregaService } from './services/horario-entrega.service';
     LoginComponent,
     RegisterComponent,
     DialogImagenesComponent,
-    HorarioEntregaPipePipe
+    HorarioEntregaPipePipe,
+    GotoCartSnackBarComponent
   ],
   imports: [
     BrowserModule,

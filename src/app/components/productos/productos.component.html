@@ -1,10 +1,10 @@
-<mat-card class="container">
+<mat-card class="container-fluid">
   <mat-card-title>
     Tienda
   </mat-card-title>
   <mat-card-content>
-    <div class="listProduct">
-      <div *ngFor="let producto of productos" class="producto">
+    <div class="listProduct row">
+      <div *ngFor="let producto of productos" class="col-6 col-md-4 col-xl-3">
 
         <app-producto-card [producto]="producto" ></app-producto-card>
 

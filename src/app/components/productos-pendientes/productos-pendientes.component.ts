@@ -14,4 +14,10 @@ export class ProductosPendientesComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  Day(days): Date {
+    const result = new Date();
+    result.setDate(result.getDate() + days);
+    return result;
+  }
+
 }
