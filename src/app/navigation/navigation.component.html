@@ -9,18 +9,20 @@
       <div class="icon-text">{{authService.userData.userName}}</div>
       <small class="logout" (click)="authService.logOut()">logout</small>
     </div>
-    <mat-nav-list>
-      <a mat-list-item routerLink="carrito" color="primary"><mat-icon color="primary">shopping_cart</mat-icon>Cart</a>
-      <a mat-list-item routerLink="/" color="primary"><mat-icon color="primary">store</mat-icon>Tienda</a>
+    <mat-nav-list >
+      <a (click)="drawer.close()" mat-list-item routerLink="carrito" color="primary"><mat-icon color="primary">shopping_cart</mat-icon>Cart</a>
+      <a (click)="drawer.close()" mat-list-item routerLink="/" color="primary"><mat-icon color="primary">store</mat-icon>Tienda</a>
       <div class="ordenes-zone" *ngIf="this.authService.userIsInRole('OrdenesEdicion')">
-        <a mat-list-item routerLink="/ordenes" color="primary" ><mat-icon color="primary">list</mat-icon> Ordenes</a>
-        <a mat-list-item routerLink="/productos-pendientes" color="primary"><mat-icon color="primary">group_work</mat-icon> Productos Pendientes</a>
+        <a (click)="drawer.close()"  mat-list-item routerLink="/ordenes" color="primary" ><mat-icon color="primary">list</mat-icon> Ordenes</a>
+        <a  (click)="drawer.close()" mat-list-item routerLink="/productos-pendientes" color="primary"><mat-icon color="primary">group_work</mat-icon> Productos Pendientes</a>
       </div>
       <div class="admin" *ngIf="this.authService.AdminUser()">
-        <a mat-list-item routerLink="/productos" color="primary"><mat-icon color="primary">list</mat-icon> Productos</a>
-        <a mat-list-item routerLink="/images" color="primary"><mat-icon color="primary">insert_photo</mat-icon> Images</a>
+        <a (click)="drawer.close()"  mat-list-item routerLink="/productos" color="primary"><mat-icon color="primary">list</mat-icon> Productos</a>
+        <a (click)="drawer.close()" mat-list-item routerLink="/images" color="primary"><mat-icon color="primary">insert_photo</mat-icon> Images</a>
 
       </div>
+
+
     </mat-nav-list>
   </mat-sidenav>
   <mat-sidenav-content>
@@ -31,9 +33,10 @@
           aria-label="Toggle sidenav"
           mat-icon-button
           (click)="drawer.toggle()"
-          *ngIf="isHandset$ | async">
+          >
           <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
         </button>
+        <!-- *ngIf="isHandset$ | async" -->
 
         <img routerLink="/" class="logo" src="https://sweetandketo.blob.core.windows.net/productos/BrandLogo.jpg">
         <!-- <span class="brand" light>Sweet & Keto </span> -->

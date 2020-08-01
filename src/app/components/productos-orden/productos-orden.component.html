@@ -1,17 +1,21 @@
-<div class="row">
 
-  <div class="col">
-    <h4 class="descripcion">{{productoOrden.productoNavigation.descripcion}}</h4>
-    <h5 class="cantidad">
-      {{productoOrden.cantidad}}
-       <span *ngIf="productoOrden.cantidad === 1">unidad</span>
-       <span *ngIf="productoOrden.cantidad > 1">unidades</span>
-      </h5>
-    <h4 class="precio">RD$  {{productoOrden.precio}} / und</h4>
+<div class="container box">
+  <div class="row">
+    <img [src]="productoOrden.productoNavigation.imgUrl"/>
+    <div class="col">
+      <h4 class="descripcion">{{productoOrden.productoNavigation.descripcion}}</h4>
+      <h4 >RD$  {{productoOrden.precio}} / und</h4>
+    </div>
+    <div class="col">
+      <h4> RD$ {{productoOrden.subtotal}}</h4>
+              <h1 class="cantidad">
+                <strong>{{productoOrden.cantidad}}</strong>
+                 <span *ngIf="productoOrden.cantidad === 1"> unidad</span>
+                 <span *ngIf="productoOrden.cantidad > 1"> unidades</span>
+              </h1>
+    </div>
   </div>
-  <div class="col">
-    <h4> RD$ {{productoOrden.subtotal}}</h4>
-  </div>
+
 </div>
 
 

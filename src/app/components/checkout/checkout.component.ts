@@ -7,6 +7,7 @@ import { SnackbarService } from 'src/app/services/snackbar.service';
 import { TipoSnackBar } from '../snackbar/snackbar.component';
 import { SnackbarPanelClass } from 'src/app/models/SnackBarPanelClass.model';
 import { Router } from '@angular/router';
+import { OrdenWithProductos } from 'src/app/models/ordenWithProductos.model';
 
 @Component({
   selector: 'app-checkout',
@@ -16,6 +17,7 @@ import { Router } from '@angular/router';
 export class CheckoutComponent implements OnInit {
 
   orden: OrdenesModel;
+  productos: ProductoOrdenModel[];
   constructor(public cartService: CarritoService,
               private ordenService: OrdenesService,
               private snackBarService: SnackbarService,
@@ -36,7 +38,7 @@ export class CheckoutComponent implements OnInit {
     return orden;
   }
 
-  AddProductos(orden: OrdenesModel): boolean{
+  AddProductos(): boolean{
     if (this.cartService.productos.length > 0){
       const productosOrden: ProductoOrdenModel[] = [];
       this.cartService.productos.forEach(producto => {
@@ -50,7 +52,7 @@ export class CheckoutComponent implements OnInit {
         };
         productosOrden.push(productoOrden);
       });
-      orden.productoOrdenNavigation = productosOrden;
+      this.productos = productosOrden;
       return true;
     } else {
        return false;
@@ -58,10 +60,14 @@ export class CheckoutComponent implements OnInit {
   }
 
   PostOrden(orden: OrdenesModel){
-    if (this.AddProductos(orden)){
+    if (this.AddProductos()){
       console.log('Posting Order: ');
       console.log(orden);
-      this.ordenService.PostOrden(orden).subscribe((Response: OrdenesModel) => {
+      const ordenBundle = new OrdenWithProductos();
+      ordenBundle.orden = orden;
+      ordenBundle.productos = this.productos;
+
+      this.ordenService.PostOrdenWithProductos(ordenBundle).subscribe((Response: OrdenesModel) => {
         console.log(Response);
         // tslint:disable-next-line: quotemark
         this.cartService.EmptyCart();

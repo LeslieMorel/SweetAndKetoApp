@@ -7,7 +7,7 @@
         <img [src]="productoOrdenPendientes.imgUrl">
         <p class="kpi row">{{productoOrdenPendientes.descripcion}} </p>
         <p class="kpi row">Total: <strong>{{productoOrdenPendientes.cantidad}}</strong> </p>
-        <p class="kpi warning" *ngIf="productoOrdenPendientes.vencida > 0">Expired: {{productoOrdenPendientes.vencida}}</p>
+        <p class="kpi warn" *ngIf="productoOrdenPendientes.vencida > 0">Expired: {{productoOrdenPendientes.vencida}}</p>
 
     </div>
     <div class="col-8 data">

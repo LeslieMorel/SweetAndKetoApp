@@ -3,6 +3,11 @@ img {
   height: 100px;
   border-radius: 50%;
 }
+.box {
+  margin: 10px 0px;
+  border-top: lightgrey 1px solid;
+  padding: 10px;
+}
 .row {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
@@ -13,7 +18,7 @@ img {
   padding: 0;
 }
 .cantidad {
-  font-size: small;
+  font-size: large;
   margin: 0;
   padding: 0;
 }

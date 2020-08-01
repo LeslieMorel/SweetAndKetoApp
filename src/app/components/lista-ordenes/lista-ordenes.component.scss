@@ -8,7 +8,7 @@
 }
 table {
   width: 100%;
-  margin: 10px;
+
 }
 
 .tableOrdenes {
@@ -18,9 +18,11 @@ table {
 
 .chip {
   display: inline-block;
-  padding: 0 20px;
-  height: 35px;
-  font-size: 16px;
+  padding: 0px 15px;
+  padding-bottom: 5px;
+  vertical-align: middle;
+  height: 30px;
+  font-size: 14px;
   line-height: 40px;
   border-radius: 25px;
   color: white;
@@ -35,14 +37,16 @@ table {
 }
 .listo {
   background-color: #8fa382;
+  // color: #8fa382;
 }
 .entregado {
-  background-color: lightgrey;
+  background-color: #8fa382;
+  // color: #8fa382;
 }
 
 .delete-btn {
-  font-size: small;
-  color: lightgrey;
+  font-size: x-large;
+  color: grey;
   &:hover {
     color: $color-accent;
     cursor: pointer;

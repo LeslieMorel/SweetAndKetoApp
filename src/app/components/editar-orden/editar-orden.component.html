@@ -1,25 +1,62 @@
-<div class="row">
-  <div class="col">
-    <mat-card *ngIf="orden">
-      <app-orden-form [edit]="true" [ordenId]="ordenId" [orden]="orden" (validSumit)="PutOrden($event)"></app-orden-form>
-    </mat-card>
 
-  </div>
-  <div class="col" >
-    <mat-card>
-      <h3>Productos</h3>
-
-
-        <div *ngFor="let producto of productosOrden">
-          <app-productos-orden [productoOrden]="producto"></app-productos-orden>
+  <mat-card>
+    <mat-tab-group>
+      <mat-tab label="Orden">
+        <div *ngIf="orden !== undefined">
+          <app-orden-form
+            [edit]="true"
+            [ordenId]="ordenId"
+            [orden]="orden"
+            (validSumit)="PutOrden($event)"
+          ></app-orden-form>
         </div>
+      </mat-tab>
 
-      <div >
+      <mat-tab label="productos">
+        <div >
+          <mat-card  *ngIf="orden !== undefined">
+            <mat-card-title>Cliente: {{orden.nombreCliente}}</mat-card-title>
+            <mat-card-subtitle>Orden: {{orden.id}}</mat-card-subtitle>
 
-      </div>
-    </mat-card>
-  </div>
+          </mat-card>
+          <mat-card>
+            <div *ngFor="let producto of productosOrden">
+              <app-productos-orden [productoOrden]="producto"></app-productos-orden>
+            </div>
 
-</div>
+          </mat-card>
+        </div>
+        <mat-card *ngIf="orden !== undefined">
+          <div class=" gridMontos">
+
+            <div class="gridItem">
+              <p>Subtotal:</p>
+            </div>
+            <div class="gridItem number" >
+              <p> {{this.orden.monto | currency}}</p>
+            </div>
+            <div class="gridItem ">
+              Delivery:
+            </div>
+            <div class="gridItem number">
+              {{this.orden.precioDelivery | currency}}
+            </div>
+            <div class="gridItem ">
+              Total: RD
+            </div>
+            <div class="gridItem number" style="border-top: lightgray 1px solid;">
+              <strong>{{this.orden.montoTotal | currency}}</strong>
+            </div>
+
+          </div>
+
+        </mat-card>
+
+      </mat-tab>
+
+    </mat-tab-group>
+
+  </mat-card>
+
 
 

@@ -36,13 +36,14 @@ export class EditarOrdenComponent implements OnInit {
   SetOrden(ordenId: string){
     this.ordenesService.GetOrden(ordenId).subscribe((resp: OrdenesModel) => {
       this.orden = resp;
+      console.log(resp);
     });
     this.ordenesService.GetProductosOfOrden(ordenId).subscribe((resp: ProductoOrdenModel[]) => {
       // this.ordenesService.productosOrden = resp;
       this.productosOrden = resp;
       console.log('Productos Orden');
       console.log(resp);
-      this.orden.productoOrdenNavigation = this.productosOrden;
+      // this.orden.productoOrdenNavigation = this.productosOrden;
 
     });
   }

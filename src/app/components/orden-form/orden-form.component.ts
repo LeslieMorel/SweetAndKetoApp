@@ -94,7 +94,12 @@ export class OrdenFormComponent implements OnInit {
 
     this.ordenForm.get('zona').valueChanges
     .subscribe((resp) => {this.SetPrecioDelivery(); });
-  }
+    this.ordenForm.get('precioDelivery').valueChanges
+    .subscribe((resp) => {this.CalcularMontoTotal(); });
+    this.ordenForm.get('monto').valueChanges
+    .subscribe((resp) => {this.CalcularMontoTotal(); });
+    }
+
 
   private _filter(value: string): SectorModel[] {
     if (value === null) { return null; }
@@ -163,6 +168,7 @@ export class OrdenFormComponent implements OnInit {
   }
 
   CalcularMontoTotal(){
+    console.log('Precio Changed');
     const monto = this.ordenForm.controls.monto.value;
     const precioDelivery = this.ordenForm.controls.precioDelivery.value;
     const montoTotal = monto + precioDelivery;

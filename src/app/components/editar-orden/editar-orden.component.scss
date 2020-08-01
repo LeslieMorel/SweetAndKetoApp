@@ -5,6 +5,16 @@
 
 }
 
-.col {
+
+.gridMontos {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 3;
+}
+.gridItem {
+  height: 25px;
+  margin: 2px;
+  padding: 2px;
+  text-justify: distribute;
 
 }

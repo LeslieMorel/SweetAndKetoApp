@@ -1,5 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { ProductoOrdenModel } from 'src/app/models/productoOrden.model';
+import { OrdenesModel } from 'src/app/models/ordenes.model';
 
 @Component({
   selector: 'app-productos-orden',

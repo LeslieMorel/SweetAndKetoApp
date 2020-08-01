@@ -35,8 +35,11 @@
     <button class="m-1" mat-stroked-button (click)="AddProducto()">
       <span *ngIf="CantidadInCart() > 0">({{CantidadInCart()}})</span>
       Agregar
-      <mat-icon>delete_outline</mat-icon>
+
         </button>
     <button  class="m-1" mat-stroked-button routerLink="/carrito">Comprar ahora</button>
   </div>
+  <!-- <button mat-icon-button>
+    <mat-icon>delete_outline</mat-icon>
+  </button> -->
 </mat-card>
