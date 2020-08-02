@@ -1,5 +1,11 @@
 @import '../../variables';
 
+.auth-actions {
+
+  @media (max-width:$breakpoint-mobile){
+    display: none;
+  }
+}
 .sidenav-container {
   height: 100%;
 
@@ -32,7 +38,8 @@
 
 .toolbar-item {
   display: flex;
-  justify-content: baseline;
+  justify-content: center;
+  align-items: center;
 
 }
 

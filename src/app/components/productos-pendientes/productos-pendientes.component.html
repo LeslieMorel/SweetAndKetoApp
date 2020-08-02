@@ -14,20 +14,43 @@
 
         <div class="col-12">
 
-              <p class="kpi row">Today: <strong>{{productoOrdenPendientes.hoy}}</strong></p>
-              <p class="kpi row"> Tomorrow: <strong>{{productoOrdenPendientes.manana}}</strong></p>
-              <p class="kpi row">{{Day(2) | date: 'EEEE'}}: <strong>{{productoOrdenPendientes.pasadoManana}}</strong> </p>
+              <!-- <p class="kpi row">Today: <strong>{{productoOrdenPendientes.hoy}}</strong></p> -->
+              <!-- <p class="kpi row"> Tomorrow: <strong>{{productoOrdenPendientes.manana}}</strong></p> -->
+              <div class="kpi row">
+                <strong style="display: inline-block; margin-right: 5px; font-size: 17px;">{{productoOrdenPendientes.hoy}}</strong>
+                <p >{{Day(0) | date: 'E.dd/MM'}} </p>
+              </div>
+              <div class="kpi row">
+                <strong style="display: inline-block; margin-right: 5px; font-size: 17px;">{{productoOrdenPendientes.manana}}</strong>
+                <p >{{Day(1) | date: 'E.dd/MM'}} </p>
+              </div>
+              <div class="kpi row">
+                <strong style="display: inline-block; margin-right: 5px; font-size: 17px;">{{productoOrdenPendientes.pasadoManana}}</strong>
+                <p >{{Day(2) | date: 'E.dd/MM'}} </p>
+              </div>
 
 
         </div>
         <div class="col-12">
+          <div class="kpi row">
+            <strong style="display: inline-block; margin-right: 5px; font-size: 17px;">{{productoOrdenPendientes.tresDias}}</strong>
+            <p >{{Day(3) | date: 'E.dd/MM'}} </p>
+          </div>
+          <div class="kpi row">
+            <strong style="display: inline-block; margin-right: 5px; font-size: 17px;">{{productoOrdenPendientes.cuatroDias}}</strong>
+            <p >{{Day(4) | date: 'E.dd/MM'}} </p>
+          </div>
+          <div class="kpi row">
+            <strong style="display: inline-block; margin-right: 5px; font-size: 17px;">{{productoOrdenPendientes.cincoOMasDias}}</strong>
+            <p >{{Day(5) | date: 'E.dd/MM'}} </p>
+          </div>
 
-          <p class="kpi row">{{Day(3) | date: 'EEEE'}}:     <strong>{{productoOrdenPendientes.tresDias}}</strong> </p>
-          <p class="kpi row">{{Day(4) | date: 'EEEE'}}:  <strong>{{productoOrdenPendientes.cuatroDias}}</strong> </p>
-          <p class="kpi row">{{Day(5) | date: 'EEEE'}}+:  <strong>{{productoOrdenPendientes.cincoOMasDias}}</strong> </p>
         </div>
 
 
+        <!-- <p class="kpi row">{{Day(3) | date: 'EEEE'}}:     <strong>{{productoOrdenPendientes.tresDias}}</strong> </p>
+        <p class="kpi row">{{Day(4) | date: 'EEEE'}}:  <strong>{{productoOrdenPendientes.cuatroDias}}</strong> </p>
+        <p class="kpi row">{{Day(5) | date: 'EEEE'}}+:  <strong>{{productoOrdenPendientes.cincoOMasDias}}</strong> </p> -->
 
 
     </div>

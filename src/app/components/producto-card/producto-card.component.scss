@@ -1,7 +1,8 @@
 @import '../../../variables';
 .card {
   width: 100%;
-  height: 500px;
+  max-width: 600px;
+  // height: 500px;
   padding: 0;
   margin: 10px;
   border-radius: 3px;
@@ -9,7 +10,7 @@
     // background-color: #ccc;
   }
   @media (max-width: $breakpoint-mobile) {
-        height: 400px;
+        // height: 400px;
     }
 }
 
@@ -23,11 +24,20 @@
   padding: 5px;
   // background-color: $color-primary;
   display: grid;
-  // grid-template-rows: 1fr 1fr 1fr;
+  grid-template-rows: 55px 40px 40px;
 }
 
 .titulo {
-  margin: 5px;
+  margin: 0px;
+  width: 100%;
+  line-height: 20px;
+  margin-left: 5px;
+  // letter-spacing: 1px;
+   // overflow: hidden;
+    // width: 100px;
+    // height: 1.2em;
+    // white-space: nowrap;
+    // display: inline;
 }
 .precio {
   margin: 5px;
@@ -39,7 +49,9 @@ img {
   border-top-left-radius: 3px;
   border-top-right-radius: 3px;
   width: 100%;
-  height: 100%;
+  height: 140px;
+  // position: block;
+  // display: inline;
 
 
   // // Mobile
@@ -100,12 +112,7 @@ img {
 .btn {
   width: 100%;
 }
-.select {
-  // background-color: $color-primary;
 
-
-
-}
 .icon-select {
   width: 30%;
   margin-bottom: 10px;
@@ -116,3 +123,34 @@ img {
 // .descripcion {
 //   font-size: 3rem;
 // }
+
+.macros {
+  display: flex;
+  justify-content: space-evenly;
+}
+.macro {
+  background-color: $color-primary-ligth;
+  border-radius: 25px;
+  width: 50px;
+  height: 50px;
+  font-size: 14px;
+  text-align: center;
+
+  padding: 3px;
+  color: $color-primary-dark;
+
+
+  small {
+    display: block;
+    text-align: center;
+  }
+
+}
+
+.btn_info {
+  color: $color-primary;
+  margin-left: 10px;
+  position: relative;
+  display: inline;
+
+}

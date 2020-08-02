@@ -10,11 +10,15 @@
       <small class="logout" (click)="authService.logOut()">logout</small>
     </div>
     <mat-nav-list >
+      <div *ngIf="!this.authService.userData">
+        <a (click)="drawer.close()" mat-list-item routerLink="/login" color="primary"><mat-icon color="primary">account_circle</mat-icon>Login</a>
+
+      </div>
       <a (click)="drawer.close()" mat-list-item routerLink="carrito" color="primary"><mat-icon color="primary">shopping_cart</mat-icon>Cart</a>
       <a (click)="drawer.close()" mat-list-item routerLink="/" color="primary"><mat-icon color="primary">store</mat-icon>Tienda</a>
       <div class="ordenes-zone" *ngIf="this.authService.userIsInRole('OrdenesEdicion')">
         <a (click)="drawer.close()"  mat-list-item routerLink="/ordenes" color="primary" ><mat-icon color="primary">list</mat-icon> Ordenes</a>
-        <a  (click)="drawer.close()" mat-list-item routerLink="/productos-pendientes" color="primary"><mat-icon color="primary">group_work</mat-icon> Productos Pendientes</a>
+        <a  (click)="drawer.close()" mat-list-item routerLink="/productos-pendientes" color="primary"><mat-icon color="primary">group_work</mat-icon> Produccion</a>
       </div>
       <div class="admin" *ngIf="this.authService.AdminUser()">
         <a (click)="drawer.close()"  mat-list-item routerLink="/productos" color="primary"><mat-icon color="primary">list</mat-icon> Productos</a>
@@ -48,14 +52,17 @@
         <button mat-icon-button routerLink="/carrito">
           <mat-icon [matBadge]="cartService.ItemsInCart()" matBadgeColor="accent">shopping_cart</mat-icon>
         </button>
-        <button *ngIf="!this.authService.userData" mat-button routerLink="/login">
-          <mat-icon >account_circle</mat-icon> Login
-        </button>
-        <button *ngIf="!this.authService.userData" color="accent" mat-raised-button routerLink="/register">
-           Register
-        </button>
-        <button mat-button *ngIf="this.authService.userData" class="logout" (click)="authService.logOut()">
-          <mat-icon>account_circle</mat-icon> logout</button>
+        <div class="auth-actions">
+          <button *ngIf="!this.authService.userData" mat-button routerLink="/login">
+            <mat-icon >account_circle</mat-icon> Login
+          </button>
+          <button *ngIf="!this.authService.userData" color="accent" mat-raised-button routerLink="/register">
+             Register
+          </button>
+          <button mat-button *ngIf="this.authService.userData" class="logout" (click)="authService.logOut()">
+            <mat-icon>account_circle</mat-icon> logout</button>
+
+        </div>
 
 
       </div>

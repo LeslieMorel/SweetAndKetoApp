@@ -25,6 +25,7 @@ export class CarritoService {
       {
         productoInCart.cantidad++;
         productoInCart.monto = productoInCart.cantidad * productoInCart.producto.precio;
+        console.log(productoInCart);
       }
     else{ this.productos.push({producto, cantidad: 1, monto: producto.precio}); }
 

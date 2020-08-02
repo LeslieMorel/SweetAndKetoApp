@@ -41,6 +41,7 @@ import { DialogImagenesComponent } from './components/dialog-imagenes/dialog-ima
 import { HorarioEntregaPipePipe } from './customPipes/horario-entrega-pipe.pipe';
 import { HorarioEntregaService } from './services/horario-entrega.service';
 import { GotoCartSnackBarComponent } from './components/goto-cart-snack-bar/goto-cart-snack-bar.component';
+import { ProductoInfoComponent } from './components/producto-info/producto-info.component';
 
 
 @NgModule({
@@ -67,7 +68,8 @@ import { GotoCartSnackBarComponent } from './components/goto-cart-snack-bar/goto
     RegisterComponent,
     DialogImagenesComponent,
     HorarioEntregaPipePipe,
-    GotoCartSnackBarComponent
+    GotoCartSnackBarComponent,
+    ProductoInfoComponent
   ],
   imports: [
     BrowserModule,
@@ -98,7 +100,8 @@ import { GotoCartSnackBarComponent } from './components/goto-cart-snack-bar/goto
   ],
   entryComponents: [
     SnackbarComponent,
-    DialogImagenesComponent
+    DialogImagenesComponent,
+    ProductoInfoComponent
   ],
   bootstrap: [AppComponent]
 })

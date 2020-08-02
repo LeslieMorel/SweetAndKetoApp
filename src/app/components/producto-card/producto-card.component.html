@@ -1,12 +1,15 @@
 <mat-card class="card">
+  <!-- Imagen -->
   <div class="imgFrame">
     <img [src]="this.producto.imgUrl" />
+
   </div>
   <div class="contenido">
-    <h3 class="titulo">{{ producto.descripcion }}</h3>
+    <h3 class="titulo cut-text">{{ producto.descripcion }}</h3>
     <h4 class="precio">
       <strong> RD$ {{ producto.precio }}</strong>
     </h4>
+
     <!-- <div >
         <button class="pick-btn" mat-stroked-button color="primary">-</button>
         <mat-form-field  class="pick-btn" >
@@ -32,13 +35,19 @@
         </button>
 
     </div> -->
-    <button class="m-1" mat-stroked-button (click)="AddProducto()">
-      <span *ngIf="CantidadInCart() > 0">({{CantidadInCart()}})</span>
-      Agregar
 
-        </button>
-    <button  class="m-1" mat-stroked-button routerLink="/carrito">Comprar ahora</button>
+
+    <button mat-stroked-button (click)="AddProducto()">
+      <span *ngIf="CantidadInCart() > 0">({{ CantidadInCart() }})</span>
+      Agregar
+    </button>
+    <button mat-icon-button>
+    <mat-icon matSuffix  (click)="openDialogInfo()"class="btn_info">info</mat-icon>
+    </button>
+
+    <!-- <button  class="m-1" mat-stroked-button routerLink="/carrito">Comprar ahora</button> -->
   </div>
+
   <!-- <button mat-icon-button>
     <mat-icon>delete_outline</mat-icon>
   </button> -->

@@ -1,0 +1,15 @@
+<div *ngIf="producto" class="contenedor">
+
+    <img [src]="producto.imgUrl">
+
+  <div class="descripcion">
+    <div class="titulo">{{producto.descripcion}}</div>
+    <div class="descripcion_larga"></div>
+  </div>
+  <div class="macros">
+    <div class="macro">{{producto.calorias}} <small>Cal</small></div>
+    <div class="macro">{{producto.carbs}}g <small>Net C.</small></div>
+    <div class="macro">{{producto.fat}}g <small>Fat</small></div>
+    <div class="macro">{{producto.proteins}}g <small>Prot</small></div>
+  </div>
+</div>

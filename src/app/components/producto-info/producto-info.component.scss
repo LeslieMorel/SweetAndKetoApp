@@ -1,0 +1,41 @@
+@import '../../../variables';
+.contenedor {
+  width: 250px;
+  margin: 0px;
+  display: grid;
+  grid-template-rows: 250px 50px 100px;
+  padding: 0px;
+
+}
+.macros {
+  display: flex;
+  justify-content: space-evenly;
+  width: 100%;
+}
+.macro {
+  background-color: $color-primary-ligth;
+  border-radius: 25px;
+  width: 50px;
+  height: 50px;
+  font-size: 14px;
+  text-align: center;
+
+  padding: 3px;
+  color: $color-primary-dark;
+
+
+  small {
+    display: block;
+    text-align: center;
+  }
+}
+img {
+  margin: 0px;
+  padding: 0px;
+  object-fit: cover;
+  background-color: lightgrey;
+  border-top-left-radius: 3px;
+  border-top-right-radius: 3px;
+  width: 100%;
+  height: 250px;
+}
