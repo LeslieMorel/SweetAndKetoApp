@@ -16,11 +16,11 @@ import { AttachFilesService } from 'src/app/services/attach-files.service';
 import { AttachFile } from 'src/app/models/attachFile.model';
 import { Router } from '@angular/router';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { SnackbarComponent, TipoSnackBar } from '../snackbar/snackbar.component';
 import { SnackbarService } from 'src/app/services/snackbar.service';
 import { SnackbarPanelClass } from 'src/app/models/SnackBarPanelClass.model';
 import { HorarioEntregaService } from 'src/app/services/horario-entrega.service';
 import { HorarioEntregaModel } from 'src/app/models/horarioEntrega.model';
+import { TipoSnackBar } from '../../snackbar/snackbar.component';
 
 @Component({
   selector: 'app-orden-form',

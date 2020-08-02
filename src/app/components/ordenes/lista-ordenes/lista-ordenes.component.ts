@@ -6,11 +6,13 @@ import { MatSort } from '@angular/material/sort';
 import { OrdenesService } from 'src/app/services/ordenes.service';
 import { OrdenDtoModel } from 'src/app/models/ordenDto.model';
 import { SnackbarService } from 'src/app/services/snackbar.service';
-import { TipoSnackBar } from '../snackbar/snackbar.component';
+import { TipoSnackBar } from '../../snackbar/snackbar.component';
 import { SnackbarPanelClass } from 'src/app/models/SnackBarPanelClass.model';
 import { AuthService } from 'src/app/services/auth.service';
 import {SelectionModel} from '@angular/cdk/collections';
 import { Router } from '@angular/router';
+import { MatDialog } from '@angular/material/dialog';
+import { FiltroOrdenesComponent } from '../filtro-ordenes/filtro-ordenes.component';
 @Component({
   selector: 'app-lista-ordenes',
   templateUrl: './lista-ordenes.component.html',
@@ -20,7 +22,8 @@ export class ListaOrdenesComponent implements OnInit {
   constructor(private ordenesService: OrdenesService,
               public authServ: AuthService,
               private snackServ: SnackbarService,
-              private router: Router) {}
+              private router: Router,
+              private dialog: MatDialog) {}
   ordenes: OrdenDtoModel[] = [];
   ordenesDataSource = new MatTableDataSource(this.ordenes);
   @ViewChild(MatPaginator, { static: true }) paginator: MatPaginator;
@@ -79,6 +82,7 @@ export class ListaOrdenesComponent implements OnInit {
       console.log(Response);
       this.setDataSource(Response);
     });
+    this.selection = new SelectionModel<OrdenDtoModel>(true, []);
   }
 
   setDataSource(filteredOrdenes: OrdenDtoModel[]) {
@@ -163,5 +167,12 @@ export class ListaOrdenesComponent implements OnInit {
       const ordenId = this.selection.selected[0].id;
       this.router.navigate(['/editar-orden/',ordenId]);
     }
+  }
+
+  openFiltroOrdenes(){
+    const dialogRef = this.dialog.open(FiltroOrdenesComponent);
+    dialogRef.afterClosed().subscribe(resp => {
+      console.log(resp);
+    });
   }
 }

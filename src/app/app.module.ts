@@ -7,7 +7,6 @@ import { MaterialModule } from './material.module';
 import { OrdenesService } from './services/ordenes.service';
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { AuthInterceptorService } from './services/auth-interceptor.service';
-import { OrdenesComponent } from './components/ordenes/ordenes.component';
 import { NavigationComponent } from './navigation/navigation.component';
 import { LayoutModule } from '@angular/cdk/layout';
 
@@ -17,10 +16,10 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CarritoService } from './services/carrito.service';
 import { CartComponent } from './components/cart/cart.component';
 import { CartProductComponent } from './components/cart-product/cart-product.component';
-import { OrdenFormComponent } from './components/orden-form/orden-form.component';
+import { OrdenFormComponent } from './components/ordenes/orden-form/orden-form.component';
 import { CheckoutComponent } from './components/checkout/checkout.component';
 import { EstadoOrdenPipePipe } from './customPipes/estado-orden-pipe.pipe';
-import { ListaOrdenesComponent } from './components/lista-ordenes/lista-ordenes.component';
+import { ListaOrdenesComponent } from './components/ordenes/lista-ordenes/lista-ordenes.component';
 import { ProductosService } from './services/productos.service';
 import { EditarOrdenComponent } from './components/editar-orden/editar-orden.component';
 import { ProductosOrdenComponent } from './components/productos-orden/productos-orden.component';
@@ -42,12 +41,12 @@ import { HorarioEntregaPipePipe } from './customPipes/horario-entrega-pipe.pipe'
 import { HorarioEntregaService } from './services/horario-entrega.service';
 import { GotoCartSnackBarComponent } from './components/goto-cart-snack-bar/goto-cart-snack-bar.component';
 import { ProductoInfoComponent } from './components/producto-info/producto-info.component';
+import { FiltroOrdenesComponent, FiltrosOrdenes } from './components/ordenes/filtro-ordenes/filtro-ordenes.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    OrdenesComponent,
     NavigationComponent,
     ProductosComponent,
     ProductoCardComponent,
@@ -69,7 +68,8 @@ import { ProductoInfoComponent } from './components/producto-info/producto-info.
     DialogImagenesComponent,
     HorarioEntregaPipePipe,
     GotoCartSnackBarComponent,
-    ProductoInfoComponent
+    ProductoInfoComponent,
+    FiltroOrdenesComponent
   ],
   imports: [
     BrowserModule,
@@ -101,7 +101,8 @@ import { ProductoInfoComponent } from './components/producto-info/producto-info.
   entryComponents: [
     SnackbarComponent,
     DialogImagenesComponent,
-    ProductoInfoComponent
+    ProductoInfoComponent,
+    FiltroOrdenesComponent
   ],
   bootstrap: [AppComponent]
 })

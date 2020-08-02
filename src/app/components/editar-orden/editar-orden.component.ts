@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { OrdenesService } from 'src/app/services/ordenes.service';
-import { OrdenesComponent } from '../ordenes/ordenes.component';
 import { OrdenesModel } from 'src/app/models/ordenes.model';
 import { ProductoOrdenModel } from 'src/app/models/productoOrden.model';
 import { SnackbarService } from 'src/app/services/snackbar.service';

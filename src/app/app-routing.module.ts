@@ -1,10 +1,9 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { OrdenesComponent } from './components/ordenes/ordenes.component';
 import { ProductosComponent } from './components/productos/productos.component';
 import { CartComponent } from './components/cart/cart.component';
 import { CheckoutComponent } from './components/checkout/checkout.component';
-import { ListaOrdenesComponent } from './components/lista-ordenes/lista-ordenes.component';
+import { ListaOrdenesComponent } from './components/ordenes/lista-ordenes/lista-ordenes.component';
 import { EditarOrdenComponent } from './components/editar-orden/editar-orden.component';
 import { OrdenConfirmacionComponent } from './components/orden-confirmacion/orden-confirmacion.component';
 import { ProductosPendientesComponent } from './components/productos-pendientes/productos-pendientes.component';
