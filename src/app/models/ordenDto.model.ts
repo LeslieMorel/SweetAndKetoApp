@@ -6,6 +6,7 @@ export class OrdenDtoModel {
   fechaCreacion: Date;
   fechaRequerida: Date;
   diasParaEntrega: number;
+  estadoOrden: number;
   ciudad: string;
   direccion2: string;
   direccion1: string;

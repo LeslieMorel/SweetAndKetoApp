@@ -19,8 +19,7 @@ export class CartProductComponent implements OnInit {
     console.log($event);
   }
   deleteProducto(){
-    const index = this.cartServ.productos.indexOf(this.cartProduct);
-    this.cartServ.productos.splice(index, 1);
+    const index = this.cartServ.DeleteProducto(this.cartProduct);
   }
 
 }

@@ -42,6 +42,7 @@ import { HorarioEntregaService } from './services/horario-entrega.service';
 import { GotoCartSnackBarComponent } from './components/goto-cart-snack-bar/goto-cart-snack-bar.component';
 import { ProductoInfoComponent } from './components/producto-info/producto-info.component';
 import { FiltroOrdenesComponent, FiltrosOrdenes } from './components/ordenes/filtro-ordenes/filtro-ordenes.component';
+import { MobileBottomNavComponent } from './components/mobile-bottom-nav/mobile-bottom-nav.component';
 
 
 @NgModule({
@@ -69,7 +70,8 @@ import { FiltroOrdenesComponent, FiltrosOrdenes } from './components/ordenes/fil
     HorarioEntregaPipePipe,
     GotoCartSnackBarComponent,
     ProductoInfoComponent,
-    FiltroOrdenesComponent
+    FiltroOrdenesComponent,
+    MobileBottomNavComponent
   ],
   imports: [
     BrowserModule,

@@ -1,5 +1,8 @@
 <mat-card class="container">
-  <mat-card-title>Carrito</mat-card-title>
+  <mat-card-title class="titulo">
+    <mat-icon matPrefix >shopping_cart</mat-icon>
+    <span>Carrito</span>
+  </mat-card-title>
 
     <mat-card *ngIf="this.cartService.ItemsInCart() > 0">
       <p>Subtotal ({{cartService.ItemsInCart()}} productos): <strong>RD$ {{cartService.AmountInCart()}}</strong> </p>

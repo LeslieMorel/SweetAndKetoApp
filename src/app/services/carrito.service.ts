@@ -80,6 +80,12 @@ export class CarritoService {
     return Subtotal;
   }
 
+  DeleteProducto(cartProduct: ProductoCartModel){
+    const index = this.productos.indexOf(cartProduct);
+    this.productos.splice(index, 1);
+    this.CartUpdated();
+  }
+
 
 
 }

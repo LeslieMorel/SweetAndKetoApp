@@ -1,46 +1,43 @@
 @import '../../../variables';
-.card {
-  width: 100%;
-  max-width: 600px;
-  // height: 500px;
-  padding: 0;
-  margin: 10px;
-  border-radius: 3px;
-  &:hover {
-    // background-color: #ccc;
+@import './producto-card-mobile.scss';
+
+@media (min-width: $breakpoint-mobile) {
+  .card {
+    width: 300px;
+    height: 400px;
+    padding: 0;
+    margin: 10px;
+    border-radius: 3px;
+
+
   }
-  @media (max-width: $breakpoint-mobile) {
-        // height: 400px;
-    }
+  .imgFrame {
+    height: 200px;
+    object-fit: contain;
+  }
+  .contenido {
+    padding: 10px;
+    display: grid;
+    grid-template-rows: 50px 40px 40px;
+  }
+
 }
 
-.imgFrame {
-  height: 50%;
-  background-color: lightpink;
-  object-fit: contain;
-}
 
-.contenido {
-  padding: 5px;
-  // background-color: $color-primary;
-  display: grid;
-  grid-template-rows: 55px 40px 40px;
-}
 
 .titulo {
   margin: 0px;
+  padding: 10px;
   width: 100%;
+  font-size: medium;
   line-height: 20px;
-  margin-left: 5px;
-  // letter-spacing: 1px;
-   // overflow: hidden;
-    // width: 100px;
-    // height: 1.2em;
-    // white-space: nowrap;
-    // display: inline;
+  text-overflow: ellipsis;
+  white-space: wrap;
+
 }
 .precio {
-  margin: 5px;
+  margin: 0px;
+  padding: 10px;
 }
 
 img {
@@ -49,24 +46,7 @@ img {
   border-top-left-radius: 3px;
   border-top-right-radius: 3px;
   width: 100%;
-  height: 140px;
-  // position: block;
-  // display: inline;
-
-
-  // // Mobile
-  // @media (max-width: $breakpoint-mobile) {
-  //     width: 100%;
-  //     height: 150px;
-  // }
-
-  //   // Web
-  //   @media (min-width: $breakpoint-desktop) {
-  //       width: 100%;
-  //       height: 250px;
-  //   }
-
-
+  height: 100%;
   }
 
 
@@ -87,9 +67,7 @@ img {
   width: 80%;
   height: 35px;
   border-radius: 20PX;
-  // border: #8fa382 solid 1px;
   border: $color-primary solid 1px;
-  // background-color: pink;
 
 }
 
@@ -99,16 +77,7 @@ img {
     cursor: pointer;
   }
 }
-// .act {
-//   display: flex;
-//   justify-content: center;
-//   text-align: center;
-//   align-items: center;
-//   color: $color-primary;
-//   width: 33%;
-//   height: 100%;
-//   font-size: 1.1rem;
-// }
+
 .btn {
   width: 100%;
 }
@@ -116,13 +85,9 @@ img {
 .icon-select {
   width: 30%;
   margin-bottom: 10px;
-  @media (max-width: $breakpoint-mobile) {
-    display: none;
-  }
+
 }
-// .descripcion {
-//   font-size: 3rem;
-// }
+
 
 .macros {
   display: flex;

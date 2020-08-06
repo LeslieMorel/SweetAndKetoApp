@@ -1,29 +1,27 @@
 <div mat-dialog-title>Filtro Ordenes</div>
 <div mat-dialog-content class="form">
-  <mat-form-field>
+  <mat-form-field appearance="outline">
     <mat-label>Estados</mat-label>
     <mat-select [(ngModel)]="filtros.estados" multiple>
       <mat-option *ngFor="let estado of estados" [value]="estado.value">{{estado.text}}</mat-option>
     </mat-select>
 
   </mat-form-field>
-  <mat-form-field>
+  <mat-form-field appearance="outline">
     <mat-label>Nombre Cliente</mat-label>
     <input
     matInput
     type="text"
     [(ngModel)]="filtros.nombreCliente"
     >
-    <mat-icon matSuffix>search</mat-icon>
   </mat-form-field>
-  <mat-form-field>
+  <mat-form-field appearance="outline">
     <mat-label>No. Orden</mat-label>
     <input
     matInput
     type="number"
     [(ngModel)]="filtros.ordenId"
     >
-    <mat-icon matSuffix>search</mat-icon>
   </mat-form-field>
 </div>
 

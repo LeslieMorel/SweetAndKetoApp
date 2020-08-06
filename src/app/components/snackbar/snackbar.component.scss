@@ -1,8 +1,9 @@
 .row {
   display: flex;
   flex-direction: row;
-  align-items: center;
+  justify-content: center;
+  align-items: baseline;
 }
-.col {
+.icon {
   margin: 0px 15px;
 }

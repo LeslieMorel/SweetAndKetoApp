@@ -1,7 +1,33 @@
-$breakpoint-tablet: 768px;
-$breakpoint-mobile: 600px;
-.container {
+@import '../../../variables';
+
+.titulo {
+  text-align: center;
+  color: $color-primary;
+  font-size: x-large;
+  display: flex;
+  align-items: center;
+
+  align-content: center;
+  justify-content: center;
+}
+.contenedor {
   height: 100vh;
+  width: 100%;
+  overflow: scroll;
+  padding-bottom: 100px;
+
+
+
+}
+.productos {
+  margin: auto;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  justify-items: center;
+  flex-wrap: wrap;
+  gap: 10px;
 }
 // Web
 // @media (min-width: $breakpoint-tablet) {

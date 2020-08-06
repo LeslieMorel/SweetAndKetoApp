@@ -4,6 +4,7 @@ import { Observable } from 'rxjs';
 import { map, shareReplay } from 'rxjs/operators';
 import { CarritoService } from '../services/carrito.service';
 import { AuthService } from '../services/auth.service';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-navigation',
@@ -19,7 +20,11 @@ export class NavigationComponent {
     );
 
   constructor(private breakpointObserver: BreakpointObserver,
+              private activeRoute: ActivatedRoute,
               public authService: AuthService,
-              public cartService: CarritoService) {}
+              public cartService: CarritoService) {
+
+
+              }
 
 }

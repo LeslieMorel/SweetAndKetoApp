@@ -1,6 +1,9 @@
 
-<mat-card >
-  <mat-card-title color="primary">Ordenes</mat-card-title>
+<mat-card class="container">
+  <mat-card-title class="titulo">
+    <mat-icon matPrefix >list</mat-icon>
+    <span>Ordenes</span>
+  </mat-card-title>
   <mat-toolbar>
     <button
       mat-icon-button
@@ -78,9 +81,8 @@
             <th mat-header-cell *matHeaderCellDef mat-sort-header> Estado </th>
             <td mat-cell *matCellDef="let element">
               <div [ngClass]="estadoClass(element.estadoOrden)">
-                <div >
-                  {{element.diasParaEntrega | number: '1.0-0'}}
-
+                  <div class="estado" *ngIf="element.estadoOrden !== 68">
+                    {{element.diasParaEntrega | number: '1.0-0'}}
                 </div>
               </div>
               </td>

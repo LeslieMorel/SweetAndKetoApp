@@ -69,5 +69,6 @@
     </mat-toolbar>
     <!-- Add Content Here -->
     <router-outlet></router-outlet>
+    <app-mobile-bottom-nav [hidden]="(isHandset$ | async) === false"></app-mobile-bottom-nav>
   </mat-sidenav-content>
 </mat-sidenav-container>

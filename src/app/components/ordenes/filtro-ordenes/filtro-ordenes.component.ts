@@ -28,7 +28,12 @@ export class FiltroOrdenesComponent implements OnInit {
 }
 
 export class FiltrosOrdenes {
-  estados: string[];
+  estados: number[];
   nombreCliente: string;
   ordenId: number;
+  constructor(){
+    this.estados = null;
+    this.nombreCliente = null;
+    this.ordenId = null;
+  }
 }

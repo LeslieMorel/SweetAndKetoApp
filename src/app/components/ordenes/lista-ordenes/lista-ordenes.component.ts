@@ -12,7 +12,7 @@ import { AuthService } from 'src/app/services/auth.service';
 import {SelectionModel} from '@angular/cdk/collections';
 import { Router } from '@angular/router';
 import { MatDialog } from '@angular/material/dialog';
-import { FiltroOrdenesComponent } from '../filtro-ordenes/filtro-ordenes.component';
+import { FiltroOrdenesComponent, FiltrosOrdenes } from '../filtro-ordenes/filtro-ordenes.component';
 @Component({
   selector: 'app-lista-ordenes',
   templateUrl: './lista-ordenes.component.html',
@@ -173,6 +173,29 @@ export class ListaOrdenesComponent implements OnInit {
     const dialogRef = this.dialog.open(FiltroOrdenesComponent);
     dialogRef.afterClosed().subscribe(resp => {
       console.log(resp);
+      this.FiltrarOrdenes(resp);
     });
+  }
+
+  FiltrarOrdenes(filtros: FiltrosOrdenes){
+    let ordenesFiltradas = this.ordenes.slice();
+    if (filtros){
+      // Estado
+      if (filtros.estados){
+        ordenesFiltradas = ordenesFiltradas.filter(o=> filtros.estados.includes(o.estadoOrden));
+      }
+      // Nombre Cliente
+      if (filtros.nombreCliente && filtros.nombreCliente.length > 0) {
+        ordenesFiltradas = ordenesFiltradas
+        .filter(o=> o.nombreCliente.toLowerCase().includes(filtros.nombreCliente.toLowerCase()))
+      }
+      // No. Orden
+      if (filtros.ordenId) {
+        ordenesFiltradas = ordenesFiltradas
+        .filter(o=> o.id === filtros.ordenId);
+      }
+    }
+
+    this.setDataSource(ordenesFiltradas);
   }
 }

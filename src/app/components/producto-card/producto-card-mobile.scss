@@ -1,0 +1,20 @@
+ // Mobile
+  @media (max-width: $breakpoint-mobile) {
+    .card {
+      width: 150px;
+      height: 280px;
+      padding: 0;
+      border-radius: 3px;
+
+    }
+    .imgFrame {
+      height: 120px;
+      object-fit: contain;
+    }
+    .contenido {
+      padding: 5px;
+      display: grid;
+      grid-template-rows: 40px 40px 40px;
+    }
+
+  }

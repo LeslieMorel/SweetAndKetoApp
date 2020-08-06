@@ -10,7 +10,16 @@ table {
   width: 100%;
 
 }
+.titulo {
+  text-align: center;
+  color: $color-primary;
+  font-size: x-large;
+  display: flex;
+  align-items: center;
 
+  align-content: center;
+  justify-content: center;
+}
 .tableOrdenes {
   width: 100%;
   margin: 10px;
@@ -19,9 +28,11 @@ table {
 .chip {
   display: inline-block;
   padding: 0px 15px;
-  padding-bottom: 5px;
+
+  // padding-bottom: 5px;
   vertical-align: middle;
-  height: 30px;
+  width: 35px;
+  height: 35px;
   font-size: 14px;
   line-height: 40px;
   border-radius: 25px;
@@ -42,6 +53,7 @@ table {
 .entregado {
   background-color: #8fa382;
   // color: #8fa382;
+  // color: #8fa382;
 }
 
 .delete-btn {
@@ -51,5 +63,15 @@ table {
     color: $color-accent;
     cursor: pointer;
   }
+}
+
+.estado {
+  text-align: center;
+  height: 100%;
+  // margin: auto;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
 }
 
