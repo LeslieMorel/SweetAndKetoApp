@@ -26,3 +26,15 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
   background-color: white;
   color: $color-primary;
 }
+.spinner {
+  opacity: 1;
+  background-image: url('./assets/SpinnerSweetAndKeto.gif');
+  background-size: cover;
+  position: fixed;
+  top: 25%;
+  left: 25%;
+  width: 200px;
+  height: 200px;
+  z-index: 20;
+
+}

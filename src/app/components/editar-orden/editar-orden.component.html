@@ -1,31 +1,32 @@
 
   <mat-card>
-    <mat-tab-group>
-      <mat-tab label="Orden">
-        <div *ngIf="orden !== undefined">
-          <app-orden-form
-            [edit]="true"
-            [ordenId]="ordenId"
-            [orden]="orden"
-            (validSumit)="PutOrden($event)"
-          ></app-orden-form>
+    <div class="back">
+      <button color="primary" style="margin-bottom: 20px;" mat-stroked-button routerLink="/ordenes">
+        <mat-icon>keyboard_backspace</mat-icon>
+      </button>
+    </div>
+    <div class="tab">
+      <div  *ngIf="orden !== undefined">
+        <mat-card-title>Cliente: {{orden.nombreCliente}}</mat-card-title>
+        <mat-card-subtitle>Orden: {{orden.id}}</mat-card-subtitle>
+      </div>
+      <div class="toolbar">
+        <div  [ngClass]="{'activeTab': !productTab}"  (click)="productTab=false">
+          <mat-icon>form</mat-icon>
+          Formulario
         </div>
-      </mat-tab>
-
-      <mat-tab label="Productos">
-        <div >
-          <mat-card  *ngIf="orden !== undefined">
-            <mat-card-title>Cliente: {{orden.nombreCliente}}</mat-card-title>
-            <mat-card-subtitle>Orden: {{orden.id}}</mat-card-subtitle>
-
-          </mat-card>
-          <mat-card>
-            <div *ngFor="let producto of productosOrden">
-              <app-productos-orden [productoOrden]="producto"></app-productos-orden>
-            </div>
-
-          </mat-card>
+        <div  [ngClass]="{'activeTab':productTab}" (click)="productTab=true">
+          <mat-icon>form</mat-icon>
+          Productos
         </div>
+      </div>
+      <div class="productTab" *ngIf="productTab">
+        <mat-card>
+          <div *ngFor="let producto of productosOrden">
+            <app-productos-orden [productoOrden]="producto"></app-productos-orden>
+          </div>
+
+        </mat-card>
         <mat-card *ngIf="orden !== undefined">
           <div class=" gridMontos">
 
@@ -51,10 +52,19 @@
           </div>
 
         </mat-card>
+      </div>
+      <div class="formTab" *ngIf="productTab === false">
+        <div *ngIf="orden !== undefined">
+          <app-orden-form
+            [edit]="true"
+            [ordenId]="ordenId"
+            [orden]="orden"
+            (validSumit)="PutOrden($event)"
+          ></app-orden-form>
+        </div>
+      </div>
 
-      </mat-tab>
-
-    </mat-tab-group>
+    </div>
 
   </mat-card>
 

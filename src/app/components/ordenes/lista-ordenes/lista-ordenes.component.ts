@@ -24,6 +24,8 @@ export class ListaOrdenesComponent implements OnInit {
               private snackServ: SnackbarService,
               private router: Router,
               private dialog: MatDialog) {}
+
+  loading = false;
   ordenes: OrdenDtoModel[] = [];
   ordenesDataSource = new MatTableDataSource(this.ordenes);
   @ViewChild(MatPaginator, { static: true }) paginator: MatPaginator;
@@ -76,11 +78,16 @@ export class ListaOrdenesComponent implements OnInit {
   //   });
   // }
   GetOrdeneDto() {
+    this.loading = true;
     console.log('Getting Ordeness');
     this.ordenesService.GetOrdenesDto().subscribe((Response: OrdenDtoModel[]) => {
       this.ordenes = Response;
       console.log(Response);
       this.setDataSource(Response);
+      this.loading =  false;
+    }, e=> {
+      console.log(e);
+      this.loading = false;
     });
     this.selection = new SelectionModel<OrdenDtoModel>(true, []);
   }
@@ -167,6 +174,9 @@ export class ListaOrdenesComponent implements OnInit {
       const ordenId = this.selection.selected[0].id;
       this.router.navigate(['/editar-orden/',ordenId]);
     }
+  }
+  EditOrden(orden: OrdenDtoModel){
+    this.router.navigate(['/editar-orden/',orden.id]);
   }
 
   openFiltroOrdenes(){

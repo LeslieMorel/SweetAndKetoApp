@@ -14,6 +14,7 @@ import { SnackbarPanelClass } from 'src/app/models/SnackBarPanelClass.model';
 })
 export class EditarOrdenComponent implements OnInit {
 
+  productTab = true;
   orden: OrdenesModel;
   ordenId: string;
   productosOrden: ProductoOrdenModel[] = [];

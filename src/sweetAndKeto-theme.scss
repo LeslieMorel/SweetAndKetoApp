@@ -1,11 +1,43 @@
 @import '~@angular/material/theming';
 
+$md-salmon: (
+    50 : #fef0ee,
+    100 : #fed9d5,
+    200 : #fdc0b9,
+    300 : #fca69c,
+    400 : #fb9387,
+    500 : #fa8072,
+    600 : #f9786a,
+    700 : #f96d5f,
+    800 : #f86355,
+    900 : #f65042,
+    A100 : #ffffff,
+    A200 : #ffffff,
+    A400 : #ffe3e1,
+    A700 : #ffccc8,
+    contrast: (
+        50 : #000000,
+        100 : #000000,
+        200 : #000000,
+        300 : #000000,
+        400 : #000000,
+        500 : #000000,
+        600 : #000000,
+        700 : #000000,
+        800 : #000000,
+        900 : #000000,
+        A100 : #000000,
+        A200 : #000000,
+        A400 : #000000,
+        A700 : #000000,
+    )
+);
 
 @include mat-core();
 
 // $sweetAndKeto-app-primary: mat-palette($md-sweetKeto);
 $sweetAndKeto-app-primary: mat-palette($mat-sweetKeto);
-$sweetAndKeto-app-accent:  mat-palette($mat-pink, A200);
+$sweetAndKeto-app-accent:  mat-palette($md-salmon);
 
 // The warn palette is optional (defaults to red).
 $sweetAndKeto-app-warn:    mat-palette($mat-red);
@@ -22,4 +54,7 @@ $sweetAndKeto-app-theme: mat-light-theme($sweetAndKeto-app-primary,$sweetAndKeto
 // ));
 
 @include angular-material-theme($sweetAndKeto-app-theme);
+
+/* For use in src/lib/core/theming/_palette.scss */
+
 

@@ -14,10 +14,12 @@ import { LoginComponent } from './components/auth/login/login.component';
 import { RegisterComponent } from './components/auth/register/register.component';
 import { AuthGuardService } from './services/auth-guard.service';
 import { UserRolesModel } from './models/auth/userRoles.model';
+import { HomeComponent } from './components/home/home.component';
 
 
 const routes: Routes = [
-  {path: '' , component: ProductosComponent},
+  {path: 'tienda' , component: ProductosComponent},
+  {path: '' , component: HomeComponent},
   {
     path: 'ordenes' ,
     component: ListaOrdenesComponent,

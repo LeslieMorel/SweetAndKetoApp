@@ -1,3 +1,4 @@
+@import '../../../variables';
 .row{
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -16,5 +17,23 @@
   margin: 2px;
   padding: 2px;
   text-justify: distribute;
+
+}
+.toolbar {
+  margin: 20px;
+  display: flex;
+  gap: 20px;
+  width: 100%;
+  div {
+    padding: 10px;
+    justify-content: center;
+    width: 40%;
+
+  }
+
+}
+.activeTab {
+  border-bottom: 2px solid $color-primary;
+  color: $color-primary;
 
 }

@@ -8,6 +8,8 @@
     padding: 0;
     margin: 10px;
     border-radius: 3px;
+    margin: 25px;
+
 
 
   }
@@ -18,7 +20,7 @@
   .contenido {
     padding: 10px;
     display: grid;
-    grid-template-rows: 50px 40px 40px;
+    // grid-template-rows: 50px 40px;
   }
 
 }
@@ -100,7 +102,6 @@ img {
   height: 50px;
   font-size: 14px;
   text-align: center;
-
   padding: 3px;
   color: $color-primary-dark;
 
@@ -118,4 +119,11 @@ img {
   position: relative;
   display: inline;
 
+}
+
+.info {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  padding:0px 10px;
 }

@@ -17,8 +17,9 @@ export class MobileBottomNavComponent implements OnInit {
       console.log('path');
 
       console.log(resp[0].path);
-
     });
+
+    // this.activeRoute.pa
     this.activeRoute.outlet
 
   }

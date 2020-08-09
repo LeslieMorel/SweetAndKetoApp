@@ -2,9 +2,10 @@
   @media (max-width: $breakpoint-mobile) {
     .card {
       width: 150px;
-      height: 280px;
+      height: 250px;
       padding: 0;
       border-radius: 3px;
+      margin: 7px;
 
     }
     .imgFrame {
@@ -14,7 +15,7 @@
     .contenido {
       padding: 5px;
       display: grid;
-      grid-template-rows: 40px 40px 40px;
+      grid-template-rows: 40px 40px;
     }
 
   }

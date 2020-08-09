@@ -1,0 +1,41 @@
+.cover {
+  background: url("https://sweetandketo.blob.core.windows.net/productos/reducida-Keto%20Bundt%20Cake_%20up.jpg");
+  background-size: cover;
+  height: 500px;
+  width: calc(100%-20px);
+  padding: 10px;
+  margin: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  .btn {
+    margin-bottom: 20px;
+  }
+  // img {
+    //   object-fit: cover;
+
+    // }
+  }
+  .btn-order {
+    letter-spacing: 2px;
+
+}
+
+.about {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  padding: 30px 10px 50px 10px;
+  p {
+    text-align: center;
+    text-justify: newspaper;
+  }
+
+  img {
+    width: 75px;
+
+  }
+}
+

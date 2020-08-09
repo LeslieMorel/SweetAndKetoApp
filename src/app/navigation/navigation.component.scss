@@ -70,3 +70,36 @@ font-size: xx-large;
   //   display: none;
   // }
 }
+
+.content {
+  overflow: scroll;
+}
+footer {
+  background-color: $color-primary;
+  padding-bottom: 75px;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  // height: 75px;
+
+}
+.footer__menu{
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  p{
+    text-transform: uppercase;
+    text-align: center;
+    // font-size: 1.2rem;
+  }
+}
+
+.brand {
+  display: flex;
+
+  font-family: Arial, Helvetica, sans-serif;
+  // font-size: 1.2rem;
+}

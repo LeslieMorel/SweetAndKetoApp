@@ -43,6 +43,7 @@ import { GotoCartSnackBarComponent } from './components/goto-cart-snack-bar/goto
 import { ProductoInfoComponent } from './components/producto-info/producto-info.component';
 import { FiltroOrdenesComponent, FiltrosOrdenes } from './components/ordenes/filtro-ordenes/filtro-ordenes.component';
 import { MobileBottomNavComponent } from './components/mobile-bottom-nav/mobile-bottom-nav.component';
+import { HomeComponent } from './components/home/home.component';
 
 
 @NgModule({
@@ -71,7 +72,8 @@ import { MobileBottomNavComponent } from './components/mobile-bottom-nav/mobile-
     GotoCartSnackBarComponent,
     ProductoInfoComponent,
     FiltroOrdenesComponent,
-    MobileBottomNavComponent
+    MobileBottomNavComponent,
+    HomeComponent
   ],
   imports: [
     BrowserModule,

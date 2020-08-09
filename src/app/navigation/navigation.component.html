@@ -30,7 +30,7 @@
     </mat-nav-list>
   </mat-sidenav>
   <mat-sidenav-content>
-    <mat-toolbar color="primary">
+    <mat-toolbar >
       <div class="toolbar-item">
         <button
           type="button"
@@ -42,14 +42,14 @@
         </button>
         <!-- *ngIf="isHandset$ | async" -->
 
-        <img routerLink="/" class="logo" src="https://sweetandketo.blob.core.windows.net/productos/BrandLogo.jpg">
+        <img routerLink="/" class="logo" src="../../assets/LogoLargoTransparencia.png">
         <!-- <span class="brand" light>Sweet & Keto </span> -->
 
       </div>
       <span class="spacer"></span>
       <div class="toolbar-item">
 
-        <button mat-icon-button routerLink="/carrito">
+        <button mat-icon-button routerLink="/carrito" color="primary">
           <mat-icon [matBadge]="cartService.ItemsInCart()" matBadgeColor="accent">shopping_cart</mat-icon>
         </button>
         <div class="auth-actions">
@@ -68,7 +68,23 @@
       </div>
     </mat-toolbar>
     <!-- Add Content Here -->
-    <router-outlet></router-outlet>
+    <div class="content">
+      <router-outlet></router-outlet>
+      <footer>
+        <div class="footer__menu">
+          <p>About Us</p>
+          <p>Our Brands</p>
+          <p>Delivery policies</p>
+
+        </div>
+        <div class="brand">
+          <mat-icon>copyright</mat-icon>
+          <p> 2020 Sweet & Keto by LCMC</p>
+
+        </div>
+      </footer>
+
+    </div>
     <app-mobile-bottom-nav [hidden]="(isHandset$ | async) === false"></app-mobile-bottom-nav>
   </mat-sidenav-content>
 </mat-sidenav-container>
