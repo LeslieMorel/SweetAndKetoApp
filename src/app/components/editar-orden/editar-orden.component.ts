@@ -14,6 +14,8 @@ import { SnackbarPanelClass } from 'src/app/models/SnackBarPanelClass.model';
 })
 export class EditarOrdenComponent implements OnInit {
 
+
+  loading = false;
   productTab = true;
   orden: OrdenesModel;
   ordenId: string;
@@ -48,10 +50,13 @@ export class EditarOrdenComponent implements OnInit {
     });
   }
   PutOrden(orden: OrdenesModel){
+    this.loading = true;
     this.ordenesService.PutOrden(orden.id.toString(), orden).subscribe( Response => {
       console.log(Response);
+      this.loading = false;
       this.snackBarService.Show('Actualizado', TipoSnackBar.Success, 1000, SnackbarPanelClass.success);
     }, e => {
+      this.loading = false;
       this.snackBarService.Show('Error', TipoSnackBar.Error, 1000, SnackbarPanelClass.error);
       console.log(e);
     }

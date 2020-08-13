@@ -17,7 +17,7 @@
     <div class="col">
       <span> RD{{cartProduct.producto.precio * cartProduct.cantidad | currency}}</span>
     </div>
-    <div >
+    <!-- <div >
       <mat-form-field appearance="outline" class="cantidad" >
         <input
         (ngModelChange)="numberChange($event)"
@@ -30,7 +30,39 @@
 
 
       </mat-form-field>
+    </div> -->
+    <!-- Edit Button -->
+    <div class="btn_edit_container">
+      <div class="btn_edit">
+        <div class=" boton resta" (click)="resta()">
+          -
+        </div>
+        <div class="input_editbtn">
+            {{cartProduct.cantidad}}
+        </div>
+        <div class="boton suma" (click)="suma()">
+          +
+        </div>
+
+      </div>
+
     </div>
+
+    <!-- <div class="boton_eliminar" (click)="deleteProducto()">
+      Eliminar
+    </div> -->
+    <div class="contenedor_boton_eliminar">
+
+      <div class="icon_delete">
+        <button mat-icon-button (click)="deleteProducto()">
+          <mat-icon>delete_outline</mat-icon>
+        </button>
+
+      </div>
+    </div>
+
+
+
   </div>
   </div>
 

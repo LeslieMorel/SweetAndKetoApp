@@ -15,6 +15,16 @@ export class CartProductComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  resta(){
+    if(this.cartProduct.cantidad === 1){
+      this.deleteProducto();
+    } else if (this.cartProduct.cantidad > 1){
+      this.cartProduct.cantidad--;
+    }
+  }
+  suma(){
+    this.cartProduct.cantidad++;
+  }
   numberChange($event){
     console.log($event);
   }

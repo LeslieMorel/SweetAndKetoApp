@@ -15,7 +15,7 @@
 
       </div>
       <a (click)="drawer.close()" mat-list-item routerLink="carrito" color="primary"><mat-icon color="primary">shopping_cart</mat-icon>Cart</a>
-      <a (click)="drawer.close()" mat-list-item routerLink="/" color="primary"><mat-icon color="primary">store</mat-icon>Tienda</a>
+      <a (click)="drawer.close()" mat-list-item routerLink="/tienda" color="primary"><mat-icon color="primary">store</mat-icon>Tienda</a>
       <div class="ordenes-zone" *ngIf="this.authService.userIsInRole('OrdenesEdicion')">
         <a (click)="drawer.close()"  mat-list-item routerLink="/ordenes" color="primary" ><mat-icon color="primary">list</mat-icon> Ordenes</a>
         <a  (click)="drawer.close()" mat-list-item routerLink="/productos-pendientes" color="primary"><mat-icon color="primary">group_work</mat-icon> Produccion</a>

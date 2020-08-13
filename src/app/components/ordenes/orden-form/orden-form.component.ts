@@ -21,6 +21,8 @@ import { SnackbarPanelClass } from 'src/app/models/SnackBarPanelClass.model';
 import { HorarioEntregaService } from 'src/app/services/horario-entrega.service';
 import { HorarioEntregaModel } from 'src/app/models/horarioEntrega.model';
 import { TipoSnackBar } from '../../snackbar/snackbar.component';
+import { LocalStorageService } from 'src/app/services/local-storage.service';
+import { DOCUMENT } from '@angular/common';
 
 @Component({
   selector: 'app-orden-form',
@@ -37,22 +39,23 @@ export class OrdenFormComponent implements OnInit {
   filteredOptions: Observable<SectorModel[]>;
   options: string[] = [];
   selectedFile: File;
-
   horariosEntrega: HorarioEntregaModel[] = [];
   sectores: SectorModel[] = [];
+  loading = false;
 
   estados: {value: number, text: string}[] = new EstadoOrdenPipePipe().Estados;
   ordenForm = new FormGroup({
     id: new FormControl(),
     nombreCliente: new FormControl(null, Validators.required),
     email: new FormControl(null, Validators.email),
-    phoneNumber: new FormControl(null, [Validators.required, Validators.minLength(9), Validators.pattern('^[0-9]*$')]),
+    // phoneNumber: new FormControl(null, [Validators.required, Validators.minLength(9), Validators.pattern('^[0-9]*$')]),
+    phoneNumber: new FormControl(null, [Validators.minLength(9), Validators.pattern('^[0-9]*$')]),
     fechaCreacion: new FormControl(),
     fechaRequerida: new FormControl(),
     estadoOrden: new FormControl(null, Validators.required),
-    ciudad: new FormControl('DN', this.deliveryValidators),
-    zona: new FormControl(null, this.deliveryValidators),
-    direccion1: new FormControl(null, this.deliveryValidators),
+    ciudad: new FormControl('DN'),
+    zona: new FormControl(null),
+    direccion1: new FormControl(null),
     direccion2: new FormControl(),
     metodoEntrega: new FormControl(null, Validators.required),
     autorizada: new FormControl(false),
@@ -63,6 +66,9 @@ export class OrdenFormComponent implements OnInit {
     montoTotal: new FormControl(0),
     comprobanteId: new FormControl(null),
     horarioEntregaId: new FormControl(null),
+    pagada: new FormControl(false),
+    formaPago: new FormControl(null),
+    horaEntrega: new FormControl(null),
   });
   constructor(
               public cartService: CarritoService,
@@ -73,25 +79,19 @@ export class OrdenFormComponent implements OnInit {
               private horarioEntregaServ: HorarioEntregaService ) { }
 
   ngOnInit(): void {
-
     this.GetHorariosEntrega();
     this.GetSectores();
     this.ordenForm.setValue(this.orden);
-
     // this.ordenService.ordenChange.subscribe((orden: OrdenesModel) => {
     //   this.ordenForm.setValue(orden);
     // });
-
-
+    this.CalcularMontoTotal();
     this.filteredOptions = this.ordenForm.controls.zona.valueChanges.pipe(
       startWith(''),
       map(value => this._filter(value))
     );
-
-
-    this.ordenForm.get('metodoEntrega').valueChanges
-    .subscribe(resp => {this.SetDeliveryMethodValidations(resp); });
-
+    // this.ordenForm.get('metodoEntrega').valueChanges
+    // .subscribe(resp => {this.SetDeliveryMethodValidations(resp); });
     this.ordenForm.get('zona').valueChanges
     .subscribe((resp) => {this.SetPrecioDelivery(); });
     this.ordenForm.get('precioDelivery').valueChanges
@@ -206,14 +206,15 @@ export class OrdenFormComponent implements OnInit {
   }
 
   PostFile(file: File){
+    this.loading = true;
     this.attachFilesService.PostFile('Comprobante', file).subscribe((Response: AttachFile) => {
+      this.loading =false;
       console.log(Response);
       this.ordenForm.controls.comprobanteId.setValue(Response.id);
       this.snackBarService.Show('Actualizado', TipoSnackBar.Success, 1000, SnackbarPanelClass.success);
-
-
     }, (e) =>
      {
+      this.loading =false;
       this.snackBarService.Show('Error', TipoSnackBar.Error, 1000, SnackbarPanelClass.error);
       console.log(e);
       }

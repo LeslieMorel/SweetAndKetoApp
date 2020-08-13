@@ -4,6 +4,7 @@
   "newProjectRoot": "projects",
   "projects": {
     "SweetAndKetoApp": {
+
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
@@ -25,7 +26,8 @@
             "aot": true,
             "assets": [
               "src/favicon.ico",
-              "src/assets"
+              "src/assets",
+              "src/web.config"
             ],
             "styles": [
               "node_modules/bootstrap/dist/css/bootstrap.min.css",
@@ -134,6 +136,6 @@
   },
   "defaultProject": "SweetAndKetoApp",
   "cli": {
-    "analytics": "29ab05a9-fe73-4e79-9f55-e023c0a829c6"
+    "analytics": "9d2c0e9d-a114-4dc8-84f0-d0e634e23cd9"
   }
 }

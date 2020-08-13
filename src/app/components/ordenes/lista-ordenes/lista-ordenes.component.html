@@ -98,7 +98,15 @@
               <mat-icon *ngIf="element.metodoEntrega === 1" >store</mat-icon>
               </td>
           </ng-container>
-
+          <!-- Pagada -->
+          <ng-container matColumnDef="pagada">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> Pagada </th>
+            <td mat-cell *matCellDef="let element" class="pagada_data">
+              <mat-icon [ngStyle]="{'display': element.pagada ? 'none' : 'inline-block'}"  class="icon_pagada" color="warn" *ngIf="element.formaPago === null" >money_off</mat-icon>
+              <mat-icon [ngStyle]="{'color': element.pagada ? '#8fa382' : '#f44336'}" class="icon_pagada" *ngIf="element.formaPago === 1" >account_balance</mat-icon>
+              <mat-icon [ngStyle]="{'color': element.pagada ? '#8fa382' : '#f44336'}" class="icon_pagada" *ngIf="element.formaPago === 0" >attach_money</mat-icon>
+              </td>
+          </ng-container>
           <!-- Fecha Requerida -->
           <ng-container matColumnDef="fechaRequerida">
             <th mat-header-cell *matHeaderCellDef mat-sort-header> Fecha Requerida </th>

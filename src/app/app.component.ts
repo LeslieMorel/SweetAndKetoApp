@@ -1,11 +1,13 @@
 import { Component } from '@angular/core';
 import { AuthService } from './services/auth.service';
 import { ActivatedRoute } from '@angular/router';
+import { LocationStrategy, HashLocationStrategy } from '@angular/common';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss']
+  styleUrls: ['./app.component.scss'],
+  providers: [{provide: LocationStrategy, useClass: HashLocationStrategy}]
 })
 export class AppComponent {
   title = 'SweetAndKetoApp';

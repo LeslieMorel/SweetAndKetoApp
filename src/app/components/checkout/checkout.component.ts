@@ -16,6 +16,7 @@ import { OrdenWithProductos } from 'src/app/models/ordenWithProductos.model';
 })
 export class CheckoutComponent implements OnInit {
 
+  loading = false;
   orden: OrdenesModel;
   productos: ProductoOrdenModel[];
   constructor(public cartService: CarritoService,
@@ -61,6 +62,7 @@ export class CheckoutComponent implements OnInit {
 
   PostOrden(orden: OrdenesModel){
     if (this.AddProductos()){
+      this.loading = true;
       console.log('Posting Order: ');
       console.log(orden);
       const ordenBundle = new OrdenWithProductos();
@@ -75,6 +77,7 @@ export class CheckoutComponent implements OnInit {
         this.router.navigate(['orden-confirmacion/', Response.id]);
 
       }, (e) => {
+        this.loading = false;
         this.snackBarService.Show('Error', TipoSnackBar.Error, 1000, SnackbarPanelClass.error);
         console.log(e);
 

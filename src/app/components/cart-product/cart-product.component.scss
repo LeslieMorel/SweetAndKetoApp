@@ -1,5 +1,6 @@
 @import '../../../variables';
 @import '../../../layouts';
+@import './btn-edit';
 
 .container {
   border-top: lightgrey 1px solid;
@@ -38,4 +39,23 @@ img {
 
 .cantidad {
   width: 75px;
+}
+
+.btn_edit_container {
+  width: 100px;
+  // height: 75px;
+}
+.icon_delete {
+  // display: inline-block;
+  float: left;
+  color: lightgrey;
+  &:hover{
+    color: $color-warn;
+  }
+}
+.contenedor_boton_eliminar {
+  margin: 5px;
+ display: flex;
+ justify-content: flex-end;
+  width: 100%;
 }

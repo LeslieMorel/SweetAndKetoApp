@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { EstadoOrdenPipePipe } from 'src/app/customPipes/estado-orden-pipe.pipe';
 import { MatDialogRef } from '@angular/material/dialog';
+import { LocalStorageService } from 'src/app/services/local-storage.service';
 
 @Component({
   selector: 'app-filtro-ordenes',
@@ -9,20 +10,36 @@ import { MatDialogRef } from '@angular/material/dialog';
 })
 export class FiltroOrdenesComponent implements OnInit {
 
+  @Output() filtrosLoaded = new EventEmitter<FiltrosOrdenes>();
+  key = 'Sweet&Keto_filtrosOrdenes';
   estados: {value: number, text: string}[] = new EstadoOrdenPipePipe().Estados;
   filtros: FiltrosOrdenes = new FiltrosOrdenes();
 
-  constructor(public dialogRef: MatDialogRef<FiltroOrdenesComponent>) { }
+  constructor(public dialogRef: MatDialogRef<FiltroOrdenesComponent>,private localStorageServ: LocalStorageService) { }
 
   ngOnInit(): void {
+    this.GetFiltrosFromLocalStorage();
   }
 
   Filtrar(){
+    this.localStorageServ.saveToLocalStorage(this.localStorageServ.filtrosOrdenes,this.filtros);
     this.dialogRef.close(this.filtros);
   }
   BorrarFiltros(){
-    this.filtros = null;
-    this.dialogRef.close();
+    this.filtros = new FiltrosOrdenes();
+    this.localStorageServ.removeFromLocalStorage(this.localStorageServ.filtrosOrdenes);
+    this.dialogRef.close(null);
+  }
+
+  GetFiltrosFromLocalStorage(){
+    const filtros = this.localStorageServ.getFromLocalStorage(this.localStorageServ.filtrosOrdenes);
+    if(filtros){
+      this.filtros = filtros;
+    }
+
+  }
+  SaveFiltrosToLocalStorage(){
+   this.localStorageServ.saveToLocalStorage(this.localStorageServ.filtrosOrdenes,this.filtros);
   }
 
 }
@@ -32,7 +49,7 @@ export class FiltrosOrdenes {
   nombreCliente: string;
   ordenId: number;
   constructor(){
-    this.estados = null;
+    this.estados = [];
     this.nombreCliente = null;
     this.ordenId = null;
   }

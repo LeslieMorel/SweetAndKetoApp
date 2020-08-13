@@ -19,6 +19,9 @@ export class OrdenesModel {
   precioDelivery: number;
   monto: number;
   montoTotal: number;
+  pagada: boolean;
+  formaPago?: number;
+  horaEntrega?: number;
   comprobanteId?: number;
   horarioEntregaId?: number;
   productoOrdenNavigation?: ProductoOrdenModel[];
@@ -44,6 +47,9 @@ export class OrdenesModel {
     this.montoTotal = 0;
     this.precioDelivery = 0;
     this.horarioEntregaId = null;
+    this.pagada = false;
+    this.formaPago = null;
+    this.horaEntrega = null;
 
   }
 }

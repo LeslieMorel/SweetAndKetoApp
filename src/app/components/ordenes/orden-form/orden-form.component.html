@@ -1,4 +1,6 @@
 <div class="contenido" >
+<div class="spinner" *ngIf="loading"></div>
+
   <!-- <h1>Orden: {{orden.id}}</h1> -->
 
   <form [formGroup] ="ordenForm"  (ngSubmit)="Submit()">
@@ -295,7 +297,7 @@
       </mat-form-field>
     </div>
     <!-- Horario de Entrega -->
-    <div class="campo">
+    <div class="campo" style="display: none;">
       <mat-form-field appearance="outline" class="control">
         <mat-label>Horario Entrega</mat-label>
         <mat-select [formControl]="ordenForm.controls.horarioEntregaId">
@@ -303,6 +305,41 @@
         </mat-select>
       </mat-form-field>
     </div>
+    <!-- FormaPago -->
+    <mat-form-field appearance="outline" style="width: 80%;">
+      <mat-label>Forma de Pago</mat-label>
+      <mat-select [formControl]="ordenForm.controls.formaPago">
+        <mat-option  [value]="null"></mat-option>
+        <mat-option  [value]="0">Efectivo </mat-option>
+        <mat-option  [value]="1">Transferencia </mat-option>
+      </mat-select>
+      <mat-error *ngIf="ordenForm.controls.estadoOrden.invalid">
+        <span>Campo obligatorio</span>
+      </mat-error>
+    </mat-form-field>
+    <!-- Pagada -->
+    <div class="campo">
+       <mat-checkbox
+       class="mr-2"
+       [formControl]="ordenForm.controls.pagada"
+     > Pagada
+     </mat-checkbox>
+    </div>
+     <!-- Hora Entrega -->
+     <div class="campo">
+      <mat-form-field class="control" appearance="outline">
+        <mat-label>Hora Entrega</mat-label>
+        <input
+        matInput
+        type="number"
+        [formControl]="ordenForm.controls.horaEntrega"
+        >
+      </mat-form-field>
+    </div>
+
+  </div>
+  <!-- FormaPago -->
+  <div class="campo">
 
   </div>
   <div class="grupo">
@@ -328,7 +365,6 @@
       <mat-form-field class="control" appearance="outline">
         <mat-label>Teléfono</mat-label>
         <input
-        required
         matInput
         type="tel"
         [formControl]="ordenForm.controls.phoneNumber"

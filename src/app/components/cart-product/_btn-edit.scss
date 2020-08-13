@@ -1,0 +1,46 @@
+.btn_edit {
+  width: 100%;
+  overflow: hidden;
+  border-radius: 3px;
+  box-shadow: 2px 3px darkgray;
+  div {
+    width: 33.33% ;
+    height: 100%;
+    float: left;
+    border: 1px solid lightgrey;
+    text-align: center;
+    font-size: small;
+    .input {
+      text-align: center;
+      input {
+        text-align: center;
+      }
+
+    }
+  }
+  .boton {
+    background-color: lightgrey;
+    &:hover {
+      cursor: pointer;
+    }
+  }
+
+}
+
+.input_editbtn {
+  text-align: center;
+  margin: auto;
+  width: 100%;
+}
+.boton_eliminar {
+  margin: 5px 0px;
+  border-radius: 3px;
+  box-shadow: 2px 3px darkgray;
+  background-color: lightgrey;
+  border: 1px solid lightgrey;
+    text-align: center;
+    font-size: small;
+  &:hover {
+    cursor: pointer;
+  }
+}

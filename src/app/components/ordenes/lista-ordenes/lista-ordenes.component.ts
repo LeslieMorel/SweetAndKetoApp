@@ -13,6 +13,7 @@ import {SelectionModel} from '@angular/cdk/collections';
 import { Router } from '@angular/router';
 import { MatDialog } from '@angular/material/dialog';
 import { FiltroOrdenesComponent, FiltrosOrdenes } from '../filtro-ordenes/filtro-ordenes.component';
+import { LocalStorageService } from 'src/app/services/local-storage.service';
 @Component({
   selector: 'app-lista-ordenes',
   templateUrl: './lista-ordenes.component.html',
@@ -23,7 +24,8 @@ export class ListaOrdenesComponent implements OnInit {
               public authServ: AuthService,
               private snackServ: SnackbarService,
               private router: Router,
-              private dialog: MatDialog) {}
+              private dialog: MatDialog,
+              private localStorageServ: LocalStorageService) {}
 
   loading = false;
   ordenes: OrdenDtoModel[] = [];
@@ -35,6 +37,7 @@ export class ListaOrdenesComponent implements OnInit {
     'select',
     // 'id',
     'cliente',
+    'pagada',
     'estado',
     'metodoEntrega',
     'monto',
@@ -85,6 +88,8 @@ export class ListaOrdenesComponent implements OnInit {
       console.log(Response);
       this.setDataSource(Response);
       this.loading =  false;
+      this.GetFiltrosFromLocalStorage();
+
     }, e=> {
       console.log(e);
       this.loading = false;
@@ -183,15 +188,31 @@ export class ListaOrdenesComponent implements OnInit {
     const dialogRef = this.dialog.open(FiltroOrdenesComponent);
     dialogRef.afterClosed().subscribe(resp => {
       console.log(resp);
-      this.FiltrarOrdenes(resp);
+      if(resp !== undefined){
+        this.FiltrarOrdenes(resp);
+      }
+
     });
+  }
+  GetFiltrosFromLocalStorage(){
+    const filtros = this.localStorageServ.getFromLocalStorage(this.localStorageServ.filtrosOrdenes);
+    console.log('Get Filtros');
+    console.log(filtros);
+
+    if(filtros !== null && filtros !== undefined){
+     this.FiltrarOrdenes(filtros);
+
+    }
+
   }
 
   FiltrarOrdenes(filtros: FiltrosOrdenes){
+    console.log('FiltrandoOrdenes');
+
     let ordenesFiltradas = this.ordenes.slice();
-    if (filtros){
+    if (filtros !== null && filtros !== undefined){
       // Estado
-      if (filtros.estados){
+      if (filtros.estados && filtros.estados.length > 0){
         ordenesFiltradas = ordenesFiltradas.filter(o=> filtros.estados.includes(o.estadoOrden));
       }
       // Nombre Cliente

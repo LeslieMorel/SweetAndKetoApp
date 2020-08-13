@@ -38,3 +38,10 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
   z-index: 20;
 
 }
+
+.boton {
+  // padding: 10px;
+  &:hover {
+    cursor: pointer;
+  }
+}
