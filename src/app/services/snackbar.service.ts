@@ -16,6 +16,8 @@ export class SnackbarService {
       SnackbarComponent,
       {data: {mensaje , tipo },
       panelClass:  panelClass || ['info-snackbar'],
+      verticalPosition: 'top',
+      horizontalPosition: 'right',
       duration: duration || 2000,
     });
   }

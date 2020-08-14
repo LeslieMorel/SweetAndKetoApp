@@ -11,23 +11,28 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class ProductosComponent implements OnInit {
 
+  loading = false;
   productos: ProductoModel[];
   constructor(private productosService: ProductosService,
-     public cartService: CarritoService,
-     private activeRoute: ActivatedRoute) { }
+              public cartService: CarritoService,
+              private activeRoute: ActivatedRoute) { }
 
   ngOnInit(): void {
     this.GetProductos();
-    this.activeRoute.url.subscribe((resp)=> {
+    this.activeRoute.url.subscribe((resp) => {
       console.log('path');
       console.log(resp);
     });
   }
 
   GetProductos(){
+    this.loading = true;
     this.productosService.GeProductos().subscribe((Response: ProductoModel[])=>{
       console.log(Response);
+      this.loading = false;
       this.productos = Response;
+    }, e => {
+        this.loading = false;
     });
   }
 

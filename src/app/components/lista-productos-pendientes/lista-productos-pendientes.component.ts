@@ -9,6 +9,7 @@ import { ProductoOrdenPendienteDtoModel } from 'src/app/models/productoOrdenPend
 })
 export class ListaProductosPendientesComponent implements OnInit {
 
+  loading = false;
   productos: ProductoOrdenPendienteDtoModel[] = [];
   constructor(private productoOrdenServ: ProductoOrdenService) { }
 
@@ -17,10 +18,15 @@ export class ListaProductosPendientesComponent implements OnInit {
   }
 
   GetProductosPendientes(){
+    this.loading = true;
     this.productoOrdenServ.GeProductosOrdenPendientes().subscribe((Response: ProductoOrdenPendienteDtoModel[]) => {
       this.productos = Response;
       console.log(Response);
+      this.loading = false;
 
+    }, e => {
+      this.loading = false;
+      console.log(e);
     });
   }
 

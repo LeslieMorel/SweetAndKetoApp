@@ -46,6 +46,7 @@ import { MobileBottomNavComponent } from './components/mobile-bottom-nav/mobile-
 import { HomeComponent } from './components/home/home.component';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
+import { ScrollTopComponent } from './components/scroll-top/scroll-top.component';
 
 
 @NgModule({
@@ -75,7 +76,8 @@ import { environment } from '../environments/environment';
     ProductoInfoComponent,
     FiltroOrdenesComponent,
     MobileBottomNavComponent,
-    HomeComponent
+    HomeComponent,
+    ScrollTopComponent
   ],
   imports: [
     BrowserModule,

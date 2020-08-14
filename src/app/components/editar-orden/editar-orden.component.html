@@ -1,15 +1,17 @@
+<app-scroll-top></app-scroll-top>
 <div class="spinner" *ngIf="loading"></div>
-  <mat-card>
+  <mat-card class="contenedor">
     <div class="back">
-      <button color="primary" style="margin-bottom: 20px;" mat-stroked-button routerLink="/ordenes">
+      <div  *ngIf="orden !== undefined">
+        <mat-card-title style="font-size: medium;">{{orden.nombreCliente}}</mat-card-title>
+        <mat-card-subtitle>Orden: {{orden.id}}</mat-card-subtitle>
+      </div>
+      <button color="primary" mat-raised-button routerLink="/ordenes">
         <mat-icon>keyboard_backspace</mat-icon>
       </button>
     </div>
     <div class="tab">
-      <div  *ngIf="orden !== undefined">
-        <mat-card-title>Cliente: {{orden.nombreCliente}}</mat-card-title>
-        <mat-card-subtitle>Orden: {{orden.id}}</mat-card-subtitle>
-      </div>
+
       <div class="toolbar">
         <div  [ngClass]="{'activeTab': !productTab}"  (click)="productTab=false">
           <mat-icon>form</mat-icon>
