@@ -44,6 +44,8 @@ import { ProductoInfoComponent } from './components/producto-info/producto-info.
 import { FiltroOrdenesComponent, FiltrosOrdenes } from './components/ordenes/filtro-ordenes/filtro-ordenes.component';
 import { MobileBottomNavComponent } from './components/mobile-bottom-nav/mobile-bottom-nav.component';
 import { HomeComponent } from './components/home/home.component';
+import { ServiceWorkerModule } from '@angular/service-worker';
+import { environment } from '../environments/environment';
 
 
 @NgModule({
@@ -84,7 +86,8 @@ import { HomeComponent } from './components/home/home.component';
     HttpClientModule,
     FormsModule,
     ReactiveFormsModule,
-    ProductoModule
+    ProductoModule,
+    ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production })
   ],
   providers: [
     {
