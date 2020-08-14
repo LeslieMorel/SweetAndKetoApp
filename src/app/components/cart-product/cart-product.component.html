@@ -1,4 +1,13 @@
 <div class="container">
+  <div class="contenedor_boton_eliminar">
+
+    <div class="icon_delete">
+      <button mat-icon-button (click)="deleteProducto()">
+        <mat-icon>clear</mat-icon>
+      </button>
+
+    </div>
+  </div>
   <div class="row">
      <div class="col">
     <img [src]="cartProduct.producto.imgUrl">
@@ -32,16 +41,16 @@
       </mat-form-field>
     </div> -->
     <!-- Edit Button -->
-    <div class="btn_edit_container">
-      <div class="btn_edit">
+    <div class="">
+      <div class="btn_edit_outline">
         <div class=" boton resta" (click)="resta()">
-          -
+          <mat-icon>remove</mat-icon>
         </div>
-        <div class="input_editbtn">
+        <div class="boton input_editbtn">
             {{cartProduct.cantidad}}
         </div>
         <div class="boton suma" (click)="suma()">
-          +
+          <mat-icon>add</mat-icon>
         </div>
 
       </div>
@@ -51,15 +60,7 @@
     <!-- <div class="boton_eliminar" (click)="deleteProducto()">
       Eliminar
     </div> -->
-    <div class="contenedor_boton_eliminar">
 
-      <div class="icon_delete">
-        <button mat-icon-button (click)="deleteProducto()">
-          <mat-icon>delete_outline</mat-icon>
-        </button>
-
-      </div>
-    </div>
 
 
 

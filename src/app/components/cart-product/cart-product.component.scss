@@ -1,10 +1,13 @@
 @import '../../../variables';
 @import '../../../layouts';
 @import './btn-edit';
+@import './btn-edit-outline';
 
 .container {
   border-top: lightgrey 1px solid;
-  padding: 10px 0px;
+  padding: 25px 0px;
+  margin-top: 10px;;
+  position: relative;
 }
 img {
   width: 100px;
@@ -54,8 +57,11 @@ img {
   }
 }
 .contenedor_boton_eliminar {
-  margin: 5px;
- display: flex;
- justify-content: flex-end;
-  width: 100%;
+  position: absolute;
+  right: -10px;
+  top: -5px;
+//   margin: 5px;
+//  display: flex;
+//  justify-content: flex-end;
+//   width: 100%;
 }

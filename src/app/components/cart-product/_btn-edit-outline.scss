@@ -1,0 +1,53 @@
+@import '../../../variables';
+.btn_edit_outline {
+  width: 100%;
+  // font-size: 14px;
+  overflow: hidden;
+  height: 35px;
+  // background-color: salmon;
+  border-radius: 3px;
+  border: 1px solid $color-primary;
+  display: flex;
+  align-items: center;
+
+  div {
+    width: 33.33% ;
+    height: 100%;
+    float: left;
+    text-align: center;
+    font-size: large;
+    .input {
+      text-align: center;
+      input {
+        text-align: center;
+      }
+
+    }
+  }
+  .boton {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: large;
+    color: $color-primary;
+    &:hover {
+      cursor: pointer;
+    }
+  }
+
+}
+
+.input_editbtn {
+  text-align: center;
+  margin: auto;
+  width: 100%;
+}
+.boton_eliminar {
+  margin: 5px 0px;
+  border-radius: 3px;
+    text-align: center;
+    font-size: small;
+  &:hover {
+    cursor: pointer;
+  }
+}

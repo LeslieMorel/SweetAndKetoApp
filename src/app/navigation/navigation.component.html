@@ -50,7 +50,7 @@
       <div class="toolbar-item">
 
         <button mat-icon-button routerLink="/carrito" color="primary">
-          <mat-icon [matBadge]="cartService.ItemsInCart()" matBadgeColor="accent">shopping_cart</mat-icon>
+          <mat-icon [matBadge]="cartService.ItemsInCart()" fontSet="material-icons-outlined"  matBadgeColor="accent">shopping_cart</mat-icon>
         </button>
         <div class="auth-actions">
           <button *ngIf="!this.authService.userData" mat-button routerLink="/login">
@@ -72,9 +72,12 @@
       <router-outlet></router-outlet>
       <footer>
         <div class="footer__menu">
-          <p>About Us</p>
+          <!-- <p>About Us</p>
           <p>Our Brands</p>
-          <p>Delivery policies</p>
+          <p>Delivery policies</p> -->
+          <p>Contact Us</p>
+          <p>Social Networks</p>
+          <mat-icon>facebook</mat-icon>
 
         </div>
         <div class="brand">
