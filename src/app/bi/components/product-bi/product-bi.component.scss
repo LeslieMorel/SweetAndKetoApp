@@ -1,0 +1,50 @@
+.contenedor {
+  width: 90%;
+  margin: auto;
+  padding: 20px;
+
+}
+.filtros-card {
+  // width: 100%;
+  display: block;
+
+}
+.filtros {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+.avatar {
+
+  img {
+    object-fit: cover;
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+  }
+}
+
+
+.cardi {
+  margin: auto;
+  width: 100%;
+  padding: 10px;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+
+}
+
+mat-card {
+  margin: 10px 0px;
+}
+
+.titulo-filtros {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+
+.td {
+  text-align: center;
+}

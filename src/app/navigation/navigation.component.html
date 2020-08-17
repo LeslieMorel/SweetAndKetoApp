@@ -23,13 +23,14 @@
       <div class="admin" *ngIf="this.authService.AdminUser()">
         <a (click)="drawer.close()"  mat-list-item routerLink="/productos" color="primary"><mat-icon color="primary">list</mat-icon> Productos</a>
         <a (click)="drawer.close()" mat-list-item routerLink="/images" color="primary"><mat-icon color="primary">insert_photo</mat-icon> Images</a>
+        <a (click)="drawer.close()" mat-list-item routerLink="/bi" color="primary"><mat-icon color="primary">show_chart</mat-icon> Bi</a>
 
       </div>
 
 
     </mat-nav-list>
   </mat-sidenav>
-  <mat-sidenav-content>
+  <mat-sidenav-content class="content">
     <mat-toolbar >
       <div class="toolbar-item">
         <button
@@ -68,8 +69,11 @@
       </div>
     </mat-toolbar>
     <!-- Add Content Here -->
-    <div class="content">
+
+
+
       <router-outlet></router-outlet>
+
       <footer>
         <div class="footer__menu">
           <!-- <p>About Us</p>
@@ -86,8 +90,7 @@
 
         </div>
       </footer>
+      <app-mobile-bottom-nav [hidden]="(isHandset$ | async) === false"></app-mobile-bottom-nav>
 
-    </div>
-    <app-mobile-bottom-nav [hidden]="(isHandset$ | async) === false"></app-mobile-bottom-nav>
   </mat-sidenav-content>
 </mat-sidenav-container>

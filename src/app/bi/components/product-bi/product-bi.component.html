@@ -1,0 +1,62 @@
+<div class="contenedor">
+  <h1>Productos BI</h1>
+  <div class="actions">
+    <!-- <button mat-button (click)="SetProductosBi()">Filtrar</button> -->
+
+  </div>
+  <mat-card class="filtros-card">
+    <mat-card-title>
+      <div class="titulo-filtros">
+        <span>Filtros</span>
+        <button
+          mat-icon-button
+          *ngIf="mesSelected || semanaSelected"
+         (click)="ClearFilters()">
+          <mat-icon>clear</mat-icon>
+        </button>
+      </div>
+    </mat-card-title>
+    <div class="filtros">
+      <mat-form-field>
+        <mat-label>Mes</mat-label>
+        <mat-select [(ngModel)]="mesSelected">
+          <mat-option *ngFor="let mes of meses" [value]="mes" >{{mes}}</mat-option>
+        </mat-select>
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label>Semana</mat-label>
+        <mat-select [(ngModel)]="semanaSelected">
+          <mat-option *ngFor="let semana of semanas" [value]="semana" >{{semana}}</mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+
+  </mat-card>
+
+  <mat-card>
+    <mat-card-title>Productos</mat-card-title>
+    <div class="cardi" *ngFor="let producto of SetProductosBi()">
+        <div class="td avatar">
+          <img [src]="producto.imgUrl" alt="producto-img">
+        </div>
+        <span class="td descripcion"> {{producto.descripcion}}</span>
+        <span class="td cantidad">{{producto.cantidad}}</span>
+        <span class="td subtotal">{{producto.subtotal | currency}}</span>
+    </div>
+  </mat-card>
+
+<mat-card>
+  <p style="text-align: center;">Total Ventas
+    <span *ngIf="semanaSelected">
+      <small>(Semana {{semanaSelected}})</small>
+    </span>
+      <strong> RD$ {{CalcularTotal() | currency}}</strong>
+  </p>
+  <p style="text-align: center;">Total Unidades
+
+      <strong> {{CalcularTotalUnidades()}}</strong>
+  </p>
+
+</mat-card>
+</div>
+

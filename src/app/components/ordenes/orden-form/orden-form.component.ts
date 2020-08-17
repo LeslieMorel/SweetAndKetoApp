@@ -31,6 +31,8 @@ import { DOCUMENT } from '@angular/common';
 })
 export class OrdenFormComponent implements OnInit {
 
+
+  apariencia = 'standard';
  @Output() validSumit = new EventEmitter<OrdenesModel>();
  @Input() orden: OrdenesModel;
   @Input() edit: boolean;

@@ -72,9 +72,18 @@ font-size: xx-large;
 }
 
 .content {
-  overflow: scroll;
+  width: 100vw;
+  overflow-y: scroll;
+  overflow-x: hidden;
+}
+
+.contenedor {
+  height: 100%;
+  position: block;
+  // min-height: 90vh;
 }
 footer {
+  position: block;
   background-color: $color-primary;
   padding-bottom: 75px;
   color: white;

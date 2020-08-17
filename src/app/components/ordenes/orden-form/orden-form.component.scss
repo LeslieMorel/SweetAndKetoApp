@@ -8,7 +8,7 @@
 }
 .grupo {
   border: lightgrey 1px solid;
-  border-radius: 5px;
+  border-radius: 3px;
   margin: 5px;
   padding: 5px;
   display: flex;
@@ -63,11 +63,16 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  gap: 10px;
   width: 150px;
   height: 40px;
+  // box-shadow: 1px 2px lightgrey;
   border: lightgrey 1px solid;
-  border-radius: 5px;
-
+  border-radius: 3px;
+  &.activo {
+    color: $color-accent;
+    border: 1px solid $color-accent;
+  }
   @media (min-width: $breakpoint-tablet){
     width: 200px;
     height: 50px;
@@ -76,4 +81,7 @@
 
 .select {
   background-color: $color-primary;
+}
+.radio {
+  display: none;
 }

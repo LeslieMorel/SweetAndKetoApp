@@ -44,6 +44,7 @@ const routes: Routes = [
   },
 
   {path: 'images' , component: ImagesComponent},
+  { path: 'bi', loadChildren: () => import('./bi/bi.module').then(m => m.BiModule) },
 
 
 ];
