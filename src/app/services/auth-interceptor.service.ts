@@ -13,8 +13,8 @@ import { AuthService } from './auth.service';
 export class AuthInterceptorService implements HttpInterceptor {
 
   // Base URL Server
-  baseURL = 'http://localhost:51506/api/'; // Local
-  // baseURL = 'https://sweetandketoapi20200720220539.azurewebsites.net/api/';  // Azure
+  // baseURL = 'http://localhost:51506/api/'; // Local
+  baseURL = 'https://sweetandketoapi20200720220539.azurewebsites.net/api/';  // Azure
 
   constructor(private authServ: AuthService) {}
 
