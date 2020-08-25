@@ -13,12 +13,12 @@ export class AppComponent {
   title = 'SweetAndKetoApp';
   constructor(private authService: AuthService,private activeRoute: ActivatedRoute){
     this.authService.autoLogin();
-    this.activeRoute.url.subscribe((resp)=> {
+    this.activeRoute.url.subscribe((resp) => {
       console.log('path');
 
       console.log(resp[0].path);
 
-    })
+    });
 
   }
 }

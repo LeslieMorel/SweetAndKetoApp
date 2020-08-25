@@ -13,7 +13,7 @@ import { UserRolesModel } from '../models/auth/userRoles.model';
   providedIn: 'root'
 })
 export class AuthService {
-
+  userStore: UserInfo;
   userData: UsuarioData;
   user: User  = {
     userName: 'Jhernandez',
@@ -140,7 +140,8 @@ export class AuthService {
 
 
       if (this.userData.tokenExpNumber < dateUtcNow) {
-        // console.log('Token Vencido');
+        console.log('Token Vencido');
+        console.log('AutoLogOutNotWorking');
         this.logOut();
 
       } else {

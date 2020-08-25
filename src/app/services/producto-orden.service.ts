@@ -11,4 +11,7 @@ export class ProductoOrdenService {
   GeProductosOrdenPendientes(){
     return this.http.get('ProductosOrdenes/Pendientes');
   }
+  GeProductosOrdenPendientesPorDia(){
+    return this.http.get('ProductosOrdenes/PendientesPorDia');
+  }
 }

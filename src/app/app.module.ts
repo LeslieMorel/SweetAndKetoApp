@@ -47,6 +47,8 @@ import { HomeComponent } from './components/home/home.component';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
 import { ScrollTopComponent } from './components/scroll-top/scroll-top.component';
+import { ProductosPendientesPorDiaComponent } from './components/productos-pendientes-por-dia/productos-pendientes-por-dia.component';
+import { ProductoPordiaComponent } from './components/producto-pordia/producto-pordia.component';
 
 
 @NgModule({
@@ -77,7 +79,9 @@ import { ScrollTopComponent } from './components/scroll-top/scroll-top.component
     FiltroOrdenesComponent,
     MobileBottomNavComponent,
     HomeComponent,
-    ScrollTopComponent
+    ScrollTopComponent,
+    ProductosPendientesPorDiaComponent,
+    ProductoPordiaComponent
   ],
   imports: [
     BrowserModule,

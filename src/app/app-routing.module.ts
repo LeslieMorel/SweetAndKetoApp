@@ -15,6 +15,7 @@ import { RegisterComponent } from './components/auth/register/register.component
 import { AuthGuardService } from './services/auth-guard.service';
 import { UserRolesModel } from './models/auth/userRoles.model';
 import { HomeComponent } from './components/home/home.component';
+import { ProductosPendientesPorDiaComponent } from './components/productos-pendientes-por-dia/productos-pendientes-por-dia.component';
 
 
 const routes: Routes = [
@@ -39,6 +40,12 @@ const routes: Routes = [
   {
     path: 'productos-pendientes' ,
     component: ListaProductosPendientesComponent,
+    data: {roles: [ UserRolesModel.OrdenesEdicion, UserRolesModel.OrdenesConsulta]},
+    canActivate: [AuthGuardService]
+  },
+  {
+    path: 'productos-pendientes-pordia' ,
+    component: ProductosPendientesPorDiaComponent,
     data: {roles: [ UserRolesModel.OrdenesEdicion, UserRolesModel.OrdenesConsulta]},
     canActivate: [AuthGuardService]
   },

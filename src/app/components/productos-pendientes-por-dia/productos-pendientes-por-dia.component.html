@@ -1,0 +1,30 @@
+<div class="spinner" *ngIf="loading"></div>
+<mat-card class="contenedor">
+  <mat-card-title>Productos Pendientes</mat-card-title>
+  <mat-card-subtitle>Articulos de las ordenes con Estado: Pendiente o Proceso</mat-card-subtitle>
+  <mat-card-content>
+
+    <div class="producto" *ngFor="let producto of productos"  >
+      <div class="start">
+        <img class="imgProd" [src]="producto.imgUrl" alt="imagen Producto">
+      </div>
+      <div class="info">
+        <span class="title">{{producto.descripcion}}</span>
+        <mat-card-subtitle> Total: {{producto.cantidadTotal}}</mat-card-subtitle>
+      </div>
+      <mat-card-content class="dates" >
+        <div class="items" *ngFor="let productoDia of producto.productosPorDias">
+          <div class="fecha">
+            {{productoDia.dia | date: 'dd-MMM'}}
+          </div>
+          <div class="cantidad">
+            <strong>{{productoDia.cantidad}}</strong>
+          </div>
+
+        </div>
+      </mat-card-content>
+    </div>
+
+
+  </mat-card-content>
+</mat-card>

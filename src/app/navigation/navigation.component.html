@@ -18,7 +18,7 @@
       <a (click)="drawer.close()" mat-list-item routerLink="/tienda" color="primary"><mat-icon color="primary">store</mat-icon>Tienda</a>
       <div class="ordenes-zone" *ngIf="this.authService.userIsInRole('OrdenesEdicion')">
         <a (click)="drawer.close()"  mat-list-item routerLink="/ordenes" color="primary" ><mat-icon color="primary">list</mat-icon> Ordenes</a>
-        <a  (click)="drawer.close()" mat-list-item routerLink="/productos-pendientes" color="primary"><mat-icon color="primary">group_work</mat-icon> Produccion</a>
+        <a  (click)="drawer.close()" mat-list-item routerLink="/productos-pendientes-pordia" color="primary"><mat-icon color="primary">group_work</mat-icon> Produccion</a>
       </div>
       <div class="admin" *ngIf="this.authService.AdminUser()">
         <a (click)="drawer.close()"  mat-list-item routerLink="/productos" color="primary"><mat-icon color="primary">list</mat-icon> Productos</a>
