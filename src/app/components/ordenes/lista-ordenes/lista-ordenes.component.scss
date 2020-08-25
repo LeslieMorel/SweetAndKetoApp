@@ -1,9 +1,9 @@
 @import '../../../../variables';
 
 .container {
-  height: 100%;
+  min-height: 80vh;
   padding-bottom: 150px;
-  overflow: scroll;
+  // overflow: scroll;
 
 }
 .tableContainer {

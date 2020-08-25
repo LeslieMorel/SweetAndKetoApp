@@ -11,9 +11,9 @@
   justify-content: center;
 }
 .contenedor {
-  height: 100vh;
+  min-height: 80vh;
   width: 100%;
-  overflow: scroll;
+  // overflow: scroll;
   padding-bottom: 100px;
 
 
